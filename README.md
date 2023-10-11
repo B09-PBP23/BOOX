@@ -11,13 +11,6 @@ Pemrograman Berbasis Platform B - Gasal 23/24
 - Theodore Kasyfillah -  2206083136
 - Yoshelin Yamala Vijnana - 22062826702
 
-
-## Dataset
-Sumber dataset yang kami pilih adalah dataset dari Kaggle dengan URL sebagai berikut:
-https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset
-
-Alasannya karena dataset tersebut sangat terperinci. Terdapat lebih dari 100 data buku yang dilengkapi dengan nomor ISBN, judul buku, nama penulis, tahun publikasi, penerbit buku, serta URL image cover buku tersebut. Pada dataset tersebut juga memiliki beberapa collaborator yang menyertakan kode untuk filter buku dan rekomendasi dalam bahasa python.
-
 ## Cerita Aplikasi dan Manfaatnya
 Aplikasi “Boox” adalah platform yang ditujukan untuk memudahkan pengguna dalam memberikan penilaian, ulasan, serta mengeksplorasi dunia buku dengan beragam genre. Situs ini menyediakan wadah bagi para pembaca untuk bertukar ulasan  tentang buku-buku yang mereka baca.
 
@@ -31,11 +24,19 @@ Dengan adanya situs “Boox” beserta kelengkapan fiturnya, dapat membantu dala
 
 1. **Register & Login page**:
 
+    (*developer*: Semua anggota kelompok)
+
     Halaman ini dapat diakses melalui halaman landing page. Halaman register berfungsi untuk mendaftarkan pengguna baru. Setelah pengguna selesai mendaftarkan pada halaman register, maka akan diarahkan ke halaman login. Sementara itu, halaman login berfungsi untuk login pengguna yang sudah memiliki akun.
-2. **Reader’s Favorite page** :
+
+2. **Reader’s Favorite page** 
+
+    (*developer*: Neva Denstia Shabira)
 
     Halaman ini memberikan informasi mengenai review-review terfavorit dari para pengguna. Review-review disini diurutkan berdasarkan jumlah upvote dan pengguna dapat menekan button upvote untuk menaikkan posisi pada urutan review terfavorit.
+
 3. **Profile Page**
+
+    (*developer*: Theodore Kasyfillah)
 
     Pada halaman ini, terdapat informasi dari pengguna yang sedang login. Page ini berisikan fitur berikut:
     - **Foto Profil**: Pengguna dapat mengunggah foto profil atau gambar avatar yang mewakili diri mereka. Ini adalah gambar yang akan dilihat oleh pengguna lain ketika mereka mengunjungi profil pengguna tersebut.
@@ -45,15 +46,27 @@ Dengan adanya situs “Boox” beserta kelengkapan fiturnya, dapat membantu dala
 
 4. **Bookmarks**
 
+    (*developer*: Yoshelin Yamala Vijnana)
+
     Pada setiap buku, tersedia tombol “Bookmarks” yang bertujuan untuk mempermudah pengguna dalam menandai buku yang ingin mereka markah. Dengan adanya halaman bookmarks, maka pengguna dapat mengakses kembali buku apa saja yang menarik perhatian pengguna. Pada halaman ini, akan ditampilkan semua buku yang telah di-markah oleh pengguna. Fitur ini akan membantu pengguna untuk mengorganisir buku yang ditandai dalam satu tempat yang mudah diakses.
 
 5. **Add Reviews**
+
+    (*developer*: Salma Kurnia Dewi)
 
     Modul add reviews berfungsi bagi para pengguna untuk menambahkan review mengenai sebuah buku. Modul ini dapat diakses di halaman review buku yang sudah ada. Apabila belum ada halaman review mengenai suatu buku, pengguna dapat membuat halaman review yang baru menggunakan modul ini. 
 
 6. **Edit Reviews**
 
+    (*developer*: Aldyandry Nureza Phutra)
+
     Setelah pengguna menambahkan review sebuah buku di halaman add review, pengguna dapat mengedit review tersebut melalui modul ini.
+
+7. **Landing Page Utama**
+
+    (*developer*: Fadhil Muhammad)
+
+    Merupakan laman utama dari website ini yang berisikan kumpulan top reviews dari pengguna berdasarkan rating yang mereka berikan. Laman ini merupakan laman *default* setelah user melakukan login atau ketika user pertama tiba di website. Selain itu, pada laman ini terdapat *navigator* menuju page lainnya.
 
 ## Fitur Utama
 
@@ -61,6 +74,13 @@ Dengan adanya situs “Boox” beserta kelengkapan fiturnya, dapat membantu dala
 2. Peringkat (Rating): Pengguna dapat memberikan peringkat berdasarkan jumlah bintang (misalnya, dari 1 hingga 5 bintang), yang merupakan cara cepat untuk menggambarkan kesan keseluruhan mereka tentang buku.
 3. Pengunggahan Gambar: Pada halaman review buku yang baru, pengguna dapat mengunggah foto buku yang akan di-review. 
 4. Komentar dan Interaksi: Modul ini juga dapat memungkinkan pengguna untuk memberikan komentar atau tanggapan terhadap ulasan pengguna lainnya, memungkinkan interaksi antara anggota komunitas. Jadi, pengguna lainnya juga bisa membalas komentar pengguna lain.
+
+
+## Dataset
+Sumber dataset yang kami pilih adalah dataset dari Kaggle dengan URL sebagai berikut:
+https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset
+
+Alasannya karena dataset tersebut sangat terperinci. Terdapat lebih dari 100 data buku yang dilengkapi dengan nomor ISBN, judul buku, nama penulis, tahun publikasi, penerbit buku, serta URL image cover buku tersebut. Pada dataset tersebut juga memiliki beberapa collaborator yang menyertakan kode untuk filter buku dan rekomendasi dalam bahasa python.
 
 
 ## Role atau Peran Pengguna Beserta Deskripsi
