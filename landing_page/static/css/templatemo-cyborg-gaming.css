@@ -845,7 +845,7 @@ Most Popular Style
 }
 
 .most-popular .item ul {
-  float: right;
+  float: none;
   margin-top: 20px;
 }
 

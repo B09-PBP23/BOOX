@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{% static 'css/owl.css' %}">
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+
 {% endblock meta %}
 
 {% block content %}
@@ -144,20 +145,21 @@
           }
 
           avgRating = avgRating.toFixed(1)
-          bookTitle = (bookTitle.length > 20) ? bookTitle.substring(0, 20) + "..." : bookTitle
+          bookTitle = (bookTitle.length > 25) ? bookTitle.substring(0, 25) + "..." : bookTitle
           bookAuthor = (bookAuthor.length > 20) ? bookAuthor.substring(0, 20) + "..." : bookAuthor
 
           HtmlString += `
           <div class="col-lg-3 col-sm-6">
               <div class="item">
-                  <a href="">
-                      <img src="${imageURL}" alt="${book.fields["Book-Title"]}" style="display: block; margin: 0 auto; max-width: 200px; min-height: 200px; max-height: 300px; width: 100%; height: 100%">
-                  </a>
-                  <h4 style="min-width: 90px; max-width:150px; max-height:100px; width: 100px">${bookTitle}<br><span>${bookAuthor}</span></h4>
-                  <ul>
-                      <li><i class="fa fa-star"></i> ${avgRating}</li>
-                      <li><i class="fa fa-download"></i> ${totalReviews}</li>
-                  </ul>
+                <a href="#">
+                    <img class="img-fluid" src="${imageURL}" alt="${book.fields["Book-Title"]}">
+                </a>
+                <h4>${bookTitle}<br><span>${bookAuthor}</span></h4>
+                <ul class="d-flex flex-row text-left justify-content-between align-items-center">
+                  <li class="d-flex align-items-start"><i class="fa fa-star"></i>${avgRating}</li>
+                  <li class="d-flex"><i class="fa fa-users"></i>${totalReviews}</li>
+                  <li class="d-flex align-items-end"><div class="main-border-button" id="bookmark-link" ><a href="#"><i id="bookmark-logo" class="fa fa-bookmark" style="color: red;"></i></a></div></li>
+                </ul>
               </div>
           </div>`
       }
@@ -168,6 +170,18 @@
                   <a href="browse.html">Discover More</a>
               </div>
             </div>`;
+
+      document.querySelectorAll("#bookmark-link").forEach((element) => {
+        element.addEventListener("click", (event) => {
+          event.preventDefault();
+          let bookmarkLogo = element.querySelector("#bookmark-logo");
+          if (bookmarkLogo.style.color == "red") {
+            bookmarkLogo.style.color = "green";
+          } else {
+            bookmarkLogo.style.color = "red";
+          }
+        });
+      });
     } 
 
     async function getUserReviews() {
@@ -210,7 +224,7 @@
       document.getElementById("user-reviews").innerHTML +=  HtmlString + `
             <div class="col-lg-12">
               <div class="main-button">
-                <a href="profile.html">View All Reviews</a>
+                <a href="profile.html">View All My Reviews</a>
               </div>
             </div>
       `
