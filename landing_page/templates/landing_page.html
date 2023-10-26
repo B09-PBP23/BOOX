@@ -158,8 +158,14 @@
                 <ul class="d-flex flex-row text-left justify-content-between align-items-center">
                   <li class="d-flex align-items-start"><i class="fa fa-star"></i>${avgRating}</li>
                   <li class="d-flex"><i class="fa fa-users"></i>${totalReviews}</li>
-                  <li class="d-flex align-items-end"><div class="main-border-button" id="bookmark-link" ><a href="#"><i id="bookmark-logo" class="fa fa-bookmark" style="color: red;"></i></a></div></li>
                 </ul>
+                <div class="d-flex justify-content-center">
+                  <div class="main-border-button" id="bookmark-link" style="margin: 15px 0 0 0;">
+                    <a href="#"><i id="bookmark-logo" class="fa fa-bookmark" style="color: red;"></i> 
+                      Add to Bookmark
+                    </a>
+                  </div>
+                </div>
               </div>
           </div>`
       }
@@ -174,11 +180,13 @@
       document.querySelectorAll("#bookmark-link").forEach((element) => {
         element.addEventListener("click", (event) => {
           event.preventDefault();
-          let bookmarkLogo = element.querySelector("#bookmark-logo");
-          if (bookmarkLogo.style.color == "red") {
+          let bookmarkLogo = element.querySelector("a");
+          if (bookmarkLogo.querySelector("#bookmark-logo").style.color == "red") {
+            bookmarkLogo.innerHTML = `<i id="bookmark-logo" class="fa fa-bookmark" style="color: green;"></i> ` + "Bookmarked";
             bookmarkLogo.style.color = "green";
           } else {
-            bookmarkLogo.style.color = "red";
+            bookmarkLogo.innerHTML = `<i id="bookmark-logo" class="fa fa-bookmark" style="color: red;"></i> ` + "Add to Bookmark";
+            bookmarkLogo.style.color = "";
           }
         });
       });
