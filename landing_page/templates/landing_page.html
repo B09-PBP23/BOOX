@@ -1,0 +1,246 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block meta %}
+    <title>BooX - Awesome Book Website</title>
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css/templatemo-cyborg-gaming.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+
+{% endblock meta %}
+
+{% block content %}
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="index.html" class="logo">
+                        <img src="{% static 'images/logo.png' %}" alt="BooX">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Search End ***** -->
+                    <div class="search-input">
+                      <form id="search" action="#">
+                        <input type="text" placeholder="Search Book" id='searchText' name="searchKeyword" onkeypress="handle" />
+                        <i class="fa fa-search"></i>
+                      </form>
+                    </div>
+                    <!-- ***** Search End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="browse.html">Browse</a></li>
+                        <li><a href="details.html">Details</a></li>
+                        <li><a href="streams.html">Streams</a></li>
+                        <li><a href="profile.html">Profile <img src="{%static 'images/profile-header.jpg'%}" alt=""></a></li>
+                    </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content">
+
+          <!-- ***** Banner Start ***** -->
+          <div class="main-banner">
+            <div class="row">
+              <div class="col-lg-7">
+                <div class="header-text">
+                  <h6>Welcome To BooX</h6>
+                  <h4><em>Browse</em> World's Popular Books Here</h4>
+                  <div class="main-button">
+                    <a href="browse.html">Browse Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Banner End ***** -->
+
+          <!-- ***** Most Popular Start ***** -->
+          <div class="most-popular">
+              <div class="row">
+                  <div class="col-lg-12">
+                      <div class="heading-section">
+                      <h4><em>Most Popular</em> Right Now</h4>
+                      </div>
+                      <div class="row" id="most-popular-content">
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- ***** Most Popular End ***** -->
+
+          <!-- ***** Review Library Start ***** -->
+          <div class="gaming-library" id="user-reviews">
+          </div>
+          <!-- ***** Review Library End ***** -->
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights reserved. 
+          
+          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>  Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    async function loadBooks() {
+      return fetch("{% url 'landing_page:get_data_json' %}").then((response) => response.json());
+    }
+
+    async function refreshMostPopular() {
+      const Books = await loadBooks();
+      let HtmlString = ``;
+
+      for (let book of Books) {
+          let bookURL = `{% url 'landing_page:get_review_data' 0 %}`.replace("0", book.pk)
+          let imageURL = book.fields["Image-URL-L"]
+          let bookTitle = book.fields["Book-Title"]
+          let bookAuthor = book.fields["Book-Author"]
+          let avgRating = book.fields["Rating"] / book.fields["Reviews"]
+          let totalReviews = book.fields["Reviews"]
+          totalReviews = (totalReviews > 1000) ? (totalReviews / 1000).toFixed(1) + "K" : 
+            (totalReviews > 1000000) ? (totalReviews / 1000000).toFixed(1) + "M" : totalReviews
+
+          if (isNaN(avgRating)) {
+              avgRating = 0
+          }
+
+          avgRating = avgRating.toFixed(1)
+          bookTitle = (bookTitle.length > 25) ? bookTitle.substring(0, 25) + "..." : bookTitle
+          bookAuthor = (bookAuthor.length > 20) ? bookAuthor.substring(0, 20) + "..." : bookAuthor
+
+          HtmlString += `o
+          <div class="col-lg-3 col-sm-6">
+              <div class="item">
+                <a href=${bookURL}>
+                    <img class="img-fluid" src="${imageURL}" alt="${book.fields["Book-Title"]}">
+                </a>
+                <h4>${bookTitle}<br><span>${bookAuthor}</span></h4>
+                <ul class="d-flex flex-row text-left justify-content-between align-items-center">
+                  <li class="d-flex align-items-start"><i class="fa fa-star"></i>${avgRating}</li>
+                  <li class="d-flex"><i class="fa fa-users"></i>${totalReviews}</li>
+                </ul>
+                <div class="d-flex justify-content-center">
+                  <div class="main-border-button" id="bookmark-link" style="margin: 15px 0 0 0;">
+                    <a href="#"><i id="bookmark-logo" class="fa fa-bookmark" style="color: red;"></i> 
+                      Add to Bookmark
+                    </a>
+                  </div>
+                </div>
+              </div>
+          </div>`
+      }
+      
+      document.getElementById("most-popular-content").innerHTML += HtmlString + 
+          `<div class="col-lg-12">
+              <div class="main-button">
+                  <a href="browse.html">Discover More</a>
+              </div>
+            </div>`;
+
+      document.querySelectorAll("#bookmark-link").forEach((element) => {
+        element.addEventListener("click", (event) => {
+          event.preventDefault();
+          let bookmarkLogo = element.querySelector("a");
+          if (bookmarkLogo.querySelector("#bookmark-logo").style.color == "red") {
+            bookmarkLogo.innerHTML = `<i id="bookmark-logo" class="fa fa-bookmark" style="color: green;"></i> ` + "Bookmarked";
+            bookmarkLogo.style.color = "green";
+          } else {
+            bookmarkLogo.innerHTML = `<i id="bookmark-logo" class="fa fa-bookmark" style="color: red;"></i> ` + "Add to Bookmark";
+            bookmarkLogo.style.color = "";
+          }
+        });
+      });
+    } 
+
+    async function getUserReviews() {
+      const Books = await loadBooks();
+      let HtmlString = `
+        <div class="col-lg-12">
+          <div class="heading-section">
+            <h4><em>Your Book</em> Reviews</h4>
+          </div>
+        </div>
+      `;
+
+      let i = 0;
+      for (let book of Books) {
+        if (i++ == 5){
+          break;
+        }
+
+        let imageURL = book.fields["Image-URL-L"]
+        let bookTitle = book.fields["Book-Title"]
+        let bookAuthor = book.fields["Book-Author"]
+        let content = "Katanya sih, bukunya bagus. Tapi gatau yeah! Beli ajalah bukunya biar laku!!!"
+
+        content = (content.length > 40) ? content.substring(0, 40) + "..." : content
+        bookTitle = (bookTitle.length > 20) ? bookTitle.substring(0, 20) + "..." : bookTitle
+        HtmlString += `
+        <div class="item">
+          <ul>
+            <li><img src="${imageURL}" alt="${bookTitle}" class="templatemo-item"></li>
+            <li><h4>${bookTitle}</h4><span>${bookAuthor}</span></li>
+            <li><h4>Last Edited</h4><span>24/08/2036</span></li>
+            <li><h4>Your Rating</h4><span>4.5</span></li>
+            <li><h4>Content</h4><span>${content}</span></li>
+            <li><div class="main-border-button"><a href="#">Edit Review</a></div></li>
+          </ul>
+        </div>
+        `
+      }
+
+      document.getElementById("user-reviews").innerHTML +=  HtmlString + `
+            <div class="col-lg-12">
+              <div class="main-button">
+                <a href="profile.html">View All My Reviews</a>
+              </div>
+            </div>
+      `
+    }
+    
+    refreshMostPopular();
+    getUserReviews();
+  </script>
+
+{% endblock content %}
