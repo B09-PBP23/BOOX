@@ -34,7 +34,7 @@
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
+                    <a href="{% url 'landing_page:show_landing_page' %}" class="logo">
                         <img src="{% static 'images/logo.png' %}" alt="BooX">
                     </a>
                     <!-- ***** Logo End ***** -->
@@ -48,11 +48,11 @@
                     <!-- ***** Search End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="{% url 'landing_page:show_landing_page' %}" class="active">Home</a></li>
                         <li><a href="browse.html">Browse</a></li>
                         <li><a href="details.html">Details</a></li>
                         <li><a href="streams.html">Streams</a></li>
-                        <li><a href="profile.html">Profile <img src="{%static 'images/profile-header.jpg'%}" alt=""></a></li>
+                        <li><a href="{% url 'profilepage:show_profile' %}">Profile <img src="{%static 'images/profile-header.jpg'%}" alt=""></a></li>
                     </ul>   
                     <a class='menu-trigger'>
                         <span>Menu</span>
