@@ -1,0 +1,207 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block meta %}
+    <title>BooX - Awesome Book Website</title>
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css/templatemo-cyborg-gaming.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+
+{% endblock meta %}
+
+{% block content %}
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="index.html" class="logo">
+                        <img src="{% static 'images/logo.png' %}" alt="BooX">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Search End ***** -->
+                    <div class="search-input">
+                      <form id="search" action="#">
+                        <input type="text" placeholder="Search Book" id='searchText' name="searchKeyword" onkeypress="handle" />
+                        <i class="fa fa-search"></i>
+                      </form>
+                    </div>
+                    <!-- ***** Search End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="browse.html">Browse</a></li>
+                        <li><a href="details.html">Details</a></li>
+                        <li><a href="streams.html">Streams</a></li>
+                        <li><a href="profile.html">Profile <img src="{%static 'images/profile-header.jpg'%}" alt=""></a></li>
+                    </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content">
+
+          <!-- ***** Banner Start ***** -->
+          <div class="main-banner">
+            <div class="row">
+              <div class="col-lg-7">
+                <div class="header-text">
+                  <!-- <h6>Welcome To Cyborg</h6> -->
+                  <h4><em>VIEW</em> Our Reader's Favorites Books </h4>
+                  <div class="main-button">
+                    <!-- <a href="browse.html">Browse Now</a> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Banner End ***** -->
+        
+          <div id="most-upvotes">
+          
+          <!-- ***** Gaming Library Start ***** -->
+          <div class="gaming-library profile-library">
+            <div class="col-lg-12">
+              <div class="heading-section">
+                <h4><em>Reader's</em> Favorites</h4>
+              </div>
+              <div class="item">
+                <ul>
+                  <li><h4>Judul</h4><span>Sandbox</span></li>
+                  <li><h4>Author</h4><span>24/08/2036</span></li>
+                  <li><h4>Ratings</h4><span>634 H 22 Mins</span></li>
+                  <li><h4>Upvotes</h4><span>Downloaded</span></li>
+                  <li><div class="main-border-button border-no-active"><a href="#">Donwloaded</a></div></li>
+                </ul>
+              </div>
+              <div class="item">
+
+              </div>
+              <div class="item last-item">
+                <ul>
+                  <li><img src="assets/images/game-01.jpg" alt="" class="templatemo-item"></li>
+                  <li><h4>CS-GO</h4><span>Sandbox</span></li>
+                  <li><h4>Date Added</h4><span>21/04/2022</span></li>
+                  <li><h4>Hours Played</h4><span>632 H 46 Mins</span></li>
+                  <li><h4>Currently</h4><span>Downloaded</span></li>
+                  <li><div class="main-border-button border-no-active"><a href="#">Donwloaded</a></div></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Gaming Library End ***** -->
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights reserved. 
+          
+          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>  Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <script src="assets/js/isotope.min.js"></script>
+  <script src="assets/js/owl-carousel.js"></script>
+  <script src="assets/js/tabs.js"></script>
+  <script src="assets/js/popup.js"></script>
+  <script src="assets/js/custom.js"></script>
+
+  <script>
+    async function getBookInfo() {
+      return fetch("{% url 'readers_favorite:get_data_json' %}").then((response) => response.json());
+    }
+  
+    async function refreshFavoriteBooks() {
+      console.log('Fetching data...');
+      document.getElementById("most-upvotes").innerHTML = "";
+      const books = await getBookInfo();
+      let htmlString = ''; // Initialize the HTML string
+      console.log('Fetching data...2');
+      for (let book of books){
+        let bookTitle = book['Book-Title'];  // Use the field name as defined in the model
+        let imageURL = book['Image-URL-S'];   // Use the field name as defined in the model
+        let bookAuthor = book['Book-Author']; // Use the field name as defined in the model
+        let totalReviews = book['Reviews'];    // Use the field name as defined in the model
+        let totalUpvotes = book['total_upvote']; // Use the field name as defined in the model
+        console.log('Fetching data...3');
+        // Construct the HTML string for each book
+        htmlString += `
+        
+          <div class="item">
+            <ul>
+              <li><img src="${imageURL}" alt="" class="templatemo-item"></li>
+              <li><h4>${bookTitle}</h4></li>
+              <li><h4>${bookAuthor}</h4></li>
+              <li><h4>${totalReviews}</h4></li>
+              <li><h4>${totalUpvotes}</h4>></li>
+              <li><button class="btn btn-success" onclick = "addUpvote(${book.pk})">+</button></li>
+            </ul>
+          </div>
+        `;
+      }
+      console.log('Fetching data...4');
+      document.getElementById("most-upvotes").innerHTML += htmlString;
+    }
+  
+    async function addUpvote(pk) {
+      const headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      fetch(`add_upvote_ajax/${pk}/`, {
+        method: "POST",
+        headers: headers,
+      }).then(refreshFavoriteBooks);
+  
+      return false;
+    }
+  
+    refreshFavoriteBooks();
+  </script>
+  
+
+
+{% endblock content %}

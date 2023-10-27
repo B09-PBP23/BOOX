@@ -13,6 +13,8 @@ class Books(models.Model):
     image_url_l = models.URLField(null=True, blank=True, name="Image-URL-L")
     total_ratings = models.FloatField(default=0, name="Rating")
     total_reviews = models.PositiveIntegerField(default=0, name="Reviews")
+    total_upvote = models.PositiveIntegerField(default=0)
+
 
 class BookReview(models.Model):
     book = models.ForeignKey(Books, on_delete=models.CASCADE, name="book")
