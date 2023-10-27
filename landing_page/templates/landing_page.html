@@ -132,6 +132,7 @@
       let HtmlString = ``;
 
       for (let book of Books) {
+          let bookURL = `{% url 'landing_page:get_review_data' 0 %}`.replace("0", book.pk)
           let imageURL = book.fields["Image-URL-L"]
           let bookTitle = book.fields["Book-Title"]
           let bookAuthor = book.fields["Book-Author"]
@@ -148,10 +149,10 @@
           bookTitle = (bookTitle.length > 25) ? bookTitle.substring(0, 25) + "..." : bookTitle
           bookAuthor = (bookAuthor.length > 20) ? bookAuthor.substring(0, 20) + "..." : bookAuthor
 
-          HtmlString += `
+          HtmlString += `o
           <div class="col-lg-3 col-sm-6">
               <div class="item">
-                <a href="#">
+                <a href=${bookURL}>
                     <img class="img-fluid" src="${imageURL}" alt="${book.fields["Book-Title"]}">
                 </a>
                 <h4>${bookTitle}<br><span>${bookAuthor}</span></h4>
