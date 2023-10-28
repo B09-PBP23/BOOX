@@ -15,6 +15,7 @@ from landing_page.models import Books
 #     total_reviews = models.PositiveIntegerField(default=0, name="Reviews")
 #     upvote_number = models.PositiveIntegerField(default=0, name="upvote_number")
 
+
 # class ReadersFavorite(models.Model):
 #     upvote_number = models.PositiveIntegerField(default=0)
 #     books = models.ForeignKey(Books, on_delete=models.CASCADE)

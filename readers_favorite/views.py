@@ -1,3 +1,4 @@
+import json
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import get_object_or_404, render
 from landing_page.models import Books
@@ -19,8 +20,15 @@ def show_readers_favorite(request):
 @csrf_exempt
 def add_upvote_ajax(request, item_id):
     if request.method == 'POST':
-        book_selected= get_object_or_404(Books, id=item_id)
-        book_selected.total_upvote += 1
+        book_selected = get_object_or_404(Books, id=item_id)
+        book_selected.total_upvotes += 1
         book_selected.save()
-    return HttpResponse
+        # Return a JSON response to update the client-side data
+        response_data = {'success': True}
+        return HttpResponse(json.dumps(response_data), content_type="application/json")
+    return HttpResponseNotFound()
+
+
+
+
 

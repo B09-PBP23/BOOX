@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'landing_page',
-    'profilepage',
-    'authentication',
+    # 'profilepage',
+    # 'authentication',
     'readers_favorite'
 ]
 

@@ -86,41 +86,30 @@
             </div>
           </div>
           <!-- ***** Banner End ***** -->
-    
-          
-          <!-- ***** Gaming Library Start ***** -->
-          <div class="gaming-library profile-library">
-            <div class="col-lg-12">
-              <div class="heading-section">
-                <h4><em>Reader's</em> Favorites</h4>
-              </div>
-              <div class="item">
-                <ul>
-                  <li><h4>Judul</h4><span>Sandbox</span></li>
-                  <li><h4>Author</h4><span>24/08/2036</span></li>
-                  <li><h4>Ratings</h4><span>634 H 22 Mins</span></li>
-                  <li><h4>Upvotes</h4><span>Downloaded</span></li>
-                  <li><div class="main-border-button border-no-active"><a href="#">Donwloaded</a></div></li>
-                </ul>
-              </div>
-              <div class="item">
+  
 
+          <!-- ***** Details Start ***** -->
+          <div class="game-details">
+            <div class="row">
+              <div class="col-lg-12">
+                <h2>Our community top 10 voted books!</h2>
               </div>
-              <div class="item last-item">
-                <ul>
-                  <li><img src="assets/images/game-01.jpg" alt="" class="templatemo-item"></li>
-                  <li><h4>CS-GO</h4><span>Sandbox</span></li>
-                  <li><h4>Date Added</h4><span>21/04/2022</span></li>
-                  <li><h4>Hours Played</h4><span>632 H 46 Mins</span></li>
-                  <li><h4>Currently</h4><span>Downloaded</span></li>
-                  <li><div class="main-border-button border-no-active"><a href="#">Donwloaded</a></div></li>
-                </ul>
+              <div class="col-lg-12">
+                <div class="content">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <p>Here you can view this month's top 10 most voted books by the community! Contribute by upvoting your favorite books!</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <!-- ***** Gaming Library End ***** -->
+          <!-- ***** Details End ***** -->
 
+          <!-- Most upvotes Start -->
           <div id="most-upvotes"></div>
+          <!-- Most upvotes End -->
 
         </div>
       </div>
@@ -157,40 +146,49 @@
     }
   
     async function refreshFavoriteBooks() {
-      console.log('Fetching data...');
-      document.getElementById("most-upvotes").innerHTML = "";
-      const BooksAll = await getBookInfo();
-      let htmlString = ''; // Initialize the HTML string
-      BooksAll.forEach((book) => {
-        let bookTitle = book.fields.title;  // Use the field name as defined in the model
-        // let imageURL = book['Image-URL-S'];   // Use the field name as defined in the model
-        let bookAuthor = book.fields.author; // Use the field name as defined in the model
-        // let totalReviews = book['Reviews'];    // Use the field name as defined in the model
-        // let totalUpvotes = book['total_upvote']; // Use the field name as defined in the model
+    console.log('Fetching data...');
+    document.getElementById("most-upvotes").innerHTML = "";
+    const BooksAll = await getBookInfo();
 
-        bookTitle = (bookTitle.length > 25) ? bookTitle.substring(0, 25) + "..." : bookTitle
-        bookAuthor = (bookAuthor.length > 20) ? bookAuthor.substring(0, 20) + "..." : bookAuthor
-        // Construct the HTML string for each book
-        htmlString += `
-          <div class="gaming-library profile-library">
-            <div class="col-lg-12">
-              <div class="item">
-                <ul>
-                  <li><img src="${book.fields.image_url_s}" alt="" class="templatemo-item"></li>
-                  <li><h4>Title</h4><span>${bookTitle}<span></li>
-                  <li><h4>Author</h4><span>${bookAuthor}<span></li>
-                  <li><h4>Total Reviews</h4><span>${book.fields.total_reviews}<span></li>
-                  <li><h4>Total Upvotes</h4><span>${book.fields.total_upvote}<span></li>
-                  <li><button class="btn btn-success" onclick = "addUpvote(${book.pk})">+</button></li>
-                </ul>
-              </div>
+    // Sort the BooksAll array based on total_upvotes in descending order
+    BooksAll.sort((a, b) => b.fields.total_upvotes - a.fields.total_upvotes);
+
+    // Limit the array to the top 10 books
+    const top10Books = BooksAll.slice(0, 10);
+
+    let htmlString = ``; // Initialize the HTML string
+    number = 0;
+    top10Books.forEach((book) => {
+      let bookTitle = book.fields.title;
+      let bookAuthor = book.fields.author;
+
+      bookTitle = (bookTitle.length > 25) ? bookTitle.substring(0, 25) + "..." : bookTitle
+      bookAuthor = (bookAuthor.length > 20) ? bookAuthor.substring(0, 20) + "..." : bookAuthor
+
+      number += 1;
+      htmlString += `
+        <div class="gaming-library profile-library">
+          <div class="col-lg-12">
+            <div class="item">
+              <h4>No. ${number}</h4>
+              <br>
+              <ul>
+                <li><img src="${book.fields.image_url_s}" alt="" class="templatemo-item"></li>
+                <li><h4>Title</h4><span>${bookTitle}<span></li>
+                <li><h4>Author</h4><span>${bookAuthor}<span></li>
+                <li><h4>Total Reviews</h4><span>${book.fields.total_reviews}<span></li>
+                <li><h4>Total Upvotes</h4><span>${book.fields.total_upvotes}<span></li>
+                <li><button class="btn btn-success" onclick="addUpvote(${book.pk})">+</button></li>
+              </ul>
             </div>
           </div>
-        `;
-      });
-  
-      document.getElementById("most-upvotes").innerHTML = htmlString;
-    }
+        </div>
+      `;
+    });
+
+
+    document.getElementById("most-upvotes").innerHTML = htmlString;
+  }
 
     
   
