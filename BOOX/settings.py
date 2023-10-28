@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'editreview',
     'landing_page',
     'widget_tweaks',
+    'landing_page',
+    'profilepage',
+    'authentication',
 ]
 
 
