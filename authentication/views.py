@@ -19,10 +19,12 @@ def register(request):
     form = UserCreationForm()
     if request.method == "POST":
         form = UserCreationForm(request.POST)
+        print(form)
         if form.is_valid():
             form.save()
             messages.success(request, 'Your account has been successfully created!')
             return redirect('authentication:login')
+
         else:
             username = request.POST.get('username')
             if User.objects.filter(username=username).exists():
@@ -50,7 +52,7 @@ def login_user(request):
     return render(request, 'login.html', context)
 
 def logout_user(request):
-  logout(request)
-  response = HttpResponseRedirect(reverse('authentication:login'))
-  response.delete_cookie('last_login')
-  return response
+    logout(request)
+    response = HttpResponseRedirect(reverse('landing_page:show_landing_page'))
+    response.delete_cookie('last_login')
+    return response

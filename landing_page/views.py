@@ -10,7 +10,7 @@ def get_books(request):
     data = Books.objects.all()
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
-@login_required(login_url='auth/login')
+@login_required(login_url='authentication:login')
 def show_landing_page(request):
     books = Books.objects.all()
     response = {
@@ -22,10 +22,16 @@ def get_data_json(request):
     product_item = Books.objects.all()
     return HttpResponse(serializers.serialize('json', product_item))
 
+def check_if_user_logged_in(request):
+    if request.user.is_authenticated:
+        return HttpResponse('true')
+    else:
+        return HttpResponse('false')
+
+@login_required(login_url='authentication:login')
 def get_review_data(request, book_id):
     if request.method == 'GET':
-        book = get_object_or_404(Books, pk=book_id)
-        # reviews = BookReview.objects.filter(book=book)
+        book = get_object_or_404(Books, pk=book_id, user=request.user)
         response = {
             'book':book
             }
@@ -33,8 +39,8 @@ def get_review_data(request, book_id):
     return HttpResponseNotFound()
 
 def show_review(request, book_id):
-    book = Books.objects.get(pk=book_id)
+    book = Books.objects.filter(pk=book_id)
     response = {
-        'book':book
+        'book':book[0]
         }
     return render(request, 'book_review.html', response)

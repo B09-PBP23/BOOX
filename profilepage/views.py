@@ -10,7 +10,9 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url='authentication:login')
 def show_profile(request):
     try:
         profile = Profile.objects.get(user=request.user)
@@ -21,7 +23,7 @@ def show_profile(request):
         }
         return render(request, "profile.html", context)
     except Profile.DoesNotExist:
-        return redirect('profilepage:edit_profile')
+        return redirect('profilepage:create_profile')
 
 def create_profile(request):
     if request.method == 'POST':
