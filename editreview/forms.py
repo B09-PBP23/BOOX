@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from main.models import BookReview
+from landing_page.models import BookReview
 
 class ReviewForm(ModelForm):
     class Meta:

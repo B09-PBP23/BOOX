@@ -1,7 +1,7 @@
 
 from django.urls import path
 
-from editreview.views import editreview
+from editreview.views import editreview, get_review,display_reviews
 # from .views import show_main
 # from main.views import show_main, create_product
 # from main.views import show_main, create_product, show_xml 
@@ -27,8 +27,10 @@ urlpatterns = [
     # path('logout/', logout_user, name='logout'),
     path('edit-review/<int:id>', editreview, name='editreview'),
     # path('delete/<int:id>', delete_product, name='delete_product'), # sesuaikan dengan nama fungsi yang dibuat
-
     # path('get-product/', get_product_json, name='get_product_json'),
     # path('create-product-ajax/', add_product_ajax, name='add_product_ajax')
-    
+    path("", get_review, name="get_review"),
+    path('reviews/', display_reviews, name='display_reviews'),
+
+
 ]
