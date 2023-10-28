@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'editreview',
     'landing_page',
+    'widget_tweaks',
 ]
 
 

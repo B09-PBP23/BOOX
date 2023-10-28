@@ -4,7 +4,8 @@ from django.shortcuts import render
 from django.core import serializers
 
 from django.shortcuts import get_object_or_404, render, redirect
-from landing_page.models import Books, BookReview
+from landing_page.models import Books
+from editreview.models import Review
 from .forms import ReviewForm  # Diasumsikan Anda memiliki form untuk Review.
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
@@ -12,7 +13,8 @@ from django.views.decorators.csrf import csrf_exempt
 
 def editreview(request, id):
     # Get product berdasarkan ID
-    review = BookReview.objects.get(pk = id, user = request.user)  #ini tuh buat apa ya, bener gasih BokkReview
+    
+    review = Review.objects.get(pk = id, user = request.user)  #ini tuh buat apa ya, bener gasih BokkReview
 
     # Set product sebagai instance dari form
     form = ReviewForm(request.POST or None, instance=review)
@@ -24,16 +26,15 @@ def editreview(request, id):
 
     context = {'form': form,
                'review': review}
-    
     return render(request, "editreview.html", context)
 def get_review(request):
-    data = BookReview.objects.all()
+    data = Review.objects.all()
     context = {'reviews': data}
     
     return render(request, "editreview.html", context)
 def display_reviews(request):
     # Ambil semua data reviews
-    reviews = BookReview.objects.all()
+    reviews = Review.objects.all()
 
     context = {
         'reviews': reviews,
