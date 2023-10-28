@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'landing_page',
-    'readers_favorite',
+    'profilepage',
+    'authentication',
+    'readers_favorite'
 ]
 
 MIDDLEWARE = [
