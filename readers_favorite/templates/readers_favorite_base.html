@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block meta %}
+    <title>BooX - Awesome Book Website</title>
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css/templatemo-cyborg-gaming.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+
+{% endblock meta %}
+
+{% block content %}
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="index.html" class="logo">
+                        <img src="{% static 'images/logo.png' %}" alt="BooX">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Search End ***** -->
+                    <div class="search-input">
+                      <form id="search" action="#">
+                        <input type="text" placeholder="Search Book" id='searchText' name="searchKeyword" onkeypress="handle" />
+                        <i class="fa fa-search"></i>
+                      </form>
+                    </div>
+                    <!-- ***** Search End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="browse.html">Browse</a></li>
+                        <li><a href="details.html">Details</a></li>
+                        <li><a href="streams.html">Streams</a></li>
+                        <li><a href="profile.html">Profile <img src="{%static 'images/profile-header.jpg'%}" alt=""></a></li>
+                    </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content">
+
+          <!-- ***** Banner Start ***** -->
+          <div class="main-banner">
+            <div class="row">
+              <div class="col-lg-7">
+                <div class="header-text">
+                  <!-- <h6>Welcome To BOOX</h6> -->
+                  <h4><em>VIEW</em> Our Reader's Favorites Books </h4>
+                  <div class="main-button">
+                    <!-- <a href="browse.html">Browse Now</a> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Banner End ***** -->
+  
+
+          <!-- ***** Details Start ***** -->
+          <div class="game-details">
+            <div class="row">
+              <div class="col-lg-12">
+                <h2>Our community top 10 voted books!</h2>
+              </div>
+              <div class="col-lg-12">
+                <div class="content">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <p>Here you can view this month's top 10 most voted books by the community!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Details End ***** -->
+
+          <!-- Most upvotes Start -->
+          <div id="most-upvotes"></div>
+          <br>
+          <!-- Most upvotes End -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights reserved. 
+          
+          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>  Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <script src="assets/js/isotope.min.js"></script>
+  <script src="assets/js/owl-carousel.js"></script>
+  <script src="assets/js/tabs.js"></script>
+  <script src="assets/js/popup.js"></script>
+  <script src="assets/js/custom.js"></script>
+
+  <script>
+
+    async function getBookInfo() {
+      return fetch("{% url 'readers_favorite:get_data_json' %}").then((response) => response.json());
+    }
+
+    async function refreshFavoriteBooks() {
+      console.log('Fetching data...');
+      document.getElementById("most-upvotes").innerHTML = "";
+      const BooksAll = await getBookInfo();
+
+      // Sort the BooksAll array based on most reviewed (for top 10) in descending order
+      BooksAll.sort((a, b) => b.fields.total_reviews - a.fields.total_reviews);
+
+      // Limit the array to the top 10 books
+      const top10Books = BooksAll.slice(0, 10);
+
+      // Sort the top10 Books based on upvotes
+      top10Books.sort((a, b) => b.fields.total_upvotes - a.fields.total_upvotes);
+
+      let htmlString = ``; // Initialize the HTML string
+      number = 0;
+      top10Books.forEach((book) => {
+        let bookTitle = book.fields.title;
+        let bookAuthor = book.fields.author;
+
+        bookTitle = (bookTitle.length > 25) ? bookTitle.substring(0, 25) + "..." : bookTitle
+        bookAuthor = (bookAuthor.length > 20) ? bookAuthor.substring(0, 20) + "..." : bookAuthor
+
+        number += 1;
+        htmlString += `
+          <div class="gaming-library profile-library">
+            <div class="col-lg-12">
+              <div class="item">
+                <h4>No. ${number}</h4>
+                <br>
+                <ul>
+                  <li><img src="${book.fields.image_url_s}" alt="" class="templatemo-item"></li>
+                  <li><h4>Title</h4><span>${bookTitle}<span></li>
+                  <li><h4>Author</h4><span>${bookAuthor}<span></li>
+                  <li><h4>Total Reviews</h4><span>${book.fields.total_reviews}<span></li>
+                  <li><h4>Total Upvotes</h4><span>${book.fields.total_upvotes}<span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      document.getElementById("most-upvotes").innerHTML = htmlString;
+
+    }
+
+    refreshFavoriteBooks();
+</script>
+  
+
+
+{% endblock content %}
