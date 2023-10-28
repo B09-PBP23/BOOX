@@ -39,19 +39,11 @@
                         <img src="{% static 'images/logo.png' %}" alt="BooX">
                     </a>
                     <!-- ***** Logo End ***** -->
-                    <!-- ***** Search End ***** -->
-                    <div class="search-input">
-                      <form id="search" action="#">
-                        <input type="text" placeholder="Search Book" id='searchText' name="searchKeyword" onkeypress="handle" />
-                        <i class="fa fa-search"></i>
-                      </form>
-                    </div>
-                    <!-- ***** Search End ***** -->
+
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
                         <li><a href="#" class="active">Home</a></li>
-                        <li><a href="#">Browse</a></li>
-                        <li><a href="#">Details</a></li>
+                        <li><a href="#user-faq">Help</a></li>
                         <li><a href="{% url 'authentication:logout' %}" id="login-logout">Logout</a></li>
                         <li><a href="{% url 'profilepage:show_profile' %}">Profile <img src="{%static 'images/profile-header.jpg'%}" alt=""></a></li>
                     </ul>   
@@ -79,7 +71,7 @@
                   <h6>Welcome To BooX</h6>
                   <h4><em>Browse</em> World's Popular Books Here</h4>
                   <div class="main-button">
-                    <a href="browse.html">Browse Now</a>
+                    <a href="#most-popular-content">Browse Now</a>
                   </div>
                 </div>
               </div>
@@ -94,6 +86,37 @@
                       <div class="heading-section">
                       <h4><em>Most Popular</em> Right Now</h4>
                       </div>
+
+                      <div class="item">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <form id="search">
+                                    <div class="form-group">
+                                        <label for="searchBy">Search By:</label>
+                                        <select class="form-control" id="searchBy" name="searchBy">
+                                            <option value="title">Search by Title</option>
+                                            <option value="author">Search by Author</option>
+                                            <option value="year">Search by Release Year</option>
+                                            <option value="publisher">Search by Publisher</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="searchText">Search:</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Enter keyword" id="searchText" name="searchKeyword">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                      </div>
+                    
+                    
                       <div class="row" id="most-popular-content">
                       </div>
                   </div>
@@ -109,6 +132,8 @@
       </div>
     </div>
   </div>
+
+  {% include 'add_question_modal.html' %}
   
   <footer>
     <div class="container">
@@ -126,8 +151,13 @@
     async function isUserLoggedIn(){
       return fetch("{% url 'landing_page:check_if_user_logged_in' %}").then(response => response.text());
     }
+    
     async function loadBooks() {
       return fetch("{% url 'landing_page:get_data_json' %}").then((response) => response.json());
+    }
+
+    async function loadFAQ() {
+      return fetch("{% url 'landing_page:get_faq_data' %}").then((response) => response.json());
     }
 
     async function refreshMostPopular() {
@@ -140,7 +170,9 @@
             break;
           }
 
-          let bookURL = `{% url 'landing_page:get_review_data' 0 %}`.replace("0", book.pk)
+          let bookURL = "#most-popular-content"
+          let year = book.fields["year"]
+          let publisher = book.fields["publisher"]
           let imageURL = book.fields["image_url_l"]
           let bookTitle = book.fields["title"]
           let bookAuthor = book.fields["author"]
@@ -159,7 +191,7 @@
           
           if (isLoggedIn){
             HtmlString += `
-            <div class="col-lg-3 col-sm-6">
+            <div class="col-lg-3 col-sm-6" id="book-item" year="${year}" publisher="${publisher}">
                 <div class="item">
                   <a href=${bookURL}>
                       <img class="img-fluid" src="${imageURL}" alt="${bookTitle}">
@@ -180,7 +212,7 @@
             </div>`
           } else {
             HtmlString += `
-            <div class="col-lg-3 col-sm-6">
+            <div class="col-lg-3 col-sm-6" id="book-item" year="${year}">
                 <div class="item">
                   <a href=${bookURL}>
                       <img class="img-fluid" src="${imageURL}" alt="${bookTitle}">
@@ -228,7 +260,163 @@
       document.getElementById("discover-more").setAttribute("href", (isLoggedIn) ? "#most-popular-content" : "{% url 'authentication:login' %}");
     } 
 
+    async function showAllFAQs(){
+      const FAQ = await loadFAQ();
+      let HtmlString = `
+        <div class="col-lg-12" style="text-align: center;">
+          <div class="heading-section">
+            <h4><em>Need Some Help?</em> Ask Us Now!</h4>
+          </div>
+        </div>
+      `
+
+      for (let faq of FAQ) {
+          let question = faq.fields["question"];
+          let answer = faq.fields["answer"];
+          answer = (answer === null) ? "No answer yet" : (answer.length > 50) ? answer.substring(0, 50) + "..." : answer;
+          question = (question.length > 50) ? question.substring(0, 50) + "..." : question;
+          HtmlString += `
+              <div class="item" style="text-align: center;">
+                <ul>
+                  <li><h4>Category</h4><span style="color: white;">${faq.fields["category"]}</span></li>
+                  <li><h4>Question</h4><span style="color: white;">${question}</span></li>
+                  <li><h4>Answer</h4><span style="color: white;">${answer}</span></li>
+                    <li><div class="main-border-button"><a href="#">Edit Question</a></div></li>
+                </ul>
+              </div>
+          `
+        }
+
+      HtmlString += `
+        <div class="col-lg-12">
+          <div class="main-button">
+            <a href="#user-faq" id="send-a-question" class="open-modal-link" data-toggle="modal" data-target="#qnamodal">Send a Question</a>
+            <a href="#user-faq" id="see-all-question">Hide All Questions</a>
+          </div>
+        </div>
+      `
+
+      document.getElementById("user-faq").innerHTML =  HtmlString;
+      document.getElementById("see-all-question").addEventListener("click", (event) => {
+        event.preventDefault();
+        refreshFAQ();
+        doShowAllFAQs = false;
+      });
+    }
+
+    async function refreshFAQ() {
+      const FAQ = await loadFAQ();
+      const isLoggedIn = await isUserLoggedIn() === "true";
+
+      let HtmlString = `
+        <div class="col-lg-12" style="text-align: center;">
+          <div class="heading-section">
+            <h4><em>Need Some Help?</em> Ask Us Now!</h4>
+          </div>
+        </div>
+      `;
+      
+      if (isLoggedIn){
+        HtmlString += `
+          <div class="col-lg-12">
+            <div class="main-button">
+              <a href="#user-faq" id="send-a-question" class="open-modal-link" data-toggle="modal" data-target="#qnamodal">Send a Question</a>
+              <a href="#user-faq" id="see-all-question">See All Questions</a>
+            </div>
+          </div>
+        `
+      } else {
+        HtmlString += `
+          <div class="col-lg-12" style="text-align: center; margin-bottom: 25px;">
+            <div class="faq-item">
+              <h4>Login to Ask Question</h4>
+            </div>
+          </div>
+        `
+
+        HtmlString += `
+            <div class="col-lg-12">
+              <div class="main-button">
+                <a href="{% url 'authentication:login' %}">Login</a>
+              </div>
+            </div>
+        `
+      }
+
+      document.getElementById("user-faq").innerHTML =  HtmlString;
+      document.getElementById("see-all-question").addEventListener("click", (event) => {
+        event.preventDefault();
+        showAllFAQs();
+        doShowAllFAQs = true;
+      });
+    }
+
+    function handleSearch() {
+      let searchBy = document.getElementById('searchBy').value;
+      let searchKeyword = document.getElementById('searchText').value.trim();
+      let bookItems = document.querySelectorAll('.item');
+      let HtmlString = ""
+      
+      // Loop through book items and show/hide based on search criteria and keyword
+      document.querySelectorAll("#book-item").forEach(book => {
+        if (searchBy === "title") {
+          if (book.querySelector("h4").childNodes[0].textContent.toLowerCase().includes(searchKeyword.toLowerCase())) {
+            if (searchKeyword == "clar"){
+              console.log(book.querySelector("h4").innerHTML)
+            }
+            book.style.display = "block";
+          } else {
+            book.style.display = "none";
+          }
+        } else if (searchBy === "author") {
+          if (book.querySelector("h4 span").childNodes[0].textContent.toLowerCase().includes(searchKeyword.toLowerCase())) {
+            book.style.display = "block";
+          } else {
+            book.style.display = "none";
+          }
+        } else if (searchBy === "year") {
+          if (book.getAttribute("year") == searchKeyword) {
+            book.style.display = "block";
+          } else {
+            book.style.display = "none";
+          }
+        } else if (searchBy === "publisher") {
+          if (book.getAttribute("publisher").toLowerCase().includes(searchKeyword.toLowerCase())) {
+            book.style.display = "block";
+          } else {
+            book.style.display = "none";
+          }
+        }
+      })
+    }
+
+    function addQuestion(){
+      console.log(new FormData(document.querySelector('#qna-form')))
+      fetch("{% url 'landing_page:add_faq_question' %}", {
+          method: "POST",
+          body: new FormData(document.querySelector('#qna-form'))
+      }).then((doShowAllFAQs)? showAllFAQs: refreshFAQ)
+
+      document.getElementById("qna-form").reset()
+      document.getElementById("cancel-modal").click()
+    }
+
     refreshMostPopular();
+    refreshFAQ();
+    document.getElementById('search').addEventListener('submit', function (event) {
+      event.preventDefault();
+      handleSearch();
+    });
+
+    let searchByDropdown = document.getElementById('searchBy');
+    let searchTextInput = document.getElementById('searchText');
+
+    searchByDropdown.addEventListener('change', handleSearch);
+    searchTextInput.addEventListener('input', handleSearch);
+    document.getElementById("submit-modal").onclick = addQuestion;
+
+    let doShowAllFAQs = false; 
+
   </script>
 
 {% endblock content %}
