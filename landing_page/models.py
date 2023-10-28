@@ -3,16 +3,16 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Books(models.Model):
-    isbn = models.TextField(null=True, blank=True, name="ISBN")
-    title = models.TextField(null=True, blank=True, name="Book-Title")
-    author = models.TextField(null=True, blank=True, name="Book-Author")
-    year = models.PositiveIntegerField(null=True, blank=True, name="Year-Of-Publication")
-    publisher = models.TextField(null=True, blank=True, name="Publisher")
-    image_url_s = models.URLField(null=True, blank=True, name="Image-URL-S")
-    image_url_m = models.URLField(null=True, blank=True, name="Image-URL-M")
-    image_url_l = models.URLField(null=True, blank=True, name="Image-URL-L")
-    total_ratings = models.FloatField(default=0, name="Rating")
-    total_reviews = models.PositiveIntegerField(default=0, name="Reviews")
+    isbn = models.TextField(null=True, blank=True)
+    title = models.TextField(null=True, blank=True)
+    author = models.TextField(null=True, blank=True)
+    year = models.PositiveIntegerField(null=True, blank=True)
+    publisher = models.TextField(null=True, blank=True)
+    image_url_s = models.URLField(null=True, blank=True)
+    image_url_m = models.URLField(null=True, blank=True)
+    image_url_l = models.URLField(null=True, blank=True)
+    total_ratings = models.FloatField(default=0)
+    total_reviews = models.PositiveIntegerField(default=0)
     total_upvote = models.PositiveIntegerField(default=0)
 
 
