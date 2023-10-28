@@ -35,4 +35,4 @@ def show_review(request, book_id):
     response = {
         'book':book
         }
-    return render(request, 'add_review.html', response)
+    return render(request, 'book_review.html', response)
