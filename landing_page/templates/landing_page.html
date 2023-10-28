@@ -53,7 +53,7 @@
                         <li><a href="browse.html">Browse</a></li>
                         <li><a href="details.html">Details</a></li>
                         <li><a href="streams.html">Streams</a></li>
-                        <li><a href="{% url 'profilepage:show_profile' %}">Profile <img src="{%static 'images/profile-header.jpg'%}" alt=""></a></li>
+                        <li><a href="{% url 'profilepage:show_profile' %}" id="profile-login">Profile <img src="{%static 'images/profile-header.jpg'%}" alt=""></a></li>
                     </ul>   
                     <a class='menu-trigger'>
                         <span>Menu</span>
@@ -133,11 +133,11 @@
 
       for (let book of Books) {
           let bookURL = `{% url 'landing_page:get_review_data' 0 %}`.replace("0", book.pk)
-          let imageURL = book.fields["Image-URL-L"]
-          let bookTitle = book.fields["Book-Title"]
-          let bookAuthor = book.fields["Book-Author"]
-          let avgRating = book.fields["Rating"] / book.fields["Reviews"]
-          let totalReviews = book.fields["Reviews"]
+          let imageURL = book.fields["image_url_l"]
+          let bookTitle = book.fields["title"]
+          let bookAuthor = book.fields["author"]
+          let avgRating = book.fields["total_ratings"] / book.fields["total_reviews"]
+          let totalReviews = book.fields["total_reviews"]
           totalReviews = (totalReviews > 1000) ? (totalReviews / 1000).toFixed(1) + "K" : 
             (totalReviews > 1000000) ? (totalReviews / 1000000).toFixed(1) + "M" : totalReviews
 
@@ -149,11 +149,11 @@
           bookTitle = (bookTitle.length > 25) ? bookTitle.substring(0, 25) + "..." : bookTitle
           bookAuthor = (bookAuthor.length > 20) ? bookAuthor.substring(0, 20) + "..." : bookAuthor
 
-          HtmlString += `o
+          HtmlString += `
           <div class="col-lg-3 col-sm-6">
               <div class="item">
                 <a href=${bookURL}>
-                    <img class="img-fluid" src="${imageURL}" alt="${book.fields["Book-Title"]}">
+                    <img class="img-fluid" src="${imageURL}" alt="${bookTitle}">
                 </a>
                 <h4>${bookTitle}<br><span>${bookAuthor}</span></h4>
                 <ul class="d-flex flex-row text-left justify-content-between align-items-center">
@@ -209,9 +209,9 @@
           break;
         }
 
-        let imageURL = book.fields["Image-URL-L"]
-        let bookTitle = book.fields["Book-Title"]
-        let bookAuthor = book.fields["Book-Author"]
+        let imageURL = book.fields["image_url_l"]
+        let bookTitle = book.fields["title"]
+        let bookAuthor = book.fields["author"]
         let content = "Katanya sih, bukunya bagus. Tapi gatau yeah! Beli ajalah bukunya biar laku!!!"
 
         content = (content.length > 40) ? content.substring(0, 40) + "..." : content
@@ -238,6 +238,11 @@
             </div>
       `
     }
+
+    document.getElementById("profile-login").innerHTML = `
+      ${(await fetch("landing_page:check_if_user_logged_in").then(response => response.text) === "false")? "Login": "Profile"} 
+      <img src="{%static 'images/profile-header.jpg'%}" alt="">
+    `;
     
     refreshMostPopular();
     getUserReviews();

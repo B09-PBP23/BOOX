@@ -19,10 +19,12 @@ def register(request):
     form = UserCreationForm()
     if request.method == "POST":
         form = UserCreationForm(request.POST)
+        print(form)
         if form.is_valid():
             form.save()
             messages.success(request, 'Your account has been successfully created!')
             return redirect('authentication:login')
+
     context = {'form':form}
     return render(request, 'register.html', context)
 
