@@ -11,6 +11,19 @@
     <link rel="stylesheet" href="{% static 'css/owl.css' %}">
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <style>
+    .btn-primary {
+      background-color: transparent;
+      border: 1px solid #ec6090;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+  }
+
+  .btn-primary:hover {
+      background-color: #ec6090;
+  }
+</style>
 {% endblock meta %}
 
 {% block content %}
@@ -52,7 +65,7 @@
                       <li><a href="browse.html">Browse</a></li>
                       <li><a href="details.html">Details</a></li>
                       <li><a href="streams.html">Streams</a></li>
-                      <li><a href="{% url 'profilepage:show_profile' %}">Profile <img src="{%static 'images/profile-header.jpg'%}" alt=""></a></li>
+                      <li><a href="{% url 'profilepage:show_profile' %}">Profile <img src="{{profiles.0.profile_picture}}" alt=""></a></li>
                   </ul>   
                   <a class='menu-trigger'>
                       <span>Menu</span>
@@ -76,27 +89,58 @@
               <div class="main-profile ">
                 <div class="row">
                   <div class="col-lg-4">
-                    <img src="{%static 'images/profile.jpg'%}" alt="" style="border-radius: 23px;">
+                    <img src="{{profiles.0.profile_picture}}" alt="" style="border-radius: 20px;">
                   </div>
                   <div class="col-lg-4 align-self-center">
                     <div class="main-info header-text">
-                      <h4>Your Name</h4>
-                      <p>You Haven't Gone Live yet. Go Live By Touching The Button Below.</p>
+                      <h4>{{profiles.0.name}}</h4>
+                      <p>{{profiles.0.description}}</p>
                       <div class="main-border-button">
-                        <a href="editprofile.html">Edit Profile</a>
+                        {% comment %} <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile Ajax</button> {% endcomment %}
+                        <a href="{% url 'profilepage:create_profile' %}">Edit Profile</a>
                       </div>
                     </div>
                   </div>
                   <div class="col-lg-4 align-self-center">
                     <ul>
-                      <li>Username <span>Username</span></li>
-                      <li>Books Reviewed <span>17</span></li>
-                      <li>Joined Since <span>None</span></li>
+                      <li>Username <span>{{ user_name }}</span></li>
+                      <li>Books Reviewed <span>0</span></li>
+                      <li>Joined Since <span>{{profiles.0.date_joined}}</span></li>
                     </ul>
                   </div>
                 </div>
           </div>
           <!-- ***** Banner End ***** -->
+
+          <!-- Modal for Edit Profile -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content" style="background-color: #363636; color: #fff;">
+          <div class="modal-header">
+              <h1 class="modal-title fs-5" id="editProfileModalLabel">Edit Profile</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: #fff;"></button>
+          </div>
+          <div class="modal-body">
+              <form id="editProfileForm" onsubmit="return false;">
+                  {% csrf_token %}
+                  <div class="mb-3">
+                      <label for="name" class="col-form-label">Name:</label>
+                      <input type="text" class="form-control" id="edit_name" name="name" style="background-color: #2F3030; color: #fff;">
+                  </div>
+                  <div class="mb-3">
+                      <label for="description" class="col-form-label">Description:</label>
+                      <textarea class="form-control" id="edit_description" name="description" style="background-color: #2F3030; color: #fff;"></textarea>
+                  </div>
+              </form>
+          </div>
+          <div class="modal-footer" style="background-color: #282828;">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="button_save" data-bs-dismiss="modal">Save Changes</button>
+          </div>
+      </div>
+  </div>
+</div>
+
         </div>
       </div>
     </div>
@@ -125,5 +169,65 @@
   <script src="assets/js/tabs.js"></script>
   <script src="assets/js/popup.js"></script>
   <script src="assets/js/custom.js"></script>
+  
+  <script>
+    async function getprofiles() {
+        return fetch("{% url 'profilepage:get_profile_json' %}").then((res) => res.json());
+    }
 
+    async function refreshprofiles() {
+        const profiles = await getprofiles();
+        const profileContainer = document.getElementById("profile_container");
+        profileContainer.innerHTML = "";
+
+        profiles.forEach((profile) => {
+            const profileCard = document.createElement("div");
+            profileCard.classList.add("col-md-4", "mb-4");
+
+            profileCard.innerHTML = `
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="main-profile ">
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <img src="{%static 'images/profile.jpg'%}" alt="" style="border-radius: 20px;">
+                    </div>
+                    <div class="col-lg-4 align-self-center">
+                      <div class="main-info header-text">
+                        <h4>{{profiles.0.name}}</h4>
+                        <p>{{profiles.0.description}}</p>
+                        <div class="main-border-button">
+                          <button type="button" class="main-border-button" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 align-self-center">
+                      <ul>
+                        <li>Username <span>{{ user_name }}</span></li>
+                        <li>Books Reviewed <span>0</span></li>
+                        <li>Joined Since <span>{{profiles.0.date_joined}}</span></li>
+                      </ul>
+                    </div>
+                  </div>
+            </div>
+            `;
+
+            profileContainer.appendChild(profileCard);
+        });
+    }
+
+    function editProfile() {
+        fetch("{% url 'profilepage:edit_profile' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshprofiles);
+
+        document.getElementById("form").reset();
+        return false;
+    }
+
+    document.getElementById("button_add").onclick = editProfile;
+
+    refreshprofiles();
+</script>
   {% endblock content %}

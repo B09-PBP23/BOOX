@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound
 from django.core import serializers
 from .models import *
+from django.contrib.auth.decorators import login_required
 # from add_review.models import BookReviews
 
 # Create your views here.
@@ -9,6 +10,7 @@ def get_books(request):
     data = Books.objects.all()
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
+@login_required(login_url='auth/login')
 def show_landing_page(request):
     books = Books.objects.all()
     response = {
@@ -35,4 +37,4 @@ def show_review(request, book_id):
     response = {
         'book':book
         }
-    return render(request, 'add_review.html', response)
+    return render(request, 'book_review.html', response)

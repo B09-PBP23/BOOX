@@ -1,6 +1,6 @@
-import datetime
-from django.shortcuts import render
-from django.shortcuts import redirect
+import datetime  
+
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
@@ -23,8 +23,16 @@ def register(request):
             form.save()
             messages.success(request, 'Your account has been successfully created!')
             return redirect('authentication:login')
-    context = {'form':form}
+        else:
+            username = request.POST.get('username')
+            if User.objects.filter(username=username).exists():
+                messages.error(request, 'Account with this username already exists. Please choose a different username.')
+            else:
+                messages.error(request, 'Failed to create your account. Please correct the errors below.')
+
+    context = {'form': form}
     return render(request, 'register.html', context)
+
 
 def login_user(request):
     if request.method == 'POST':
@@ -33,7 +41,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            response = HttpResponseRedirect(reverse("landing_page:show_landing_page"))
+            response = HttpResponseRedirect(reverse("profilepage:show_profile"))
             response.set_cookie('last_login', str(datetime.datetime.now()))
             return response
         else:
