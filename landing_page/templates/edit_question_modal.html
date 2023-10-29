@@ -1,0 +1,45 @@
+<!-- <a href="#" id="open-modal-link" data-toggle="modal" data-target="#myModal">Open Modal</a> -->
+
+<!-- The Modal -->
+<div class="modal fade" id="edit-qnamodal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" style="color: rgb(245, 50, 82);">Question Form</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="qna-edit-form">
+                    {% csrf_token %}
+                    <!-- form fields start -->
+                    <div class="form-group">
+                        <label for="category">Category:</label>
+                        <select class="form-control" id="edit_category" name="category">
+                            <option value="website error">Website Error</option>
+                            <option value="account problem">Account Problem</option>
+                            <option value="about book">About Book(s)</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="question">Question:</label>
+                        <textarea type="text" class="form-control" id="edit_question" name="question" rows="5"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" id="edit_is_public" class="form-check-input" name="is_public"></input>
+                        <label for="is_public" class="form-check-label">  make this question public</label>
+                    </div>
+                    <!-- form fields end -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="delete-modal" style="background-color: red; color: white;">Delete</button>
+                <button type="button" class="btn btn-secondary" id="cancel-edit-modal" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="edit-modal">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
