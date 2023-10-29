@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'editreview',
-    'landing_page',
     'widget_tweaks',
     'landing_page',
     'profilepage',
