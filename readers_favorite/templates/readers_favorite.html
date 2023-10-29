@@ -146,106 +146,20 @@
             <div class="col-lg-8">
               <div class="featured-games header-text">
                 <div class="heading-section">
-                  <h4><em>Readers</em> Comments </h4>
+                  <h4><em>Readers</em> Comments</h4>
                 </div>
-                <div class="owl-features owl-carousel">
-                  <div class="item">
-                    <div class="thumb">
-                      <img src=" {% static 'images/featured-01.jpg' %}" alt="">
-                      <div class="hover-effect">
-                        <h6>2.4K Streaming</h6>
-                      </div>
-                    </div>
-                    <p style="color: white;">Testing dong mkakakakaaaaa ap aap papa pa pa pa pap ap ap apappa </p>
-                  </div>
-                  <div class="item">
-                    <div class="thumb">
-                      <img src="{% static 'images/featured-02.jpg' %}" alt="">
-                      <div class="hover-effect">
-                        <h6>2.4K Streaming</h6>
-                      </div>
-                    </div>
-                    <h4>Gamezer<br><span>249K Downloads</span></h4>
-                    <ul>
-                      <li><i class="fa fa-star"></i> 4.8</li>
-                      <li><i class="fa fa-download"></i> 2.3M</li>
-                    </ul>
-                  </div>
-                  <div class="item">
-                    <div class="thumb">
-                      <img src="{% static 'images/featured-03.jpg' %}" alt="">
-                      <div class="hover-effect">
-                        <h6>2.4K Streaming</h6>
-                      </div>
-                    </div>
-                    <h4>Island Rusty<br><span>249K Downloads</span></h4>
-                    <ul>
-                      <li><i class="fa fa-star"></i> 4.8</li>
-                      <li><i class="fa fa-download"></i> 2.3M</li>
-                    </ul>
-                  </div>
-                  <div class="item">
-                    <div class="thumb">
-                      <img src="{% static 'images/featured-03.jpg' %}" alt="">
-                      <div class="hover-effect">
-                        <h6>2.4K Streaming</h6>
-                      </div>
-                    </div>
-                    <h4>Island Rusty<br><span>249K Downloads</span></h4>
-                    <ul>
-                      <li><i class="fa fa-star"></i> 4.8</li>
-                      <li><i class="fa fa-download"></i> 2.3M</li>
-                    </ul>
-                  </div>
+                <div id="comments-container" class="comments-container">
+                  <div id="all-comments"></div>
                 </div>
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="top-streamers">
+              <div class="top-downloaded">
                 <div class="heading-section">
                   <h4><em>Top</em> Commenters</h4>
                 </div>
                 <ul>
-                  <li>
-                    <span>01</span>
-                    <img src="assets/images/avatar-01.jpg" alt="" style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
-                    <h6><i class="fa fa-check"></i> LahutaM</h6>
-                    <div class="main-button">
-                      <a href="#">Follow</a>
-                    </div>
-                  </li>
-                  <li>
-                    <span>02</span>
-                    <img src="assets/images/avatar-02.jpg" alt="" style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
-                    <h6><i class="fa fa-check"></i> Kengan</h6>
-                    <div class="main-button">
-                      <a href="#">Follow</a>
-                    </div>
-                  </li>
-                  <li>
-                    <span>03</span>
-                    <img src="assets/images/avatar-03.jpg" alt="" style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
-                    <h6><i class="fa fa-check"></i> Areluwa</h6>
-                    <div class="main-button">
-                      <a href="#">Follow</a>
-                    </div>
-                  </li>
-                  <li>
-                    <span>04</span>
-                    <img src="assets/images/avatar-04.jpg" alt="" style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
-                    <h6><i class="fa fa-check"></i> Omeg</h6>
-                    <div class="main-button">
-                      <a href="#">Follow</a>
-                    </div>
-                  </li>
-                  <li>
-                    <span>05</span>
-                    <img src="assets/images/avatar-01.jpg" alt="" style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
-                    <h6><i class="fa fa-check"></i> GangTeam</h6>
-                    <div class="main-button">
-                      <a href="#">Follow</a>
-                    </div>
-                  </li>
+                  <div id="top-commenters"></div>
                 </ul>
               </div>
             </div>
@@ -270,11 +184,21 @@
     </div>
   </footer>
 
+  <style>
+    /* Style for individual comments within the container */
+    #comments-container .item {
+      margin-bottom: 20px; /* Spacing between comments */
+      padding: 10px; /* Padding for each comment */
+      border: 1px solid #444; /* Add a border to each comment */
+      border-radius: 5px; /* Rounded corners for comments */
+    }
+  </style>
+
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Comment</h1>
+                <h1 class="modal-title fs-5" style="color: black;" id="exampleModalLabel">Add New Comment</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -295,25 +219,21 @@
   </div>
 
 
-  <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
-  <script src="assets/js/isotope.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/tabs.js"></script>
-  <script src="assets/js/popup.js"></script>
-  <script src="assets/js/custom.js"></script>
-
   <script>
-
+    
     async function getBookInfo() {
       return fetch("{% url 'readers_favorite:get_data_json' %}").then((response) => response.json());
     }
 
+    async function getAllComments() {
+      return fetch("{% url 'readers_favorite:get_all_comments' %}").then((response) => response.json());
+    }
+
+    async function getCommenters() {
+      return fetch("{% url 'readers_favorite:get_commenters' %}").then((response) => response.json());
+    }
+
     async function refreshFavoriteBooks() {
-      console.log('Fetching data...');
       document.getElementById("most-upvotes").innerHTML = "";
       const BooksAll = await getBookInfo();
 
@@ -346,9 +266,9 @@
                   <li><img src="${book.fields.image_url_s}" alt="" class="templatemo-item"></li>
                   <li><h4>Title</h4><span>${bookTitle}<span></li>
                   <li><h4>Author</h4><span>${bookAuthor}<span></li>
-                  <li><h4>Total Reviews</h4><span>${book.fields.total_reviews}<span></li>
-                  <li><h4>Total Upvotes</h4><span>${book.fields.total_upvotes}<span></li>
-                  <li><button class="btn btn-success" onclick="addUpvote(${book.pk})">+</button></li>
+                  <li><h4>Reviews Count</h4><span>${book.fields.total_reviews}<span></li>
+                  <li><h4>Upvotes Count</h4><span>${book.fields.total_upvotes}<span></li>
+                  <li><button class="btn btn-success" onclick="addUpvote(${book.pk})">Upvote</button></li>
                 </ul>
               </div>
             </div>
@@ -360,30 +280,95 @@
 
     }
 
+    async function refreshCommentSection() {
+      const commentsAll = await getAllComments();
+      commentsAll.sort((a, b) => new Date(b.fields.timestamp) - new Date(a.fields.timestamp));
+
+      // Display only the most recent 6 comments
+      const recentComments = commentsAll.slice(0, 6);
+
+      let htmlString = '';
+
+      recentComments.forEach((comment) => {
+        const username = "{{ user.username }}";
+        const userComment = comment.fields.user_comment;
+
+        // Generate HTML structure for each comment
+        const commentHtml = `
+          <div class="item">
+            <p style="color: white;">${username} said : ${userComment}</p>
+          </div>
+        `;
+
+        htmlString += commentHtml;
+      });
+
+      // Update the Owl Carousel with the recent comments HTML
+      const allCommentsElement = document.getElementById('all-comments');
+      allCommentsElement.innerHTML = htmlString;
+    }
+
+    async function refreshTopCommenters() {
+      const allCommenters = await getCommenters();
+      allCommenters.sort((a, b) => b.fields.user_contribution - a.fields.user_contribution);
+
+      // Display only the most recent 6 comments
+      const topCommenters = allCommenters.slice(0, 6);
+
+      let htmlString = '';
+
+      number = 0;
+
+      topCommenters.forEach((commenters) => {
+        const username = "{{ user.username }}";
+        const numOfComments = commenters.fields.user_contribution;
+
+        number += 1;
+
+        // Generate HTML structure for each comment
+        const htmlTopCommenters = `
+          <li>
+            <img src="assets/images/game-01.jpg" alt="" class="templatemo-item">
+            <h4>${username}</h4>
+            <h6><i class="fa fa-star" style="color: yellow;"></i> ${numOfComments} Comments!</h6>
+          </li>
+        `;
+
+        htmlString += htmlTopCommenters;
+      });
+
+      // Update the Owl Carousel with the recent comments HTML
+      const allCommentsElement = document.getElementById('top-commenters');
+      allCommentsElement.innerHTML = htmlString;
+    }
+
+
     async function addUpvote(pk) {
       const headers = new Headers();
       headers.append('Content-Type', 'application/json');
       fetch(`add_upvote_ajax/${pk}/`, {
         method: "POST",
         headers: headers,
-      }).then(refreshFavoriteBooks);
+      }).then(refreshFavoriteBooks).then(refreshCommentSection)
 
       return false;
     }
 
-    function addComment() {
+    async function addComment() {
       fetch("{% url 'readers_favorite:add_comment' %}", {
         method: "POST",
         body: new FormData(document.querySelector('#form'))
-      }).then(refreshProducts)
+      }).then(refreshFavoriteBooks).then(refreshCommentSection)
 
       document.getElementById("form").reset()
       return false
     }
 
-
-    document.getElementById("button_add_comment").onclick = addComment
+    document.getElementById("button_add_comment").onclick = addComment;
     refreshFavoriteBooks();
+    refreshCommentSection();
+    refreshTopCommenters();
+
 </script>
   
 
