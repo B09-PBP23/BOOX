@@ -7,7 +7,11 @@ urlpatterns = [
     path("", get_books, name="get_books"),
     path("page/", show_landing_page, name="show_landing_page"),
     path("get_data_json/", get_data_json, name="get_data_json"),
-    path("book/review/data/<int:book_id>/", get_review_data, name="get_review_data"),
-    path("book/review/<int:book_id>/", show_review, name="show_review"),
-    path("check_if_user_logged_in/", check_if_user_logged_in, name="check_if_user_logged_in")
+    path("check_if_user_logged_in/", check_if_user_logged_in, name="check_if_user_logged_in"),
+    path("get_faq_data/", get_faq_data, name="get_faq_data"),
+    path("faq/data/", show_faq_data_json, name="show_faq_data_json"),
+    path("faq/data/user/", get_faq_data_per_user, name="get_faq_data_per_user"),
+    path("faq/question/", add_faq_question, name="add_faq_question"),
+    path("faq/edit/<int:pk>/", edit_question, name="edit_faq_question"),
+    path("faq/delete/<int:pk>/", delete_question, name="delete_faq_question"),
 ]

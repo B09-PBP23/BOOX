@@ -54,7 +54,11 @@
         }
 
         #message-field{
-            color:white
+            color:white;
+        }
+
+        #message-info{
+            color:white;
         }
 
         
@@ -72,28 +76,31 @@
                 <!-- ***** Login Form Start ***** -->
                 <div class="login-form">
                     <h2>Login</h2>
+                    <br>
                     <form method="POST" action="{% url 'authentication:login' %}">
                         {% csrf_token %}
                         <div class="form-group">
-                            <label for="username">Username</label>
+                            <label style="color: white;" for="username">Username</label>
                             <input type="text" id="username" name="username" class="form-control" required>
                         </div>
+                        <br>
                         <div class="form-group">
-                            <label for="password">Password</label>
+                            <label style="color: white;" for="password">Password</label>
                             <input type="password" id="password" name="password" class="form-control" required>
                         </div>
+                        <br>
                         <button type="submit" class="btn btn-primary">Login</button>
                     </form>
                     
                     {% if messages %}
-                    <ul class="mt-3" style="color: white; text-align: center;">
+                    <ul class="mt-3" id = "message-info" style="color: white;">
                         {% for message in messages %}
                         <li>{{ message }}</li>
                         {% endfor %}
                     </ul>
                     {% endif %}
                     
-                    <div class="mt-3 text-center" id = message-field>
+                    <div class="mt-3 text-center" id = message-field style="color: white;">
                         Don't have an account yet? <a href="{% url 'authentication:register' %}" class="btn btn-link">Register Now</a>
                     </div>
                 </div>

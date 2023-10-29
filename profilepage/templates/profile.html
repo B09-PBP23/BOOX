@@ -11,6 +11,19 @@
     <link rel="stylesheet" href="{% static 'css/owl.css' %}">
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <style>
+    .btn-primary {
+      background-color: transparent;
+      border: 1px solid #ec6090;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+  }
+
+  .btn-primary:hover {
+      background-color: #ec6090;
+  }
+</style>
 {% endblock meta %}
 
 {% block content %}
@@ -27,8 +40,8 @@
 </div>
 <!-- ***** Preloader End ***** -->
 
-<!-- ***** Header Area Start ***** -->
-<header class="header-area header-sticky">
+ <!-- ***** Header Area Start ***** -->
+ <header class="header-area header-sticky">
   <div class="container">
       <div class="row">
           <div class="col-12">
@@ -38,21 +51,13 @@
                       <img src="{% static 'images/logo.png' %}" alt="BooX">
                   </a>
                   <!-- ***** Logo End ***** -->
-                  <!-- ***** Search End ***** -->
-                  <div class="search-input">
-                    <form id="search" action="#">
-                      <input type="text" placeholder="Search Book" id='searchText' name="searchKeyword" onkeypress="handle" />
-                      <i class="fa fa-search"></i>
-                    </form>
-                  </div>
-                  <!-- ***** Search End ***** -->
+
                   <!-- ***** Menu Start ***** -->
                   <ul class="nav">
-                      <li><a href="{% url 'landing_page:show_landing_page' %}" class="active">Home</a></li>
-                      <li><a href="browse.html">Browse</a></li>
-                      <li><a href="details.html">Details</a></li>
-                      <li><a href="streams.html">Streams</a></li>
-                      <li><a href="{% url 'profilepage:show_profile' %}">Profile <img src="{%static 'images/profile-header.jpg'%}" alt=""></a></li>
+                      <li><a href="#" class="active">Home</a></li>
+                      <li><a href="#user-faq">Help</a></li>
+                      <li><a href="{% url 'authentication:logout' %}" id="login-logout">Logout</a></li>
+                      <li><a href="{% url 'profilepage:show_profile' %}">Profile</a></li>
                   </ul>   
                   <a class='menu-trigger'>
                       <span>Menu</span>
@@ -75,28 +80,70 @@
             <div class="col-lg-12">
               <div class="main-profile ">
                 <div class="row">
-                  <div class="col-lg-4">
-                    <img src="{%static 'images/profile.jpg'%}" alt="" style="border-radius: 23px;">
+                  <div class="col-lg-2">
+                    <img src="{{profiles.0.profile_picture}}" alt="" style="border-radius: 20px;">
                   </div>
                   <div class="col-lg-4 align-self-center">
                     <div class="main-info header-text">
-                      <h4>Your Name</h4>
-                      <p>You Haven't Gone Live yet. Go Live By Touching The Button Below.</p>
+                      <h4>{{profiles.0.name}}</h4>
+                      <p>{{profiles.0.description}}</p>
                       <div class="main-border-button">
-                        <a href="editprofile.html">Edit Profile</a>
+                        {% comment %} <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile Ajax</button> {% endcomment %}
+                        <a href="{% url 'profilepage:create_profile' %}">Edit Profile</a>
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-4 align-self-center">
+                  <div class="col-lg-12 align-self-center">
                     <ul>
-                      <li>Username <span>Username</span></li>
-                      <li>Books Reviewed <span>17</span></li>
-                      <li>Joined Since <span>None</span></li>
+                      <li>Username <span>{{ user_name }}</span></li>
+                      <li>Books Reviewed <span>0</span></li>
+                      <li>Favorite Books <span>{{profiles.0.favorite_books}}</span></li>
+                      <li>Favorite Author <span>{{profiles.0.favorite_author}}</span></li>
+                      <li>Joined Since <span>{{profiles.0.date_joined}}</span></li>
                     </ul>
                   </div>
                 </div>
           </div>
           <!-- ***** Banner End ***** -->
+          
+           <!-- ***** Review Library Start ***** -->
+           <div class="gaming-library" id="user-reviews">
+          </div>
+          <!-- ***** Review Library End ***** -->
+
+          <!-- Modal for Edit Profile -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content" style="background-color: #363636; color: #fff;">
+          <div class="modal-header">
+              <h1 class="modal-title fs-5" id="editProfileModalLabel">Edit Profile</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: #fff;"></button>
+          </div>
+          <div class="modal-body">
+              <form id="editProfileForm" onsubmit="return false;">
+                  {% csrf_token %}
+                  <div class="mb-3">
+                      <label for="{{ form.name.id_for_label }}" class="col-form-label">Name:</label>
+                      <input type="text" class="form-control" id="edit_name" name="name" style="background-color: #2F3030; color: #fff;">
+                  </div>
+                  <div class="mb-3">
+                      <label for="{{ form.description.id_for_label }}" class="col-form-label">Description:</label>
+                      <textarea class="form-control" id="edit_description" name="description" style="background-color: #2F3030; color: #fff;"></textarea>
+                  </div>
+                  <div class="mb-3">
+                    <label for="{{ form.profile_picture.id_for_label }}" class="col-form-label">Profile Picture:</label>
+                    <textarea class="form-control" id="edit_profile_picture" name="profile_picture" style="background-color: #2F3030; color: #fff;"></textarea>
+                </div>
+              </form>
+          </div>
+          <div class="modal-footer" style="background-color: #282828;">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="button_save" data-bs-dismiss="modal">Save Changes</button>
+          </div>
+      </div>
+  </div>
+</div>
+
         </div>
       </div>
     </div>
@@ -126,4 +173,59 @@
   <script src="assets/js/popup.js"></script>
   <script src="assets/js/custom.js"></script>
 
+  <script>
+    async function loadBooks() {
+      return fetch("{% url 'landing_page:get_data_json' %}").then((response) => response.json());
+    }
+  async function getUserReviews() {
+    const Books = await loadBooks();
+    let HtmlString = `
+      <div class="col-lg-12">
+        <div class="heading-section">
+          <h4><em>Your Book</em> Reviews</h4>
+        </div>
+      </div>
+    `;
+
+    let i = 0;
+    for (let book of Books) {
+      if (i++ == 5){
+        break;
+      }
+
+      let imageURL = book.fields["image_url_l"]
+      let bookTitle = book.fields["title"]
+      let bookAuthor = book.fields["author"]
+      let content = "Katanya sih, bukunya bagus. Tapi gatau yeah! Beli ajalah bukunya biar laku!!!"
+
+      content = (content.length > 40) ? content.substring(0, 40) + "..." : content
+      bookTitle = (bookTitle.length > 20) ? bookTitle.substring(0, 20) + "..." : bookTitle
+      HtmlString += `
+      <div class="item">
+        <ul>
+          <li><img src="${imageURL}" alt="${bookTitle}" class="templatemo-item"></li>
+          <li><h4>${bookTitle}</h4><span>${bookAuthor}</span></li>
+          <li><h4>Last Edited</h4><span>24/08/2036</span></li>
+          <li><h4>Your Rating</h4><span>4.5</span></li>
+          <li><h4>Content</h4><span>${content}</span></li>
+          <li><div class="main-border-button"><a href="#">Edit Review</a></div></li>
+        </ul>
+      </div>
+      `
+    }
+
+    document.getElementById("user-reviews").innerHTML +=  HtmlString + `
+          <div class="col-lg-12">
+            <div class="main-button">
+              <a href="profile.html">View All Reviews</a>
+            </div>
+          </div>
+    `
+  }
+
+  getUserReviews();
+</script>
+  
+
+  
   {% endblock content %}
