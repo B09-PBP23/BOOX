@@ -19,9 +19,11 @@ def show_profile(request):
         profile = Profile.objects.get(user=request.user)
         books = Books.objects.all()
         profiles = Profile.objects.filter(user=request.user)
+        form = UserProfileForm(instance=profile)
         context = {
             'user_name': request.user.username,
             'profiles': profiles,
+            'form':form,
         }
         return render(request, "profile.html", context)
     except Profile.DoesNotExist:

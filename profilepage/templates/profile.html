@@ -12,63 +12,41 @@
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <style>
-    .btn-primary {
-      background-color: transparent;
-      border: 1px solid #ec6090;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 5px;
-  }
+      .btn-primary {
+        background-color: transparent;
+        border: 1px solid #ec6090;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 20px;
+    }
 
-  .btn-primary:hover {
-      background-color: #ec6090;
-  }
+    .btn-primary:hover {
+        background-color: #ec6090;
+    }
+
+  
+    input[type="text"], input[type="file"], textarea {
+      width: 100%;
+      padding: 10px;
+      background-color: transparent;
+      border: 2px solid #ec6090;
+      border-radius: 5px;
+      outline: none;
+      color: white;
+    }
+
+  select {
+      width: 100%;
+      padding: 10px;
+      background-color: transparent;
+      border: 2px solid #ec6090;
+      border-radius: 5px;
+      outline: none;
+    }
 </style>
 {% endblock meta %}
 
 {% block content %}
- <!-- ***** Preloader Start ***** -->
- <div id="js-preloader" class="js-preloader">
-  <div class="preloader-inner">
-    <span class="dot"></span>
-    <div class="dots">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-</div>
-<!-- ***** Preloader End ***** -->
-
- <!-- ***** Header Area Start ***** -->
- <header class="header-area header-sticky">
-  <div class="container">
-      <div class="row">
-          <div class="col-12">
-              <nav class="main-nav">
-                  <!-- ***** Logo Start ***** -->
-                  <a href="{% url 'landing_page:show_landing_page' %}" class="logo">
-                      <img src="{% static 'images/logo.png' %}" alt="BooX">
-                  </a>
-                  <!-- ***** Logo End ***** -->
-
-                  <!-- ***** Menu Start ***** -->
-                  <ul class="nav">
-                      <li><a href="#" class="active">Home</a></li>
-                      <li><a href="#user-faq">Help</a></li>
-                      <li><a href="{% url 'authentication:logout' %}" id="login-logout">Logout</a></li>
-                      <li><a href="{% url 'profilepage:show_profile' %}">Profile</a></li>
-                  </ul>   
-                  <a class='menu-trigger'>
-                      <span>Menu</span>
-                  </a>
-                  <!-- ***** Menu End ***** -->
-              </nav>
-          </div>
-      </div>
-  </div>
-</header>
-<!-- ***** Header Area End ***** -->
 
   <div class="container">
     <div class="row">
@@ -96,7 +74,6 @@
                   <div class="col-lg-12 align-self-center">
                     <ul>
                       <li>Username <span>{{ user_name }}</span></li>
-                      <li>Books Reviewed <span>0</span></li>
                       <li>Favorite Books <span>{{profiles.0.favorite_books}}</span></li>
                       <li>Favorite Author <span>{{profiles.0.favorite_author}}</span></li>
                       <li>Joined Since <span>{{profiles.0.date_joined}}</span></li>
@@ -112,37 +89,45 @@
           <!-- ***** Review Library End ***** -->
 
           <!-- Modal for Edit Profile -->
-<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-      <div class="modal-content" style="background-color: #363636; color: #fff;">
-          <div class="modal-header">
-              <h1 class="modal-title fs-5" id="editProfileModalLabel">Edit Profile</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: #fff;"></button>
-          </div>
-          <div class="modal-body">
-              <form id="editProfileForm" onsubmit="return false;">
-                  {% csrf_token %}
-                  <div class="mb-3">
-                      <label for="{{ form.name.id_for_label }}" class="col-form-label">Name:</label>
-                      <input type="text" class="form-control" id="edit_name" name="name" style="background-color: #2F3030; color: #fff;">
-                  </div>
-                  <div class="mb-3">
-                      <label for="{{ form.description.id_for_label }}" class="col-form-label">Description:</label>
-                      <textarea class="form-control" id="edit_description" name="description" style="background-color: #2F3030; color: #fff;"></textarea>
-                  </div>
-                  <div class="mb-3">
-                    <label for="{{ form.profile_picture.id_for_label }}" class="col-form-label">Profile Picture:</label>
-                    <textarea class="form-control" id="edit_profile_picture" name="profile_picture" style="background-color: #2F3030; color: #fff;"></textarea>
+          <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" style="background-color: #363636; color: #fff;">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="editProfileModalLabel">Edit Profile</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: #fff;"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form method="post" action="{% url 'profilepage:create_profile' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label  for="{{ form.name.id_for_label }}" class="col-form-label">Name:</label>
+                            {{form.name}}
+                        </div>
+                        <div class="form-group">
+                            <label  for="{{ form.description.id_for_label }}" class="col-form-label">Description:</label>
+                            {{ form.description }}
+                        </div>
+                        <div class="form-group">
+                            <label  for="{{ form.description.id_for_label }}" class="col-form-label">Profile Picture:</label>
+                            {{ form.profile_picture }}
+                        </div>
+                        <div class="form-group">
+                            <label  for="{{ form.favorite_books.id_for_label }}" class="col-form-label">Favorite Books:</label>
+                            {{ form.favorite_books}}
+                        </div>
+                        <div class="form-group">
+                            <label  for="{{ form.favorite_author.id_for_label }}" class="col-form-label">Favorite Author:</label>
+                            {{ form.favorite_author}}
+                        </div>
+                    </form>
+                    </div>
+                    <div class="modal-footer" style="background-color: #282828;">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="button_save" data-bs-dismiss="modal">Save Changes</button>
+                    </div>
                 </div>
-              </form>
+            </div>
           </div>
-          <div class="modal-footer" style="background-color: #282828;">
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" id="button_save" data-bs-dismiss="modal">Save Changes</button>
-          </div>
-      </div>
-  </div>
-</div>
 
         </div>
       </div>
@@ -173,7 +158,7 @@
   <script src="assets/js/popup.js"></script>
   <script src="assets/js/custom.js"></script>
 
-  <script>
+  {% comment %} <script>
     async function loadBooks() {
       return fetch("{% url 'landing_page:get_data_json' %}").then((response) => response.json());
     }
@@ -189,9 +174,6 @@
 
     let i = 0;
     for (let book of Books) {
-      if (i++ == 5){
-        break;
-      }
 
       let imageURL = book.fields["image_url_l"]
       let bookTitle = book.fields["title"]
@@ -223,7 +205,68 @@
     `
   }
 
-  getUserReviews();
+  getUserReviews(); {% endcomment %}
+
+  {% comment %} async function getProfile() {
+    return fetch("{% url 'profilepage:get_profile_json' %}").then((res) => res.json());
+}
+
+async function refreshProfile() {
+  const Profiles = await getProfile();
+
+  for (let profile of Profiles) {
+
+    let profilePicture = profile.fields["profile_picture"]
+    let name = profile.fields["name"]
+    let username = profile.fields["user.username"]
+    let favoriteBooks = book.fields["favorite_books"]
+    let favoriteAuthor = book.fields["favorite_author"]
+    let description = book.fields["description"]
+    let dateJoined = book.fields["date_joined"]
+
+    favoriteBooks = (favoriteBooks.length > 20) ? favoriteBooks.substring(0, 20) + "..." : favoriteBooks
+    let Isi = `
+      <div class="col-lg-2">
+        <img src="${profilePicture}" alt="" style="border-radius: 20px;">
+      </div>
+      <div class="col-lg-4 align-self-center">
+        <div class="main-info header-text">
+          <h4>"${name}"</h4>
+          <p>{"${description}"</p>
+          <div class="main-border-button">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 align-self-center">
+        <ul>
+          <li>Username <span>"${username}"</span></li>
+          <li>Books Reviewed <span>0</span></li>
+          <li>Favorite Books <span>"${favoriteBooks}"</span></li>
+          <li>Favorite Author <span"${favoriteAuthor }"</span></li>
+          <li>Joined Since <span>"${dateJoined}"</span></li>
+        </ul>
+      </div>
+    </div>
+    `;
+  }
+
+  document.getElementById("profile-details").innerHTML +=  Isi
+}
+
+  function editProfile() {
+    fetch("{% url 'profilepage:edit_profile' %}", {
+        method: "POST",
+        body: new FormData(document.querySelector('#form'))
+    }).then(refreshProfile);
+
+    document.getElementById("form").reset();
+    return false;
+}
+
+document.getElementById("button_save").onclick = editProfile;
+
+refreshProfile(); {% endcomment %}
 </script>
   
 

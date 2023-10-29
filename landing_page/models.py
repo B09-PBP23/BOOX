@@ -15,6 +15,8 @@ class Books(models.Model):
     total_reviews = models.PositiveIntegerField(default=0)
     total_upvotes = models.PositiveIntegerField(default=0)
 
+    
+
 class FAQ(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.TextField(null=True, blank=True)

@@ -2,6 +2,30 @@
 
 {% load static %}
 
+{% block meta %}
+    <title>BooX - Awesome Book Website</title>
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css/templatemo-cyborg-gaming.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <style>
+    .btn-primary {
+      background-color: transparent;
+      border: 1px solid #ec6090;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+  }
+
+  .btn-primary:hover {
+      background-color: #ec6090;
+  }
+</style>
+{% endblock meta %}
+
 {% block content %}
   <div class="container">
     <div class="row">
@@ -80,6 +104,7 @@
 
   {% include 'add_question_modal.html' %}
   {% include 'edit_question_modal.html' %}
+  {% include 'show_question_modal.html' %}
   
   <footer>
     <div class="container">
@@ -210,6 +235,10 @@
       document.getElementById("discover-more").setAttribute("href", (isLoggedIn) ? "#most-popular-content" : "{% url 'authentication:login' %}");
     } 
 
+    async function showFAQDetail(){
+
+    }
+
     async function showMyFAQs(){
       const FAQ = await loadUserFAQ();
       let HtmlString = `
@@ -231,6 +260,7 @@
                   <li><h4>Category</h4><span style="color: white;">${faq.fields["category"]}</span></li>
                   <li><h4>Question</h4><span style="color: white;">${question}</span></li>
                   <li><h4>Answer</h4><span style="color: white;">${answer}</span></li>
+                  <li><div class="main-border-button"><a class="open-modal-link show-qna" data-toggle="modal" data-target="#show-qnamodal" href="#user-faq" pk="${faq.pk}">Details</a></div></li>
                   <li><div class="main-border-button"><a class="open-modal-link edit-qna" data-toggle="modal" data-target="#edit-qnamodal" href="#user-faq" pk="${faq.pk}">Edit Question</a></div></li>
                 </ul>
               </div>
@@ -283,6 +313,35 @@
         showAllFAQs();
         doShowAllFAQs = true;
       });
+
+      document.querySelectorAll(".show-qna").forEach((element) => {
+        element.addEventListener("click", (event) => {
+          event.preventDefault();
+          let pk = element.getAttribute("pk");
+
+          for (let faq of FAQ) {
+            if (faq.pk == pk) {
+              fields = faq.fields;
+              break;
+            }
+          }
+
+          let category = fields["category"];
+          let question = fields["question"];
+          let answer = fields["answer"];
+          document.getElementById("show-category").value = category;
+          document.getElementById("show-question").value = question;
+          document.getElementById("show-answer").value = answer;
+
+          const modal = document.getElementById('show-qnamodal'); // Get the modal element
+          const inputs = modal.querySelectorAll('input, textarea, select'); // Find all input elements
+
+          inputs.forEach(input => {
+              input.disabled = true; // Disable each input
+          });
+
+        });
+      });
     }
 
     async function showAllFAQs(){
@@ -307,6 +366,7 @@
                   <li><h4>Category</h4><span style="color: white;">${faq.fields["category"]}</span></li>
                   <li><h4>Question</h4><span style="color: white;">${question}</span></li>
                   <li><h4>Answer</h4><span style="color: white;">${answer}</span></li>
+                  <li><div class="main-border-button"><a class="open-modal-link show-qna" data-toggle="modal" data-target="#show-qnamodal" href="#user-faq" pk="${faq.pk}">Details</a></div></li>
                 </ul>
               </div>
           `
@@ -330,9 +390,15 @@
         doShowAllFAQs = false;
       });
 
-      document.querySelectorAll(".edit-qna").forEach((element) => {
+      document.getElementById("see-all-my-question").addEventListener("click", (event) => {
+        event.preventDefault();
+        showMyFAQs();
+        doShowAllFAQs = false;
+      });
+
+
+      document.querySelectorAll(".show-qna").forEach((element) => {
         element.addEventListener("click", (event) => {
-          console.log("masukk")
           event.preventDefault();
           let pk = element.getAttribute("pk");
 
@@ -345,19 +411,17 @@
 
           let category = fields["category"];
           let question = fields["question"];
-          let is_public = fields["is_public"];
-          document.getElementById("edit_category").value = category;
-          document.getElementById("edit_question").value = question;
-          document.getElementById("edit_is_public").checked = (is_public === true);
-          document.getElementById("edit-modal").onclick = () => editQuestion(pk);
-          document.getElementById("delete-modal").onclick = () => deleteQuestion(pk);
-        });
-      });
+          let answer = fields["answer"];
+          answer = (answer === null) ? "No answer yet" : answer;
+          document.getElementById("show-category").value = category;
+          document.getElementById("show-question").value = question;
+          document.getElementById("show-answer").value = answer;
 
-      document.getElementById("see-all-my-question").addEventListener("click", (event) => {
-        event.preventDefault();
-        showMyFAQs();
-        doShowAllFAQs = false;
+          const modal = document.getElementById('show-qnamodal');
+          modal.querySelector("#show-category").setAttribute("disabled", "disabled")
+          modal.querySelector("#show-question").setAttribute("disabled", "disabled")
+          modal.querySelector("#show-answer").setAttribute("disabled", "disabled")
+        });
       });
     }
 
