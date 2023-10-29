@@ -83,37 +83,28 @@ https://templatemo.com/tm-579-cyborg-gaming
 
             <div class="gaming-library profile-library">
               <div class="col-lg-12">
-                  <!-- Sorting Dropdown Start -->
-                  <div class="sorting-dropdown">
-                      <label for="sortSelect">Sort by:</label>
-                      <select id="sortSelect" onchange="sortBookmarks(this)">
-                          <option value="az">Alphabetical (A-Z)</option>
-                          <option value="za">Alphabetical (Z-A)</option>
-                          <option value="release_old">Release Date (Old to New)</option>
-                          <option value="release_new">Release Date (New to Old)</option>
-                          <option value="modified">Recently Bookmarked</option>
-                      </select>
-                  </div>
-                  <!-- Sorting Dropdown End -->
-                  <div class="heading-section">
-                      <h4><em>Bookmarked</em> Books</h4>
-                  </div>
-                  
-                    {% for bookmark in user.bookmarked_set.all %}
-                    <div class="item">
-                      <div class="bookmark-card">
-                        <img src="{{ bookmark.book.image.url }}" alt="Book Image">
-                        <h2>{{ bookmark.book.title }}</h2>
-                        <p>Author: {{ bookmark.book.author }}</p>
-                        <p>Publisher: {{ bookmark.book.publisher }}</p>
-                        <p>Year: {{ bookmark.book.year }}</p>
-                        <p>Date Added: {{ bookmark.bookmarked_at }}</p>
-                        <button class="unbookmark-btn" data-bookmark-id="{{ bookmark.id }}">Unbookmarked</button>
+                <div class="heading-section">
+                  <h4><em>Bookmarked</em> Books</h4>
+                </div>
+            
+                {% for bookmark in user.bookmarked_set.all %}
+                <div class="item">
+                  <ul>
+                    <li><img src="{{ bookmark.book.image_url_l }}" alt="" class="templatemo-item"></li>
+                    <li><h4>{{ bookmark.book.title }}</h4><span>{{ bookmark.book.author }}</span></li>
+                    <li><h4>Publisher</h4><span>{{ bookmark.book.publisher }}</span></li>
+                    <li><h4>Year</h4><span>{{ bookmark.book.year }}</span></li>
+                    <li><h4>Date Added</h4><span>{{ bookmark.bookmarked_at|date:"d/m/Y" }}</span></li>
+                    <li>
+                      <div class="main-border-button border-active" id="bookmarkButton">
+                        <a href="#" onclick="toggleBookmark(this)">Bookmarked</a>
                       </div>
-                    </div>
-                  {% endfor %}
+                    </li>
+                  </ul>
+                </div>
+                {% endfor %}
               </div>
-          </div>
+            </div>
                       
   <footer>
     <div class="container">
@@ -128,8 +119,6 @@ https://templatemo.com/tm-579-cyborg-gaming
   </footer>
 
 
-  <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
@@ -140,7 +129,6 @@ https://templatemo.com/tm-579-cyborg-gaming
   <script src="assets/js/custom.js"></script>
 
   <script>
-    // Function to toggle the bookmark button text
     function toggleBookmark(button) {
       if (button.innerText === "Bookmarked") {
         button.innerText = "Unbookmarked";
@@ -163,10 +151,19 @@ https://templatemo.com/tm-579-cyborg-gaming
   <script>
     function sortBookmarks(select) {
         const selectedOption = select.value;
-        // Redirect to the same page with the selected sorting option
         window.location.href = `/bookmarks/show_bookmarks/?sort=${selectedOption}`;
   }
   </script>
+
+<script>
+  function toggleBookmark(button) {
+    if (button.innerText === "Bookmarked") {
+      button.innerText = "Unbookmarked";
+    } else {
+      button.innerText = "Bookmarked";
+    }
+  }
+</script>
   </body>
 
 </html>

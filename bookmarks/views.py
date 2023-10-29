@@ -10,6 +10,10 @@ def landing_page(request):
     books = Books.objects.all()
     return render(request, 'landing_page.html', {'books': books})
 
+def get_books(request):
+    data = Books.objects.all()
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+    
 @login_required
 def show_bookmarks(request):
     user = request.user

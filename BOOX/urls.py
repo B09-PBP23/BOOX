@@ -26,5 +26,5 @@ urlpatterns = [
     path('profile/', include('profilepage.urls'))
     ]
 
-if settings.DEBUGy:
+if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
