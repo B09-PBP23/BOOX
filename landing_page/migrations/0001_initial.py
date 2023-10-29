@@ -28,6 +28,7 @@ class Migration(migrations.Migration):
                 ('image_url_l', models.URLField(blank=True, null=True)),
                 ('total_ratings', models.FloatField(default=0)),
                 ('total_reviews', models.PositiveIntegerField(default=0)),
+                ('total_upvotes', models.PositiveIntegerField(default=0)),
             ],
         ),
         migrations.CreateModel(
