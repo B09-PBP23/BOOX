@@ -15,6 +15,52 @@
     </head>
 
     <body>
+        <!-- ***** Preloader Start ***** -->
+        <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+            </div>
+        </div>
+        </div>
+        <!-- ***** Preloader End ***** -->
+
+        <!-- ***** Header Area Start ***** -->
+        <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="{% url 'landing_page:show_landing_page' %}" class="logo">
+                            <img src="{% static 'images/logo.png' %}" alt="BooX">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li><a href="#" class="active">Home</a></li>
+                            <li><a href="#user-faq">Help</a></li>
+                            <li><a href="{% url 'authentication:logout' %}" id="login-logout">Logout</a></li>
+                            <li><a href="{% url 'readers_favorite:show_readers_favorite' %}">Readers Favorite</a></li>
+                            <li><a href="{% url 'profilepage:show_profile' %}">Profile <img src="{%static 'images/profile-header.jpg'%}" alt=""></a></li>
+                        </ul>   
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+        </header>
+        <!-- ***** Header Area End ***** -->
+    </head>
+
+    <body>
         {% block content %}
         {% endblock content %}
 

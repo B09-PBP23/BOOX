@@ -15,48 +15,6 @@
 {% endblock meta %}
 
 {% block content %}
-  <!-- ***** Preloader Start ***** -->
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
-
-  <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="{% url 'landing_page:show_landing_page' %}" class="logo">
-                        <img src="{% static 'images/logo.png' %}" alt="BooX">
-                    </a>
-                    <!-- ***** Logo End ***** -->
-
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                        <li><a href="#" class="active">Home</a></li>
-                        <li><a href="#user-faq">Help</a></li>
-                        <li><a href="{% url 'authentication:logout' %}" id="login-logout">Logout</a></li>
-                        <li><a href="{% url 'profilepage:show_profile' %}">Profile <img src="{%static 'images/profile-header.jpg'%}" alt=""></a></li>
-                    </ul>   
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
-            </div>
-        </div>
-    </div>
-  </header>
-  <!-- ***** Header Area End ***** -->
 
   <div class="container">
     <div class="row">
@@ -269,10 +227,6 @@
       document.getElementById("discover-more").setAttribute("href", (isLoggedIn) ? "#most-popular-content" : "{% url 'authentication:login' %}");
     } 
 
-    async function showFAQDetail(){
-
-    }
-
     async function showMyFAQs(){
       const FAQ = await loadUserFAQ();
       let HtmlString = `
@@ -389,22 +343,21 @@
       `
       
       for (let faq of FAQ) {
-        if (faq.fields["is_public"]) {
-          let question = faq.fields["question"];
-          let answer = faq.fields["answer"];
-          answer = (answer === null) ? "No answer yet" : (answer.length > 50) ? answer.substring(0, 50) + "..." : answer;
-          question = (question.length > 50) ? question.substring(0, 50) + "..." : question;
-          HtmlString += `
-              <div class="item" style="text-align: center;">
-                <ul>
-                  <li><h4>Category</h4><span style="color: white;">${faq.fields["category"]}</span></li>
-                  <li><h4>Question</h4><span style="color: white;">${question}</span></li>
-                  <li><h4>Answer</h4><span style="color: white;">${answer}</span></li>
-                  <li><div class="main-border-button"><a class="open-modal-link show-qna" data-toggle="modal" data-target="#show-qnamodal" href="#user-faq" pk="${faq.pk}">Details</a></div></li>
-                </ul>
-              </div>
-          `
-        }
+        let question = faq.fields["question"];
+        let answer = faq.fields["answer"];
+        answer = (answer === null) ? "No answer yet" : (answer.length > 50) ? answer.substring(0, 50) + "..." : answer;
+        question = (question.length > 50) ? question.substring(0, 50) + "..." : question;
+        HtmlString += `
+            <div class="item" style="text-align: center;">
+              <ul>
+                <li><h4>Category</h4><span style="color: white;">${faq.fields["category"]}</span></li>
+                <li><h4>Question</h4><span style="color: white;">${question}</span></li>
+                <li><h4>Answer</h4><span style="color: white;">${answer}</span></li>
+                <li><div class="main-border-button"><a class="open-modal-link show-qna" data-toggle="modal" data-target="#show-qnamodal" href="#user-faq" pk="${faq.pk}">Details</a></div></li>
+              </ul>
+            </div>
+        `
+      
       }
         
       HtmlString += `

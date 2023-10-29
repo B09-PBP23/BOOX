@@ -54,7 +54,13 @@
         }
 
         #message-field{
-            color:white
+            color:white;
+            text-align:center;
+        }
+
+        #message-info{
+            color:white;
+            text-align:center;
         }
 
         
@@ -86,7 +92,7 @@
                     </form>
                     
                     {% if messages %}
-                    <ul class="mt-3" style="color: white; text-align: center;">
+                    <ul class="mt-3" id = "message-info" style="color: white;">
                         {% for message in messages %}
                         <li>{{ message }}</li>
                         {% endfor %}

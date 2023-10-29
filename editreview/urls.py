@@ -1,7 +1,7 @@
 
 from django.urls import path
 
-from editreview.views import editreview, get_books, get_review,display_reviews
+from editreview.views import *
 # from .views import show_main
 # from main.views import show_main, create_product
 # from main.views import show_main, create_product, show_xml 

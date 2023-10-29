@@ -16,7 +16,6 @@ from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 def editreview(request, id):
     # Get product berdasarkan ID
-
     review = get_object_or_404(Review, pk=id, user=request.user)
     book = Books.objects.get(pk=review.book.pk)
     book.total_ratings -= int(review.rating)
@@ -32,7 +31,6 @@ def editreview(request, id):
     context = {'form': form,
                'review': review
                }
-    
     return render(request, "editreview.html", context)
 
 def get_review(request, review_id):
@@ -54,7 +52,6 @@ def display_reviews(request):
     context = {
         'reviews': reviews,
     }
-
     return render(request, 'display_reviews.html', context)
 def get_books(request):
     data = Books.objects.all()
