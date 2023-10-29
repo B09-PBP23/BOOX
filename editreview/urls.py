@@ -32,6 +32,4 @@ urlpatterns = [
     path('get-review/<int:review_id>', get_review, name="get_review"),
     path('reviews/', display_reviews, name='display_reviews'),
     path("", get_review, name="get_review"),
-
-
 ]
