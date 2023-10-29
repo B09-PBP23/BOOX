@@ -235,10 +235,6 @@
       document.getElementById("discover-more").setAttribute("href", (isLoggedIn) ? "#most-popular-content" : "{% url 'authentication:login' %}");
     } 
 
-    async function showFAQDetail(){
-
-    }
-
     async function showMyFAQs(){
       const FAQ = await loadUserFAQ();
       let HtmlString = `
@@ -355,22 +351,21 @@
       `
       
       for (let faq of FAQ) {
-        if (faq.fields["is_public"]) {
-          let question = faq.fields["question"];
-          let answer = faq.fields["answer"];
-          answer = (answer === null) ? "No answer yet" : (answer.length > 50) ? answer.substring(0, 50) + "..." : answer;
-          question = (question.length > 50) ? question.substring(0, 50) + "..." : question;
-          HtmlString += `
-              <div class="item" style="text-align: center;">
-                <ul>
-                  <li><h4>Category</h4><span style="color: white;">${faq.fields["category"]}</span></li>
-                  <li><h4>Question</h4><span style="color: white;">${question}</span></li>
-                  <li><h4>Answer</h4><span style="color: white;">${answer}</span></li>
-                  <li><div class="main-border-button"><a class="open-modal-link show-qna" data-toggle="modal" data-target="#show-qnamodal" href="#user-faq" pk="${faq.pk}">Details</a></div></li>
-                </ul>
-              </div>
-          `
-        }
+        let question = faq.fields["question"];
+        let answer = faq.fields["answer"];
+        answer = (answer === null) ? "No answer yet" : (answer.length > 50) ? answer.substring(0, 50) + "..." : answer;
+        question = (question.length > 50) ? question.substring(0, 50) + "..." : question;
+        HtmlString += `
+            <div class="item" style="text-align: center;">
+              <ul>
+                <li><h4>Category</h4><span style="color: white;">${faq.fields["category"]}</span></li>
+                <li><h4>Question</h4><span style="color: white;">${question}</span></li>
+                <li><h4>Answer</h4><span style="color: white;">${answer}</span></li>
+                <li><div class="main-border-button"><a class="open-modal-link show-qna" data-toggle="modal" data-target="#show-qnamodal" href="#user-faq" pk="${faq.pk}">Details</a></div></li>
+              </ul>
+            </div>
+        `
+      
       }
         
       HtmlString += `

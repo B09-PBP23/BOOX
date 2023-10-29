@@ -158,7 +158,7 @@
   <script src="assets/js/popup.js"></script>
   <script src="assets/js/custom.js"></script>
 
-  {% comment %} <script>
+  <script>
     async function loadBooks() {
       return fetch("{% url 'landing_page:get_data_json' %}").then((response) => response.json());
     }
@@ -205,7 +205,7 @@
     `
   }
 
-  getUserReviews(); {% endcomment %}
+  getUserReviews();
 
   {% comment %} async function getProfile() {
     return fetch("{% url 'profilepage:get_profile_json' %}").then((res) => res.json());
