@@ -29,7 +29,7 @@ def get_data_json(request):
     return HttpResponse(serializers.serialize('json', product_item))
 
 def get_faq_data(request):
-    faq = FAQ.objects.all()
+    faq = FAQ.objects.filter(is_public=True)
     return HttpResponse(serializers.serialize('json', faq))
 
 @login_required(login_url='authentication:login')
@@ -48,8 +48,11 @@ def add_faq_question(request):
 
         if category and question:
             faq = FAQ.objects.create(user=user, category=category, question=question, is_public=is_public)
-            faq.save()
-            return HttpResponse(b'CREATED', status=201)
+            if faq.is_valid():
+                faq.save()
+                return HttpResponse(b'CREATED', status=201)
+            else:
+                return HttpResponseBadRequest('Invalid input. Please check your input again.')
         else:
             return HttpResponseBadRequest('Invalid input. Please check your input again.')
 
