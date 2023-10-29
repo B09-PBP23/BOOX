@@ -40,8 +40,8 @@
 </div>
 <!-- ***** Preloader End ***** -->
 
-<!-- ***** Header Area Start ***** -->
-<header class="header-area header-sticky">
+ <!-- ***** Header Area Start ***** -->
+ <header class="header-area header-sticky">
   <div class="container">
       <div class="row">
           <div class="col-12">
@@ -51,20 +51,11 @@
                       <img src="{% static 'images/logo.png' %}" alt="BooX">
                   </a>
                   <!-- ***** Logo End ***** -->
-                  <!-- ***** Search End ***** -->
-                  <div class="search-input">
-                    <form id="search" action="#">
-                      <input type="text" placeholder="Search Book" id='searchText' name="searchKeyword" onkeypress="handle" />
-                      <i class="fa fa-search"></i>
-                    </form>
-                  </div>
-                  <!-- ***** Search End ***** -->
+
                   <!-- ***** Menu Start ***** -->
                   <ul class="nav">
-                      <li><a href="{% url 'landing_page:show_landing_page' %}" class="active">Home</a></li>
-                      <li><a href="browse.html">Browse</a></li>
-                      <li><a href="details.html">Details</a></li>
-                      <li><a href="streams.html">Streams</a></li>
+                      <li><a href="#" class="active">Home</a></li>
+                      <li><a href="#user-faq">Help</a></li>
                       <li><a href="{% url 'authentication:logout' %}" id="login-logout">Logout</a></li>
                       <li><a href="{% url 'profilepage:show_profile' %}">Profile</a></li>
                   </ul>   
@@ -175,57 +166,6 @@
   <script src="assets/js/popup.js"></script>
   <script src="assets/js/custom.js"></script>
   
-  {% comment %} <script>
-    async function getProfiles() {
-        return fetch("{% url 'profilepage:get_profile_json' %}").then((res) => res.json());
-    }
 
-    async function refreshProfileInfo() {
-      const profileInfo = await getProfiles(); 
   
-      const profileInfoDiv = document.getElementById("profile_info");
-  
-      // Create the HTML structure
-      const htmlString = `
-          <div class="row">
-              <div class="col-lg-4">
-                  <img src="${profileInfo.profile_picture}" alt="" style="border-radius: 20px;">
-              </div>
-              <div class="col-lg-4 align-self-center">
-                  <div class="main-info header-text">
-                      <h4>${profileInfo.name}</h4>
-                      <p>${profileInfo.description}</p>
-                      <div class="main-border-button">
-                          <a href="{% url 'profilepage:create_profile' %}">Edit Profile</a>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-4 align-self-center">
-                  <ul>
-                      <li>Username <span>${profileInfo.user_name}</span></li>
-                      <li>Books Reviewed <span>0</span></li>
-                      <li>Joined Since <span>${profileInfo.date_joined}</span></li>
-                  </ul>
-              </div>
-          </div>
-      `;
-  
-      // Set the HTML content
-      profileInfoDiv.innerHTML = htmlString;
-  }  
-
-    function editProfile() {
-        fetch("{% url 'profilepage:edit_profile' %}", {
-            method: "POST",
-            body: new FormData(document.querySelector('#form'))
-        }).then(refreshprofiles);
-
-        document.getElementById("form").reset();
-        return false;
-    }
-
-    document.getElementById("button_add").onclick = editProfile;
-
-    refreshprofiles();
-</script> {% endcomment %}
   {% endblock content %}
