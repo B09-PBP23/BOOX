@@ -28,7 +28,8 @@ urlpatterns = [
     path('readers-favorite/', include('readers_favorite.urls')),
     path('add_review/', include ('add_review.urls')),
     path('editreview/', include ('editreview.urls')),
-]
+    path('bookmarks/', include('bookmarks.urls')),
+    ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 

@@ -13,6 +13,8 @@ class Books(models.Model):
     image_url_l = models.URLField(null=True, blank=True)
     total_ratings = models.FloatField(default=0)
     total_reviews = models.PositiveIntegerField(default=0)
+    total_upvotes = models.PositiveIntegerField(default=0)
+
     
 
 class BookReview(models.Model):
