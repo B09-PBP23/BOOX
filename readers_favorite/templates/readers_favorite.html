@@ -220,7 +220,7 @@
 
 
   <script>
-    
+
     async function getBookInfo() {
       return fetch("{% url 'readers_favorite:get_data_json' %}").then((response) => response.json());
     }
@@ -289,19 +289,22 @@
 
       let htmlString = '';
 
-      recentComments.forEach((comment) => {
-        const username = "{{ user.username }}";
+      for (const comment of recentComments) {
+        // Use await with fetch to get the username
+        const response = await fetch(`get_username_by_id/${comment.fields.user}/`);
+        const data = await response.json();
+        const username = data.username;
         const userComment = comment.fields.user_comment;
 
         // Generate HTML structure for each comment
         const commentHtml = `
           <div class="item">
-            <p style="color: white;">${username} said : ${userComment}</p>
+            <p style="color: white;">${username} said: ${userComment}</p>
           </div>
         `;
 
         htmlString += commentHtml;
-      });
+      }
 
       // Update the Owl Carousel with the recent comments HTML
       const allCommentsElement = document.getElementById('all-comments');
@@ -319,8 +322,11 @@
 
       number = 0;
 
-      topCommenters.forEach((commenters) => {
-        const username = "{{ user.username }}";
+      for (const commenters of topCommenters) {
+        // Use await with fetch to get the username
+        const response = await fetch(`get_username_by_id/${commenters.fields.user}/`);
+        const data = await response.json();
+        const username = data.username;
         const numOfComments = commenters.fields.user_contribution;
 
         number += 1;
@@ -335,13 +341,12 @@
         `;
 
         htmlString += htmlTopCommenters;
-      });
+      }
 
       // Update the Owl Carousel with the recent comments HTML
       const allCommentsElement = document.getElementById('top-commenters');
       allCommentsElement.innerHTML = htmlString;
     }
-
 
     async function addUpvote(pk) {
       const headers = new Headers();

@@ -8,6 +8,7 @@ from django.core import serializers
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Sum
+from django.contrib.auth.models import User
 
 def show_readers_favorite(request):
     books = Books.objects.all()
@@ -35,6 +36,15 @@ def show_readers_favorite(request):
 def get_all_comments(request):
     data = Comments.objects.all()
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+def get_username_by_id(request, user_id):
+    try:
+        user = User.objects.get(id=user_id)
+        username = user.username
+        return JsonResponse({'username': username})
+    except User.DoesNotExist:
+        return HttpResponseNotFound("User not found")
+
 
 def get_commenters(request):
     data = ReadersFavorite.objects.all()
