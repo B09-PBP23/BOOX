@@ -16,7 +16,7 @@ import json
 from django.http import JsonResponse
 
 @login_required
-def editreview(request, id):
+def edit_review(request, id):
     # Get product berdasarkan ID
 
     review = get_object_or_404(Review, pk=id, user=request.user)
