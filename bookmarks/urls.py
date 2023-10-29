@@ -1,5 +1,7 @@
 from django.urls import path
-from .views import *
+
+from landing_page.views import get_data_json, show_landing_page
+from bookmarks.views import add_to_bookmark, get_books, remove_from_bookmark, show_bookmarks
 
 app_name = "bookmarks"
 
