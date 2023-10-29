@@ -27,13 +27,59 @@
 </style>
 
 {% endblock meta %}
+{% block meta %}
+    <title>BooX - Awesome Book Website</title>
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css/templatemo-cyborg-gaming.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <style>
+
+    .btn-primary {
+      background-color: transparent;
+      border: 1px solid #ec6090;
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 5px;
+  }
+
+  .btn-primary:hover {
+      background-color: #ec6090;
+  }
+</style>
+
+{% endblock meta %}
 {% block content %}
 
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
         <div class="page-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content">
 
+          <!-- ***** Banner Start ***** -->
+          <div class="main-banner">
+            <div class="row">
+              <div class="col-lg-7">
+                <div class="header-text">
+                  <!-- <h6>Welcome To BOOX</h6> -->
+                  <h4><em>VIEW</em> Our Readers Favorites Books </h4>
+                  <div class="main-button">
+                    <!-- <a href="browse.html">Browse Now</a> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Banner End ***** -->
+  
+ <!-- ***** Details Start ***** -->
           <!-- ***** Banner Start ***** -->
           <div class="main-banner">
             <div class="row">
@@ -131,6 +177,40 @@
     </div>
   </div>
 
+  <style>
+    /* Style for individual comments within the container */
+    #comments-container .item {
+      margin-bottom: 20px; /* Spacing between comments */
+      padding: 10px; /* Padding for each comment */
+      border: 1px solid #444; /* Add a border to each comment */
+      border-radius: 5px; /* Rounded corners for comments */
+    }
+  </style>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" style="color: black;" id="exampleModalLabel">Add New Comment</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form" onsubmit="return false;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="user_comment" class="col-form-label">Comment:</label>
+                        <textarea class="form-control" id="user_comment" name="user_comment" maxlength="100"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="button_add_comment" data-bs-dismiss="modal">Add Comment</button>
+            </div>
+        </div>
+    </div>
+  </div>
+
 
   <script>
 
@@ -173,6 +253,8 @@
                   <li><h4>Author</h4><span>${bookAuthor}<span></li>
                   <li><h4>Reviews Count</h4><span>${book.fields.total_reviews}<span></li>
                   <li><h4>Upvotes Count</h4><span>${book.fields.total_upvotes}<span></li>
+                  <li><h4>Reviews Count</h4><span>${book.fields.total_reviews}<span></li>
+                  <li><h4>Upvotes Count</h4><span>${book.fields.total_upvotes}<span></li>
                 </ul>
               </div>
             </div>
@@ -184,6 +266,9 @@
     }
 
     refreshFavoriteBooks();
+
+  </script>
+  
 
   </script>
   
