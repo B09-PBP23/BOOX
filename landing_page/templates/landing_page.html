@@ -2,6 +2,30 @@
 
 {% load static %}
 
+{% block meta %}
+    <title>BooX - Awesome Book Website</title>
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css/templatemo-cyborg-gaming.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <style>
+    .btn-primary {
+      background-color: transparent;
+      border: 1px solid #ec6090;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+  }
+
+  .btn-primary:hover {
+      background-color: #ec6090;
+  }
+</style>
+{% endblock meta %}
+
 {% block content %}
   <div class="container">
     <div class="row">

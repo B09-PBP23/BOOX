@@ -8,5 +8,5 @@ urlpatterns = [
     path('create/', create_profile, name='create_profile'),
     path('json/', show_json, name='show_json'), 
     path('edit/', edit_profile_ajax, name='edit_profile'),
-    path('get-product/', get_profile_json, name='get_profile_json'),
+    path('get-profile/', get_profile_json, name='get_profile_json'),
 ]
