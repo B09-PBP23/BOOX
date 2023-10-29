@@ -24,7 +24,7 @@ urlpatterns = [
     path('', include('landing_page.urls')),
     path('auth/', include('authentication.urls')),
     path('profile/', include('profilepage.urls'))
-]
+    ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+if settings.DEBUGy:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
