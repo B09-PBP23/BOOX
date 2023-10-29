@@ -3,13 +3,19 @@ from django.http import HttpResponse, HttpResponseNotFound, JsonResponse
 from django.core import serializers
 from .models import *
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+from .models import Books
+
+def landing_page(request):
+    books = Books.objects.all()
+    return render(request, 'landing_page.html', {'books': books})
 
 @login_required
 def show_bookmarks(request):
     user = request.user
     sorting = request.GET.get('sort', 'az') 
     bookmarked_books = Bookmarked.objects.filter(user=user).select_related('book')
-
+    # sort by aphabetical, release date buku, dan tanggal di bookmark.
     if sorting == 'za':
         bookmarked_books = bookmarked_books.order_by('-book__title')
     elif sorting == 'release_old':
@@ -31,7 +37,6 @@ def add_to_bookmark(request, book_id):
         user = request.user
         try:
             book = Books.objects.get(pk=book_id)
-            # Check if the book is already bookmarked by the user
             if not Bookmarked.objects.filter(user=user, book=book).exists():
                 bookmark = Bookmarked(user=user, book=book)
                 bookmark.save()

@@ -98,10 +98,19 @@ https://templatemo.com/tm-579-cyborg-gaming
                   <div class="heading-section">
                       <h4><em>Bookmarked</em> Books</h4>
                   </div>
-                  {% for bookmark in user.bookmarked_set.all %}
-                  <div class="item">
-                      <!-- Your book details here -->
-                  </div>
+                  
+                    {% for bookmark in user.bookmarked_set.all %}
+                    <div class="item">
+                      <div class="bookmark-card">
+                        <img src="{{ bookmark.book.image.url }}" alt="Book Image">
+                        <h2>{{ bookmark.book.title }}</h2>
+                        <p>Author: {{ bookmark.book.author }}</p>
+                        <p>Publisher: {{ bookmark.book.publisher }}</p>
+                        <p>Year: {{ bookmark.book.year }}</p>
+                        <p>Date Added: {{ bookmark.bookmarked_at }}</p>
+                        <button class="unbookmark-btn" data-bookmark-id="{{ bookmark.id }}">Unbookmarked</button>
+                      </div>
+                    </div>
                   {% endfor %}
               </div>
           </div>

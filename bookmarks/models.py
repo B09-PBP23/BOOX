@@ -6,6 +6,7 @@ class Books(models.Model):
     author = models.TextField(null=True, blank=True)
     year = models.PositiveIntegerField(null=True, blank=True)
     publisher = models.TextField(null=True, blank=True)
+    image_url_l = models.URLField(null=True, blank=True)
     
 class Bookmarked(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
