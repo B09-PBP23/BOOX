@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Book Review Page</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <style>
+            body {
+                background-color: #f7f7f7;
+            }
+
+            .book-details {
+                background-color: #fff;
+                padding: 20px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+            }
+
+            .book-image {
+                max-width: 200px;
+                height: auto;
+            }
+
+            .user-review {
+                background-color: #fff;
+                margin-top: 20px;
+                padding: 15px;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+        </style>
+{% endblock meta %}
+
+{% block content %}
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: black;">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#" style="color: white;" id="home-nav">Home</a>
+                </li>
+            </div>
+            <a class="nav-link" href="{% url 'authentication:logout' %}">
+                <button>
+                    Logout
+                </button>
+            </a>
+        </div>
+    </nav>
+
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="book-details">
+                    <div style="text-align: center;">
+                        <img src="{{ book.image_url_l }}" alt="Book Cover" class="book-image">
+                    </div>
+                    <h2 class="mt-3"> {{ book.title }}</h2>
+                    <p><strong>Author:</strong> {{ book.author }}</p>
+                    <p><strong>Release Year:</strong> {{ book.year }}</p>
+                    <p><strong>Publisher:</strong> {{ book.publisher }}</p>
+                    <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+                    <p><strong>Total Reviews:</strong> {{ book.total_reviews }}</p>
+
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                
+                <!-- Edit REview Section -->
+                <!-- Edit Review Section -->
+                <div class="user-review" id="user-reviews">
+                    <h3>Edit Your Review</h3>
+                    <form method="post" action="" id="edit-review">
+                        {% csrf_token %}
+                        
+                        <!-- Star Rating Dropdown with Bootstrap -->
+                        <div class="form-group">
+                            <label for="rating">Rating:</label>
+                            <select class="form-control" id="rating" name="rating">
+                                <option value="1">&#9733;</option>
+                                <option value="2">&#9733;&#9733;</option>
+                                <option value="3">&#9733;&#9733;&#9733;</option>
+                                <option value="4">&#9733;&#9733;&#9733;&#9733;</option>
+                                <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+                            </select>
+                        </div>
+
+                        <!-- Textarea Input for Description -->
+                        <div class="form-group">
+                            <label for="description">Description:</label>
+                            <textarea class="form-control" name="description" id="description" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Review</button>
+                        <button type="button" class="btn btn-primary">Cancel</button>
+                    </form>
+                </div>
+                <!-- End of Edit Review Section -->
+
+                <!-- Edit Review Section-->
+
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        async function updateReview(){
+            let url = "{% url 'editreview:editreview' 0 %}".replace("0", "{{ review.pk }}");
+            let data = {
+                rating: document.getElementById("rating").value,
+                description: document.getElementById("description").value,
+                book: "{{ book.pk }}",
+            }
+
+            let formData = new FormData(document.getElementById("edit-review"))
+            formData.append("book", "{{ book.pk }}")
+            formData.append("user", "{{ request.user.pk }}")
+            formData.append("created_at", "{{ review.created_at }}")
+
+            return fetch(url, {
+                method: "POST",
+                body: formData,
+            });
+        }
+
+        function refreshReviewInputs() {
+            document.getElementById("rating").value = "{{ review.rating }}";
+            document.getElementById("description").value = "{{ review.review }}";
+        }
+        
+
+        refreshReviewInputs()
+        document.querySelector(".save-review").addEventListener("click", async function(event){
+            event.preventDefault();
+            await updateReview();
+        });
+    </script>
+{% endblock content %}

@@ -25,6 +25,8 @@ urlpatterns = [
     path('auth/', include('authentication.urls')),
     path('profile/', include('profilepage.urls')),
     path('readers-favorite/', include('readers_favorite.urls')),
+    path('add_review/', include ('add_review.urls')),
+    path('editreview/', include ('editreview.urls')),
 ]
 
 if settings.DEBUG:

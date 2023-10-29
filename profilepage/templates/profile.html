@@ -74,7 +74,6 @@
                   <div class="col-lg-12 align-self-center">
                     <ul>
                       <li>Username <span>{{ user_name }}</span></li>
-                      <li>Books Reviewed <span>0</span></li>
                       <li>Favorite Books <span>{{profiles.0.favorite_books}}</span></li>
                       <li>Favorite Author <span>{{profiles.0.favorite_author}}</span></li>
                       <li>Joined Since <span>{{profiles.0.date_joined}}</span></li>
@@ -159,7 +158,7 @@
   <script src="assets/js/popup.js"></script>
   <script src="assets/js/custom.js"></script>
 
-  <script>
+  {% comment %} <script>
     async function loadBooks() {
       return fetch("{% url 'landing_page:get_data_json' %}").then((response) => response.json());
     }
@@ -206,7 +205,7 @@
     `
   }
 
-  getUserReviews();
+  getUserReviews(); {% endcomment %}
 
   {% comment %} async function getProfile() {
     return fetch("{% url 'profilepage:get_profile_json' %}").then((res) => res.json());
