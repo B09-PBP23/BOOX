@@ -24,7 +24,8 @@ urlpatterns = [
     path('', include('landing_page.urls')),
     path('auth/', include('authentication.urls')),
     path('profile/', include('profilepage.urls')),
-    path("show_bookmarks/", show_bookmarks, name="show_bookmarks"),
+    path('readers-favorite/', include('readers_favorite.urls')),
+    path('bookmarks/', include('bookmarks.urls')),
     ]
 
 if settings.DEBUG:

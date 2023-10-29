@@ -1,0 +1,319 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-content">
+
+          <!-- ***** Banner Start ***** -->
+          <div class="main-banner">
+            <div class="row">
+              <div class="col-lg-7">
+                <div class="header-text">
+                  <!-- <h6>Welcome To BOOX</h6> -->
+                  <h4><em>VIEW</em> Our Readers Favorites Books </h4>
+                  <div class="main-button">
+                    <!-- <a href="browse.html">Browse Now</a> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Banner End ***** -->
+  
+
+          <!-- ***** Details Start ***** -->
+          <div class="game-details">
+            <div class="row">
+              <div class="col-lg-12">
+                <h2>Our Readers top 10 voted books!</h2>
+              </div>
+              <div class="col-lg-12">
+                <div class="content">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <p>Here you can view this month's top 10 most reviewed books by our readers! Contribute by upvoting your favorite books!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Details End ***** -->
+
+          <!-- Most upvotes Start -->
+          <div id="most-upvotes"></div>
+          <br>
+          <br>
+          <!-- Most upvotes End -->
+
+          <!-- ***** Details Start ***** -->
+          <div class="game-details">
+            <div class="row">
+              <div class="col-lg-12">
+                <h2>Our Readers Comment Section!</h2>
+              </div>
+              <div class="col-lg-12">
+                <div class="content">
+                  <div class="row">
+                    <div class="col-lg-12" style="text-align: center;">
+                      <p>Engage with your fellow readers in this open comment section!</p>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="main-border-button">
+                        <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add New Comment!</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br>
+          <br>
+          <!-- ***** Details End ***** -->
+  
+
+          <!-- ***** Readers Comment Section ***** -->
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="featured-games header-text">
+                <div class="heading-section">
+                  <h4><em>Readers</em> Comments</h4>
+                </div>
+                <div id="comments-container" class="comments-container">
+                  <div id="all-comments"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="top-downloaded">
+                <div class="heading-section">
+                  <h4><em>Top</em> Commenters</h4>
+                </div>
+                <ul>
+                  <div id="top-commenters"></div>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- ***** Readers Comment Section ***** -->
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights reserved. 
+          
+          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>  Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    /* Style for individual comments within the container */
+    #comments-container .item {
+      margin-bottom: 20px; /* Spacing between comments */
+      padding: 10px; /* Padding for each comment */
+      border: 1px solid #444; /* Add a border to each comment */
+      border-radius: 5px; /* Rounded corners for comments */
+    }
+  </style>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" style="color: black;" id="exampleModalLabel">Add New Comment</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form" onsubmit="return false;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="user_comment" class="col-form-label">Comment:</label>
+                        <textarea class="form-control" id="user_comment" name="user_comment" maxlength="100"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="button_add_comment" data-bs-dismiss="modal">Add Comment</button>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+  <script>
+
+    async function getBookInfo() {
+      return fetch("{% url 'readers_favorite:get_data_json' %}").then((response) => response.json());
+    }
+
+    async function getAllComments() {
+      return fetch("{% url 'readers_favorite:get_all_comments' %}").then((response) => response.json());
+    }
+
+    async function getCommenters() {
+      return fetch("{% url 'readers_favorite:get_commenters' %}").then((response) => response.json());
+    }
+
+    async function refreshFavoriteBooks() {
+      document.getElementById("most-upvotes").innerHTML = "";
+      const BooksAll = await getBookInfo();
+
+      // Sort the BooksAll array based on most reviewed (for top 10) in descending order
+      BooksAll.sort((a, b) => b.fields.total_reviews - a.fields.total_reviews);
+
+      // Limit the array to the top 10 books
+      const top10Books = BooksAll.slice(0, 10);
+
+      // Sort the top10 Books based on upvotes
+      top10Books.sort((a, b) => b.fields.total_upvotes - a.fields.total_upvotes);
+
+      let htmlString = ``; // Initialize the HTML string
+      number = 0;
+      top10Books.forEach((book) => {
+        let bookTitle = book.fields.title;
+        let bookAuthor = book.fields.author;
+
+        bookTitle = (bookTitle.length > 25) ? bookTitle.substring(0, 25) + "..." : bookTitle
+        bookAuthor = (bookAuthor.length > 20) ? bookAuthor.substring(0, 20) + "..." : bookAuthor
+
+        number += 1;
+        htmlString += `
+          <div class="gaming-library profile-library">
+            <div class="col-lg-12">
+              <div class="item">
+                <h4>No. ${number}</h4>
+                <br>
+                <ul>
+                  <li><img src="${book.fields.image_url_s}" alt="" class="templatemo-item"></li>
+                  <li><h4>Title</h4><span>${bookTitle}<span></li>
+                  <li><h4>Author</h4><span>${bookAuthor}<span></li>
+                  <li><h4>Reviews Count</h4><span>${book.fields.total_reviews}<span></li>
+                  <li><h4>Upvotes Count</h4><span>${book.fields.total_upvotes}<span></li>
+                  <li><button class="btn btn-success" onclick="addUpvote(${book.pk})">Upvote</button></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      document.getElementById("most-upvotes").innerHTML = htmlString;
+
+    }
+
+    async function refreshCommentSection() {
+      const commentsAll = await getAllComments();
+      commentsAll.sort((a, b) => new Date(b.fields.timestamp) - new Date(a.fields.timestamp));
+
+      // Display only the most recent 6 comments
+      const recentComments = commentsAll.slice(0, 6);
+
+      let htmlString = '';
+
+      for (const comment of recentComments) {
+        // Use await with fetch to get the username
+        const response = await fetch(`get_username_by_id/${comment.fields.user}/`);
+        const data = await response.json();
+        const username = data.username;
+        const userComment = comment.fields.user_comment;
+
+        // Generate HTML structure for each comment
+        const commentHtml = `
+          <div class="item">
+            <p style="color: white;">${username} said: "${userComment}"</p>
+          </div>
+        `;
+
+        htmlString += commentHtml;
+      }
+
+      // Update the Owl Carousel with the recent comments HTML
+      const allCommentsElement = document.getElementById('all-comments');
+      allCommentsElement.innerHTML = htmlString;
+    }
+
+    async function refreshTopCommenters() {
+      const allCommenters = await getCommenters();
+      allCommenters.sort((a, b) => b.fields.user_contribution - a.fields.user_contribution);
+
+      // Display only the most recent 6 comments
+      const topCommenters = allCommenters.slice(0, 6);
+
+      let htmlString = '';
+
+      number = 0;
+
+      for (const commenters of topCommenters) {
+        // Use await with fetch to get the username
+        const response = await fetch(`get_username_by_id/${commenters.fields.user}/`);
+        const data = await response.json();
+        const username = data.username;
+        const numOfComments = commenters.fields.user_contribution;
+
+        number += 1;
+
+        // Generate HTML structure for each comment
+        const htmlTopCommenters = `
+          <li>
+            <img src="assets/images/game-01.jpg" alt="" class="templatemo-item">
+            <h4>${username}</h4>
+            <h6><i class="fa fa-star" style="color: yellow;"></i> ${numOfComments} Comments!</h6>
+          </li>
+        `;
+
+        htmlString += htmlTopCommenters;
+      }
+
+      // Update the Owl Carousel with the recent comments HTML
+      const allCommentsElement = document.getElementById('top-commenters');
+      allCommentsElement.innerHTML = htmlString;
+    }
+
+    async function addUpvote(pk) {
+      const headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      fetch(`add_upvote_ajax/${pk}/`, {
+        method: "POST",
+        headers: headers,
+      }).then(refreshFavoriteBooks).then(refreshCommentSection).then(refreshTopCommenters)
+
+      return false;
+    }
+
+    async function addComment() {
+      fetch("{% url 'readers_favorite:add_comment' %}", {
+        method: "POST",
+        body: new FormData(document.querySelector('#form'))
+      }).then(refreshFavoriteBooks).then(refreshCommentSection).then(refreshTopCommenters)
+
+      document.getElementById("form").reset()
+      return false
+    }
+
+    document.getElementById("button_add_comment").onclick = addComment;
+    refreshFavoriteBooks();
+    refreshCommentSection();
+    refreshTopCommenters();
+
+</script>
+  
+
+
+{% endblock content %}

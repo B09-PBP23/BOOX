@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'landing_page',
     'profilepage',
     'authentication',
+    'readers_favorite',
     'bookmarks'
 ]
 

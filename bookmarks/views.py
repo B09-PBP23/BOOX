@@ -4,36 +4,50 @@ from django.core import serializers
 from .models import *
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from .models import Books
+from landing_page.models import Books
 
 def landing_page(request):
     books = Books.objects.all()
     return render(request, 'landing_page.html', {'books': books})
 
 def get_books(request):
-    data = Books.objects.all()
+    data = Bookmarked.objects.all()
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
-    
+
+
 @login_required
 def show_bookmarks(request):
     user = request.user
     sorting = request.GET.get('sort', 'az') 
-    bookmarked_books = Bookmarked.objects.filter(user=user).select_related('book')
-    # sort by aphabetical, release date buku, dan tanggal di bookmark.
-    if sorting == 'za':
-        bookmarked_books = bookmarked_books.order_by('-book__title')
-    elif sorting == 'release_old':
-        bookmarked_books = bookmarked_books.order_by('book__year')
-    elif sorting == 'release_new':
-        bookmarked_books = bookmarked_books.order_by('-book__year')
-    elif sorting == 'modified':
-        bookmarked_books = bookmarked_books.order_by('-bookmarked_at')
+    bookmarked_books = Bookmarked.objects.all()
+    # # sort by aphabetical, release date buku, dan tanggal di bookmark.
+    # if sorting == 'za':
+    #     bookmarked_books = bookmarked_books.order_by('-book__title')
+    # elif sorting == 'release_old':
+    #     bookmarked_books = bookmarked_books.order_by('book__year')
+    # elif sorting == 'release_new':
+    #     bookmarked_books = bookmarked_books.order_by('-book__year')
+    # elif sorting == 'modified':
+    #     bookmarked_books = bookmarked_books.order_by('-bookmarked_at')
 
     response = {
         'bookmarked_books': bookmarked_books
     }
     return render(request, "bookmarks.html", response)
 
+def make_bookmarks(request):
+    books = Book.object.all()
+
+    if request.user.is_authenticated:
+        user = request.user
+        user_selected, created = bookmarks.objects.get_or_create(user=user)
+
+        response = {
+            'books': books,
+        }
+        return JsonResponse(response) # jika user terautentikasi
+    else: 
+        return JsonResponse({'message: User not authenticated'})
 
 @login_required
 def add_to_bookmark(request, book_id):

@@ -71,3 +71,4 @@ def edit_profile_ajax(request):
         return JsonResponse({'status': 'SUCCESS', 'message': 'Profile updated successfully'})
     
     return JsonResponse({'status': 'ERROR', 'message': 'Invalid request method'}, status=400)
+
