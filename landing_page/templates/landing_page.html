@@ -35,25 +35,17 @@
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
+                    <a href="{% url 'landing_page:show_landing_page' %}" class="logo">
                         <img src="{% static 'images/logo.png' %}" alt="BooX">
                     </a>
                     <!-- ***** Logo End ***** -->
-                    <!-- ***** Search End ***** -->
-                    <div class="search-input">
-                      <form id="search" action="#">
-                        <input type="text" placeholder="Search Book" id='searchText' name="searchKeyword" onkeypress="handle" />
-                        <i class="fa fa-search"></i>
-                      </form>
-                    </div>
-                    <!-- ***** Search End ***** -->
+
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li><a href="index.html" class="active">Home</a></li>
-                        <li><a href="browse.html">Browse</a></li>
-                        <li><a href="details.html">Details</a></li>
-                        <li><a href="streams.html">Streams</a></li>
-                        <li><a href="profile.html">Profile <img src="{%static 'images/profile-header.jpg'%}" alt=""></a></li>
+                        <li><a href="#" class="active">Home</a></li>
+                        <li><a href="#user-faq">Help</a></li>
+                        <li><a href="{% url 'authentication:logout' %}" id="login-logout">Logout</a></li>
+                        <li><a href="{% url 'profilepage:show_profile' %}">Profile <img src="{%static 'images/profile-header.jpg'%}" alt=""></a></li>
                     </ul>   
                     <a class='menu-trigger'>
                         <span>Menu</span>
@@ -79,7 +71,7 @@
                   <h6>Welcome To BooX</h6>
                   <h4><em>Browse</em> World's Popular Books Here</h4>
                   <div class="main-button">
-                    <a href="browse.html">Browse Now</a>
+                    <a href="#most-popular-content">Browse Now</a>
                   </div>
                 </div>
               </div>
@@ -94,6 +86,37 @@
                       <div class="heading-section">
                       <h4><em>Most Popular</em> Right Now</h4>
                       </div>
+
+                      <div class="item">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <form id="search">
+                                    <div class="form-group">
+                                        <label for="searchBy">Search By:</label>
+                                        <select class="form-control" id="searchBy" name="searchBy">
+                                            <option value="title">Search by Title</option>
+                                            <option value="author">Search by Author</option>
+                                            <option value="year">Search by Release Year</option>
+                                            <option value="publisher">Search by Publisher</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="searchText">Search:</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Enter keyword" id="searchText" name="searchKeyword">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                      </div>
+                    
+                    
                       <div class="row" id="most-popular-content">
                       </div>
                   </div>
@@ -101,14 +124,18 @@
           </div>
           <!-- ***** Most Popular End ***** -->
 
-          <!-- ***** Review Library Start ***** -->
-          <div class="gaming-library" id="user-reviews">
+          <!-- ***** FAQ Start ***** -->
+          <div class="gaming-library" id="user-faq">
           </div>
-          <!-- ***** Review Library End ***** -->
+          <!-- ***** FAQ End ***** -->
         </div>
       </div>
     </div>
   </div>
+
+  {% include 'add_question_modal.html' %}
+  {% include 'edit_question_modal.html' %}
+  {% include 'show_question_modal.html' %}
   
   <footer>
     <div class="container">
@@ -123,58 +150,96 @@
   </footer>
 
   <script>
+    async function isUserLoggedIn(){
+      return fetch("{% url 'landing_page:check_if_user_logged_in' %}").then(response => response.text());
+    }
+    
     async function loadBooks() {
       return fetch("{% url 'landing_page:get_data_json' %}").then((response) => response.json());
+    }
+
+    async function loadFAQ() {
+      return fetch("{% url 'landing_page:get_faq_data' %}").then((response) => response.json());
+    }
+
+    async function loadUserFAQ() {
+      return fetch("{% url 'landing_page:get_faq_data_per_user' %}").then((response) => response.json());
     }
 
     async function refreshMostPopular() {
       const Books = await loadBooks();
       let HtmlString = ``;
-
+      let isLoggedIn = await isUserLoggedIn() === "true"; 
+      let i = 0;
       for (let book of Books) {
-          let bookURL = `{% url 'landing_page:show_review' 0 %}`.replace("0", book.pk)
-          let imageURL = book.fields["Image-URL-L"]
-          let bookTitle = book.fields["Book-Title"]
-          let bookAuthor = book.fields["Book-Author"]
-          let avgRating = book.fields["Rating"] / book.fields["Reviews"]
-          let totalReviews = book.fields["Reviews"]
-          totalReviews = (totalReviews > 1000) ? (totalReviews / 1000).toFixed(1) + "K" : 
-            (totalReviews > 1000000) ? (totalReviews / 1000000).toFixed(1) + "M" : totalReviews
-
-          if (isNaN(avgRating)) {
-              avgRating = 0
+          if (!isLoggedIn && i++ == 8) {
+            break;
           }
 
+          let bookURL = "{% url 'add_review:show_review' 0 %}".replace("0", book.pk)
+          let year = book.fields["year"]
+          let publisher = book.fields["publisher"]
+          let imageURL = book.fields["image_url_l"]
+          let bookTitle = book.fields["title"]
+          let bookAuthor = book.fields["author"]
+          let totalReviews = book.fields["total_reviews"]
+          let avgRating;
+          if (totalReviews === 0) {
+            avgRating = 0
+          } else {
+            avgRating = book.fields["total_ratings"] / book.fields["total_reviews"]
+          }
+
+          console.log(avgRating)
+          
+          totalReviews = (totalReviews > 1000) ? (totalReviews / 1000).toFixed(1) + "K" : 
+            (totalReviews > 1000000) ? (totalReviews / 1000000).toFixed(1) + "M" : totalReviews
           avgRating = avgRating.toFixed(1)
           bookTitle = (bookTitle.length > 25) ? bookTitle.substring(0, 25) + "..." : bookTitle
           bookAuthor = (bookAuthor.length > 20) ? bookAuthor.substring(0, 20) + "..." : bookAuthor
-
-          HtmlString += `o
-          <div class="col-lg-3 col-sm-6">
-              <div class="item">
-                <a href=${bookURL}>
-                    <img class="img-fluid" src="${imageURL}" alt="${book.fields["Book-Title"]}">
-                </a>
-                <h4>${bookTitle}<br><span>${bookAuthor}</span></h4>
-                <ul class="d-flex flex-row text-left justify-content-between align-items-center">
-                  <li class="d-flex align-items-start"><i class="fa fa-star"></i>${avgRating}</li>
-                  <li class="d-flex"><i class="fa fa-users"></i>${totalReviews}</li>
-                </ul>
-                <div class="d-flex justify-content-center">
-                  <div class="main-border-button" id="bookmark-link" style="margin: 15px 0 0 0;">
-                    <a href="#"><i id="bookmark-logo" class="fa fa-bookmark" style="color: red;"></i> 
-                      Add to Bookmark
-                    </a>
+          
+          if (isLoggedIn){
+            HtmlString += `
+            <div class="col-lg-3 col-sm-6" id="book-item" year="${year}" publisher="${publisher}">
+                <div class="item">
+                  <a href=${bookURL}>
+                      <img class="img-fluid" src="${imageURL}" alt="${bookTitle}">
+                  </a>
+                  <h4>${bookTitle}<br><span>${bookAuthor}</span></h4>
+                  <ul class="d-flex flex-row text-left justify-content-between align-items-center">
+                    <li class="d-flex align-items-start"><i class="fa fa-star"></i>${avgRating}</li>
+                    <li class="d-flex"><i class="fa fa-users"></i>${totalReviews}</li>
+                  </ul>
+                  <div class="d-flex justify-content-center">
+                    <div class="main-border-button" id="bookmark-link" style="margin: 15px 0 0 0;">
+                      <a href="#"><i id="bookmark-logo" class="fa fa-bookmark" style="color: red;"></i> 
+                        Add to Bookmark
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
-          </div>`
+            </div>`
+          } else {
+            HtmlString += `
+            <div class="col-lg-3 col-sm-6" id="book-item" year="${year}">
+                <div class="item">
+                  <a href=${bookURL}>
+                      <img class="img-fluid" src="${imageURL}" alt="${bookTitle}">
+                  </a>
+                  <h4>${bookTitle}<br><span>${bookAuthor}</span></h4>
+                  <ul class="d-flex flex-row text-left justify-content-between align-items-center">
+                    <li class="d-flex align-items-start"><i class="fa fa-star"></i>${avgRating}</li>
+                    <li class="d-flex"><i class="fa fa-users"></i>${totalReviews}</li>
+                  </ul>
+                </div>
+            </div>`
+          }
       }
       
       document.getElementById("most-popular-content").innerHTML += HtmlString + 
           `<div class="col-lg-12">
               <div class="main-button">
-                  <a href="browse.html">Discover More</a>
+                  <a href="" id="discover-more">Discover More</a>
               </div>
             </div>`;
 
@@ -191,56 +256,342 @@
           }
         });
       });
+
+      if (!isLoggedIn) {
+        document.getElementById("login-logout").innerHTML = "Login";
+        document.getElementById("login-logout").setAttribute("href", "{% url 'authentication:login' %}");
+      } else {
+        document.getElementById("login-logout").innerHTML = "Logout";
+        document.getElementById("login-logout").setAttribute("href", "{% url 'authentication:logout' %}");
+      }
+
+      document.getElementById("discover-more").innerHTML = (isLoggedIn) ? "Back to Top" : "Login to Discover More";
+      document.getElementById("discover-more").setAttribute("href", (isLoggedIn) ? "#most-popular-content" : "{% url 'authentication:login' %}");
     } 
 
-    async function getUserReviews() {
-      const Books = await loadBooks();
+    async function showFAQDetail(){
+
+    }
+
+    async function showMyFAQs(){
+      const FAQ = await loadUserFAQ();
       let HtmlString = `
-        <div class="col-lg-12">
+        <div class="col-lg-12" style="text-align: center;">
           <div class="heading-section">
-            <h4><em>Your Book</em> Reviews</h4>
+            <h4><em>Need Some Help?</em> Ask Us Now!</h4>
+          </div>
+        </div>
+      `
+      
+      for (let faq of FAQ) {      
+          let question = faq.fields["question"];
+          let answer = faq.fields["answer"];
+          answer = (answer === null) ? "No answer yet" : (answer.length > 50) ? answer.substring(0, 50) + "..." : answer;
+          question = (question.length > 50) ? question.substring(0, 50) + "..." : question;
+          HtmlString += `
+              <div class="item" style="text-align: center;">
+                <ul>
+                  <li><h4>Category</h4><span style="color: white;">${faq.fields["category"]}</span></li>
+                  <li><h4>Question</h4><span style="color: white;">${question}</span></li>
+                  <li><h4>Answer</h4><span style="color: white;">${answer}</span></li>
+                  <li><div class="main-border-button"><a class="open-modal-link show-qna" data-toggle="modal" data-target="#show-qnamodal" href="#user-faq" pk="${faq.pk}">Details</a></div></li>
+                  <li><div class="main-border-button"><a class="open-modal-link edit-qna" data-toggle="modal" data-target="#edit-qnamodal" href="#user-faq" pk="${faq.pk}">Edit Question</a></div></li>
+                </ul>
+              </div>
+          `
+        }
+        
+      HtmlString += `
+      <div class="col-lg-12">
+        <div class="main-button">
+          <a href="#user-faq" id="send-a-question" class="open-modal-link" data-toggle="modal" data-target="#qnamodal">Send a Question</a>
+          <a href="#user-faq" id="see-all-question">Hide All Questions</a>
+          <a href="#user-faq" id="see-public-question">See Public Questions</a>
+        </div>
+      </div>
+      `
+            
+      document.getElementById("user-faq").innerHTML =  HtmlString;
+      document.getElementById("see-all-question").addEventListener("click", (event) => {
+        event.preventDefault();
+        refreshFAQ();
+        doShowAllFAQs = false;
+      });
+
+      document.querySelectorAll(".edit-qna").forEach((element) => {
+        element.addEventListener("click", (event) => {
+          console.log("masukk")
+          event.preventDefault();
+          let pk = element.getAttribute("pk");
+
+          for (let faq of FAQ) {
+            if (faq.pk == pk) {
+              fields = faq.fields;
+              break;
+            }
+          }
+
+          let category = fields["category"];
+          let question = fields["question"];
+          let is_public = fields["is_public"];
+          document.getElementById("edit_category").value = category;
+          document.getElementById("edit_question").value = question;
+          document.getElementById("edit_is_public").checked = (is_public === true);
+          document.getElementById("edit-modal").onclick = () => editQuestion(pk);
+          document.getElementById("delete-modal").onclick = () => deleteQuestion(pk);
+        });
+      });
+
+      document.querySelector("#see-public-question").addEventListener("click", (event) => {
+        event.preventDefault();
+        showAllFAQs();
+        doShowAllFAQs = true;
+      });
+
+      document.querySelectorAll(".show-qna").forEach((element) => {
+        element.addEventListener("click", (event) => {
+          event.preventDefault();
+          let pk = element.getAttribute("pk");
+
+          for (let faq of FAQ) {
+            if (faq.pk == pk) {
+              fields = faq.fields;
+              break;
+            }
+          }
+
+          let category = fields["category"];
+          let question = fields["question"];
+          let answer = fields["answer"];
+          document.getElementById("show-category").value = category;
+          document.getElementById("show-question").value = question;
+          document.getElementById("show-answer").value = answer;
+
+          const modal = document.getElementById('show-qnamodal'); // Get the modal element
+          const inputs = modal.querySelectorAll('input, textarea, select'); // Find all input elements
+
+          inputs.forEach(input => {
+              input.disabled = true; // Disable each input
+          });
+
+        });
+      });
+    }
+
+    async function showAllFAQs(){
+      const FAQ = await loadFAQ();
+      let HtmlString = `
+        <div class="col-lg-12" style="text-align: center;">
+          <div class="heading-section">
+            <h4><em>Need Some Help?</em> Ask Us Now!</h4>
+          </div>
+        </div>
+      `
+      
+      for (let faq of FAQ) {
+        if (faq.fields["is_public"]) {
+          let question = faq.fields["question"];
+          let answer = faq.fields["answer"];
+          answer = (answer === null) ? "No answer yet" : (answer.length > 50) ? answer.substring(0, 50) + "..." : answer;
+          question = (question.length > 50) ? question.substring(0, 50) + "..." : question;
+          HtmlString += `
+              <div class="item" style="text-align: center;">
+                <ul>
+                  <li><h4>Category</h4><span style="color: white;">${faq.fields["category"]}</span></li>
+                  <li><h4>Question</h4><span style="color: white;">${question}</span></li>
+                  <li><h4>Answer</h4><span style="color: white;">${answer}</span></li>
+                  <li><div class="main-border-button"><a class="open-modal-link show-qna" data-toggle="modal" data-target="#show-qnamodal" href="#user-faq" pk="${faq.pk}">Details</a></div></li>
+                </ul>
+              </div>
+          `
+        }
+      }
+        
+      HtmlString += `
+      <div class="col-lg-12">
+        <div class="main-button">
+          <a href="#user-faq" id="send-a-question" class="open-modal-link" data-toggle="modal" data-target="#qnamodal">Send a Question</a>
+          <a href="#user-faq" id="see-all-question">Hide All Questions</a>
+          <a href="#user-faq" id="see-all-my-question">See Only My Questions</a>
+        </div>
+      </div>
+      `
+            
+      document.getElementById("user-faq").innerHTML =  HtmlString;
+      document.getElementById("see-all-question").addEventListener("click", (event) => {
+        event.preventDefault();
+        refreshFAQ();
+        doShowAllFAQs = false;
+      });
+
+      document.getElementById("see-all-my-question").addEventListener("click", (event) => {
+        event.preventDefault();
+        showMyFAQs();
+        doShowAllFAQs = false;
+      });
+
+
+      document.querySelectorAll(".show-qna").forEach((element) => {
+        element.addEventListener("click", (event) => {
+          event.preventDefault();
+          let pk = element.getAttribute("pk");
+
+          for (let faq of FAQ) {
+            if (faq.pk == pk) {
+              fields = faq.fields;
+              break;
+            }
+          }
+
+          let category = fields["category"];
+          let question = fields["question"];
+          let answer = fields["answer"];
+          answer = (answer === null) ? "No answer yet" : answer;
+          document.getElementById("show-category").value = category;
+          document.getElementById("show-question").value = question;
+          document.getElementById("show-answer").value = answer;
+
+          const modal = document.getElementById('show-qnamodal');
+          modal.querySelector("#show-category").setAttribute("disabled", "disabled")
+          modal.querySelector("#show-question").setAttribute("disabled", "disabled")
+          modal.querySelector("#show-answer").setAttribute("disabled", "disabled")
+        });
+      });
+    }
+
+    function deleteQuestion(pk){
+      let url = "{% url 'landing_page:delete_faq_question' 0 %}".replace("0", pk);
+      fetch(url, {
+          method: "DELETE"
+      }).then((doShowAllFAQs)? showAllFAQs: refreshFAQ)
+      document.getElementById("cancel-edit-modal").click()
+    }
+
+    function editQuestion(pk) {
+      let url = "{% url 'landing_page:edit_faq_question' 0 %}".replace("0", pk);
+      fetch(url, {
+          method: "POST",
+          body: new FormData(document.querySelector(`#qna-edit-form`))
+      }).then((doShowAllFAQs)? showAllFAQs: refreshFAQ)
+      document.getElementById("qna-edit-form").reset()
+      document.getElementById("cancel-edit-modal").click()
+    }
+  
+    async function refreshFAQ() {
+      const FAQ = await loadFAQ();
+      const isLoggedIn = await isUserLoggedIn() === "true";
+
+      let HtmlString = `
+        <div class="col-lg-12" style="text-align: center;">
+          <div class="heading-section">
+            <h4><em>Need Some Help?</em> Ask Us Now!</h4>
           </div>
         </div>
       `;
-
-      let i = 0;
-      for (let book of Books) {
-        if (i++ == 5){
-          break;
-        }
-
-        let imageURL = book.fields["Image-URL-L"]
-        let bookTitle = book.fields["Book-Title"]
-        let bookAuthor = book.fields["Book-Author"]
-        let content = "Katanya sih, bukunya bagus. Tapi gatau yeah! Beli ajalah bukunya biar laku!!!"
-
-        content = (content.length > 40) ? content.substring(0, 40) + "..." : content
-        bookTitle = (bookTitle.length > 20) ? bookTitle.substring(0, 20) + "..." : bookTitle
+      
+      if (isLoggedIn){
         HtmlString += `
-        <div class="item">
-          <ul>
-            <li><img src="${imageURL}" alt="${bookTitle}" class="templatemo-item"></li>
-            <li><h4>${bookTitle}</h4><span>${bookAuthor}</span></li>
-            <li><h4>Last Edited</h4><span>24/08/2036</span></li>
-            <li><h4>Your Rating</h4><span>4.5</span></li>
-            <li><h4>Content</h4><span>${content}</span></li>
-            <li><div class="main-border-button"><a href="#">Edit Review</a></div></li>
-          </ul>
-        </div>
+          <div class="col-lg-12">
+            <div class="main-button">
+              <a href="#user-faq" id="send-a-question" class="open-modal-link" data-toggle="modal" data-target="#qnamodal">Send a Question</a>
+              <a href="#user-faq" id="see-all-question">See All Questions</a>
+            </div>
+          </div>
+        `
+      } else {
+        HtmlString += `
+          <div class="col-lg-12" style="text-align: center; margin-bottom: 25px;">
+            <div class="faq-item">
+              <h4>Login to Ask Question</h4>
+            </div>
+          </div>
+        `
+
+        HtmlString += `
+            <div class="col-lg-12">
+              <div class="main-button">
+                <a href="{% url 'authentication:login' %}">Login</a>
+              </div>
+            </div>
         `
       }
 
-      document.getElementById("user-reviews").innerHTML +=  HtmlString + `
-            <div class="col-lg-12">
-              <div class="main-button">
-                <a href="profile.html">View All My Reviews</a>
-              </div>
-            </div>
-      `
+      document.getElementById("user-faq").innerHTML =  HtmlString;
+      document.getElementById("see-all-question").addEventListener("click", (event) => {
+        event.preventDefault();
+        showAllFAQs();
+        doShowAllFAQs = true;
+      });
     }
-    
+
+    function handleSearch() {
+      let searchBy = document.getElementById('searchBy').value;
+      let searchKeyword = document.getElementById('searchText').value.trim();
+      let bookItems = document.querySelectorAll('.item');
+      let HtmlString = ""
+      
+      // Loop through book items and show/hide based on search criteria and keyword
+      document.querySelectorAll("#book-item").forEach(book => {
+        if (searchBy === "title") {
+          if (book.querySelector("h4").childNodes[0].textContent.toLowerCase().includes(searchKeyword.toLowerCase())) {
+            if (searchKeyword == "clar"){
+              console.log(book.querySelector("h4").innerHTML)
+            }
+            book.style.display = "block";
+          } else {
+            book.style.display = "none";
+          }
+        } else if (searchBy === "author") {
+          if (book.querySelector("h4 span").childNodes[0].textContent.toLowerCase().includes(searchKeyword.toLowerCase())) {
+            book.style.display = "block";
+          } else {
+            book.style.display = "none";
+          }
+        } else if (searchBy === "year") {
+          if (book.getAttribute("year") == searchKeyword) {
+            book.style.display = "block";
+          } else {
+            book.style.display = "none";
+          }
+        } else if (searchBy === "publisher") {
+          if (book.getAttribute("publisher").toLowerCase().includes(searchKeyword.toLowerCase())) {
+            book.style.display = "block";
+          } else {
+            book.style.display = "none";
+          }
+        }
+      })
+    }
+
+    function addQuestion(){
+      fetch("{% url 'landing_page:add_faq_question' %}", {
+          method: "POST",
+          body: new FormData(document.querySelector('#qna-form'))
+      }).then((doShowAllFAQs)? showAllFAQs: refreshFAQ)
+
+      document.getElementById("qna-form").reset()
+      document.getElementById("cancel-modal").click()
+    }
+
+  
     refreshMostPopular();
-    getUserReviews();
+    refreshFAQ();
+    document.getElementById('search').addEventListener('submit', function (event) {
+      event.preventDefault();
+      handleSearch();
+    });
+
+    let searchByDropdown = document.getElementById('searchBy');
+    let searchTextInput = document.getElementById('searchText');
+
+    searchByDropdown.addEventListener('change', handleSearch);
+    searchTextInput.addEventListener('input', handleSearch);
+    document.getElementById("submit-modal").onclick = addQuestion;
+
+    let doShowAllFAQs = false; 
+    document.getElementById("cancel-modal").onclick = () => document.getElementById("qna-form").reset();
+    document.getElementById("cancel-edit-modal").onclick = () => document.getElementById("qna-edit-form").reset();
+    
   </script>
 
 {% endblock content %}

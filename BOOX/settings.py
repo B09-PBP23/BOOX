@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'landing_page',
-    'add_review'
+    'profilepage',
+    'authentication',
+    'add_review',
+    'editreview'
 ]
 
 MIDDLEWARE = [
