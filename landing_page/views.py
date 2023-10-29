@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseBadRequest
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseBadRequest, HttpResponseRedirect
 from django.core import serializers
 from .models import *
+from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from django.urls import reverse
 
 # Create your views here.
 def get_books(request):
@@ -35,6 +37,7 @@ def get_faq_data_per_user(request):
     faq = FAQ.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize('json', faq))
 
+
 @csrf_exempt
 def add_faq_question(request):
     if request.method == 'POST':
@@ -50,6 +53,27 @@ def add_faq_question(request):
         else:
             return HttpResponseBadRequest('Invalid input. Please check your input again.')
 
+    return HttpResponseNotFound()
+
+@csrf_exempt
+def edit_question(request, pk):
+    faq = FAQ.objects.get(pk = pk)
+
+    form = FAQForm(request.POST or None, instance=faq)
+
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return HttpResponseRedirect(reverse('landing_page:show_landing_page', args=[pk]))
+
+    context = {'form': form}
+    return render(request, "landing_page.html", context)
+
+@csrf_exempt
+def delete_question(request, pk):
+    if request.method == "DELETE":
+        faq = FAQ.objects.get(pk = pk)
+        faq.delete()
+        return HttpResponseRedirect(reverse('landing_page:show_landing_page'))
     return HttpResponseNotFound()
 
 
