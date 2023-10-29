@@ -66,7 +66,7 @@
                       <li><a href="details.html">Details</a></li>
                       <li><a href="streams.html">Streams</a></li>
                       <li><a href="{% url 'authentication:logout' %}" id="login-logout">Logout</a></li>
-                      <li><a href="{% url 'profilepage:show_profile' %}">Profile <img src="{{profiles.0.profile_picture}}" alt=""></a></li>
+                      <li><a href="{% url 'profilepage:show_profile' %}">Profile</a></li>
                   </ul>   
                   <a class='menu-trigger'>
                       <span>Menu</span>
@@ -132,6 +132,10 @@
                       <label for="description" class="col-form-label">Description:</label>
                       <textarea class="form-control" id="edit_description" name="description" style="background-color: #2F3030; color: #fff;"></textarea>
                   </div>
+                  <div class="mb-3">
+                    <label for="description" class="col-form-label">Profile Picture:</label>
+                    <textarea class="form-control" id="edit_profile_picture" name="profile_picture" style="background-color: #2F3030; color: #fff;"></textarea>
+                </div>
               </form>
           </div>
           <div class="modal-footer" style="background-color: #282828;">
@@ -171,51 +175,44 @@
   <script src="assets/js/popup.js"></script>
   <script src="assets/js/custom.js"></script>
   
-  <script>
-    async function getprofiles() {
+  {% comment %} <script>
+    async function getProfiles() {
         return fetch("{% url 'profilepage:get_profile_json' %}").then((res) => res.json());
     }
 
-    async function refreshprofiles() {
-        const profiles = await getprofiles();
-        const profileContainer = document.getElementById("profile_container");
-        profileContainer.innerHTML = "";
-
-        profiles.forEach((profile) => {
-            const profileCard = document.createElement("div");
-            profileCard.classList.add("col-md-4", "mb-4");
-
-            profileCard.innerHTML = `
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="main-profile ">
-                  <div class="row">
-                    <div class="col-lg-4">
-                      <img src="{%static 'images/profile.jpg'%}" alt="" style="border-radius: 20px;">
-                    </div>
-                    <div class="col-lg-4 align-self-center">
-                      <div class="main-info header-text">
-                        <h4>{{profiles.0.name}}</h4>
-                        <p>{{profiles.0.description}}</p>
-                        <div class="main-border-button">
-                          <button type="button" class="main-border-button" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</button>
-                        </div>
+    async function refreshProfileInfo() {
+      const profileInfo = await getProfiles(); 
+  
+      const profileInfoDiv = document.getElementById("profile_info");
+  
+      // Create the HTML structure
+      const htmlString = `
+          <div class="row">
+              <div class="col-lg-4">
+                  <img src="${profileInfo.profile_picture}" alt="" style="border-radius: 20px;">
+              </div>
+              <div class="col-lg-4 align-self-center">
+                  <div class="main-info header-text">
+                      <h4>${profileInfo.name}</h4>
+                      <p>${profileInfo.description}</p>
+                      <div class="main-border-button">
+                          <a href="{% url 'profilepage:create_profile' %}">Edit Profile</a>
                       </div>
-                    </div>
-                    <div class="col-lg-4 align-self-center">
-                      <ul>
-                        <li>Username <span>{{ user_name }}</span></li>
-                        <li>Books Reviewed <span>0</span></li>
-                        <li>Joined Since <span>{{profiles.0.date_joined}}</span></li>
-                      </ul>
-                    </div>
                   </div>
-            </div>
-            `;
-
-            profileContainer.appendChild(profileCard);
-        });
-    }
+              </div>
+              <div class="col-lg-4 align-self-center">
+                  <ul>
+                      <li>Username <span>${profileInfo.user_name}</span></li>
+                      <li>Books Reviewed <span>0</span></li>
+                      <li>Joined Since <span>${profileInfo.date_joined}</span></li>
+                  </ul>
+              </div>
+          </div>
+      `;
+  
+      // Set the HTML content
+      profileInfoDiv.innerHTML = htmlString;
+  }  
 
     function editProfile() {
         fetch("{% url 'profilepage:edit_profile' %}", {
@@ -230,5 +227,5 @@
     document.getElementById("button_add").onclick = editProfile;
 
     refreshprofiles();
-</script>
+</script> {% endcomment %}
   {% endblock content %}

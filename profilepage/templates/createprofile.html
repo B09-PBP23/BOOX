@@ -70,20 +70,20 @@
 
                     <!-- ***** Create Profile Form Start ***** -->
                     <div class="create-profile-form">
-                        <h2>Create Profile</h2>
+                        <h2>Edit Profile</h2>
                         <form method="post" action="{% url 'profilepage:create_profile' %}">
                             {% csrf_token %}
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" id="name" name="name" class="form-control" required>
+                                {{form.name}}
                             </div>
                             <div class="form-group">
                                 <label for="description">Description</label>
-                                <input type="description" id="description" name="description" class="form-control" required>
+                                {{ form.description }}
                             </div>
                             <div class="form-group">
                                 <label for="profile_picture">Profile Picture</label>
-                                <input type="profile_picture" id="profile_picture" name="profile_picture" class="form-control" required>
+                                {{ form.profile_picture }}
                             </div>
                             <button type="submit" class="btn btn-primary">Save Changes</button>
                         </form>

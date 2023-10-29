@@ -38,6 +38,7 @@ def create_profile(request):
     context = {'form': form}
     return render(request, 'createprofile.html', context)
 
+
 def get_profile_json(request):
     profiles = Profile.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize('json', profiles))
@@ -51,6 +52,7 @@ def edit_profile_ajax(request):
     if request.method == 'POST':
         name = request.POST.get("name")
         description = request.POST.get("description")
+        profile_picture = request.POST.get()
         user = request.user
 
         try:
