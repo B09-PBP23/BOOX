@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'profilepage',
     'authentication',
     'readers_favorite'
+    'bookmarks'
 ]
 
 MIDDLEWARE = [

@@ -25,7 +25,7 @@ urlpatterns = [
     path('auth/', include('authentication.urls')),
     path('profile/', include('profilepage.urls')),
     path('readers-favorite/', include('readers_favorite.urls')),
-]
+    ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
