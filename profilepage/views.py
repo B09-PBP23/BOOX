@@ -11,21 +11,24 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
+from landing_page.models import Books
 
 @login_required(login_url='authentication:login')
 def show_profile(request):
     try:
         profile = Profile.objects.get(user=request.user)
+        books = Books.objects.all()
         profiles = Profile.objects.filter(user=request.user)
         context = {
             'user_name': request.user.username,
-            'profiles': profiles
+            'profiles': profiles,
         }
         return render(request, "profile.html", context)
     except Profile.DoesNotExist:
         return redirect('profilepage:create_profile')
 
 def create_profile(request):
+    books = Books.objects.all()
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=request.user.profile)
         if form.is_valid():
@@ -35,7 +38,7 @@ def create_profile(request):
         profile, created = Profile.objects.get_or_create(user=request.user)
         form = UserProfileForm(instance=profile)
 
-    context = {'form': form}
+    context = {'form': form,'books':books}
     return render(request, 'createprofile.html', context)
 
 
@@ -62,6 +65,7 @@ def edit_profile_ajax(request):
 
         profile.name = name
         profile.description = description
+        profile.profile_picture = profile_picture
         profile.save()
 
         return JsonResponse({'status': 'SUCCESS', 'message': 'Profile updated successfully'})

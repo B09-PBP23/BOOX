@@ -80,7 +80,7 @@
             <div class="col-lg-12">
               <div class="main-profile ">
                 <div class="row">
-                  <div class="col-lg-4">
+                  <div class="col-lg-2">
                     <img src="{{profiles.0.profile_picture}}" alt="" style="border-radius: 20px;">
                   </div>
                   <div class="col-lg-4 align-self-center">
@@ -93,16 +93,23 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-4 align-self-center">
+                  <div class="col-lg-12 align-self-center">
                     <ul>
                       <li>Username <span>{{ user_name }}</span></li>
                       <li>Books Reviewed <span>0</span></li>
+                      <li>Favorite Books <span>{{profiles.0.favorite_books}}</span></li>
+                      <li>Favorite Author <span>{{profiles.0.favorite_author}}</span></li>
                       <li>Joined Since <span>{{profiles.0.date_joined}}</span></li>
                     </ul>
                   </div>
                 </div>
           </div>
           <!-- ***** Banner End ***** -->
+          
+           <!-- ***** Review Library Start ***** -->
+           <div class="gaming-library" id="user-reviews">
+          </div>
+          <!-- ***** Review Library End ***** -->
 
           <!-- Modal for Edit Profile -->
 <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
@@ -116,15 +123,15 @@
               <form id="editProfileForm" onsubmit="return false;">
                   {% csrf_token %}
                   <div class="mb-3">
-                      <label for="name" class="col-form-label">Name:</label>
+                      <label for="{{ form.name.id_for_label }}" class="col-form-label">Name:</label>
                       <input type="text" class="form-control" id="edit_name" name="name" style="background-color: #2F3030; color: #fff;">
                   </div>
                   <div class="mb-3">
-                      <label for="description" class="col-form-label">Description:</label>
+                      <label for="{{ form.description.id_for_label }}" class="col-form-label">Description:</label>
                       <textarea class="form-control" id="edit_description" name="description" style="background-color: #2F3030; color: #fff;"></textarea>
                   </div>
                   <div class="mb-3">
-                    <label for="description" class="col-form-label">Profile Picture:</label>
+                    <label for="{{ form.profile_picture.id_for_label }}" class="col-form-label">Profile Picture:</label>
                     <textarea class="form-control" id="edit_profile_picture" name="profile_picture" style="background-color: #2F3030; color: #fff;"></textarea>
                 </div>
               </form>
@@ -165,6 +172,59 @@
   <script src="assets/js/tabs.js"></script>
   <script src="assets/js/popup.js"></script>
   <script src="assets/js/custom.js"></script>
+
+  <script>
+    async function loadBooks() {
+      return fetch("{% url 'landing_page:get_data_json' %}").then((response) => response.json());
+    }
+  async function getUserReviews() {
+    const Books = await loadBooks();
+    let HtmlString = `
+      <div class="col-lg-12">
+        <div class="heading-section">
+          <h4><em>Your Book</em> Reviews</h4>
+        </div>
+      </div>
+    `;
+
+    let i = 0;
+    for (let book of Books) {
+      if (i++ == 5){
+        break;
+      }
+
+      let imageURL = book.fields["image_url_l"]
+      let bookTitle = book.fields["title"]
+      let bookAuthor = book.fields["author"]
+      let content = "Katanya sih, bukunya bagus. Tapi gatau yeah! Beli ajalah bukunya biar laku!!!"
+
+      content = (content.length > 40) ? content.substring(0, 40) + "..." : content
+      bookTitle = (bookTitle.length > 20) ? bookTitle.substring(0, 20) + "..." : bookTitle
+      HtmlString += `
+      <div class="item">
+        <ul>
+          <li><img src="${imageURL}" alt="${bookTitle}" class="templatemo-item"></li>
+          <li><h4>${bookTitle}</h4><span>${bookAuthor}</span></li>
+          <li><h4>Last Edited</h4><span>24/08/2036</span></li>
+          <li><h4>Your Rating</h4><span>4.5</span></li>
+          <li><h4>Content</h4><span>${content}</span></li>
+          <li><div class="main-border-button"><a href="#">Edit Review</a></div></li>
+        </ul>
+      </div>
+      `
+    }
+
+    document.getElementById("user-reviews").innerHTML +=  HtmlString + `
+          <div class="col-lg-12">
+            <div class="main-button">
+              <a href="profile.html">View All Reviews</a>
+            </div>
+          </div>
+    `
+  }
+
+  getUserReviews();
+</script>
   
 
   
