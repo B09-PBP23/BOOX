@@ -20,7 +20,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('editreview/', include('editreview.urls')),
     path('admin/', admin.site.urls),
     path('', include('landing_page.urls')),
     path('auth/', include('authentication.urls')),

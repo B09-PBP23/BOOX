@@ -77,6 +77,7 @@
                       <li>Favorite Books <span>{{profiles.0.favorite_books}}</span></li>
                       <li>Favorite Author <span>{{profiles.0.favorite_author}}</span></li>
                       <li>Joined Since <span>{{profiles.0.date_joined}}</span></li>
+                      <li>Bookmarked Books<span><a href="{% url 'bookmarks:show_bookmarks' %}">Show Bookmarks</a></span></li>
                     </ul>
                   </div>
                 </div>
@@ -87,6 +88,7 @@
            <div class="gaming-library" id="user-reviews">
           </div>
           <!-- ***** Review Library End ***** -->
+          
 
           <!-- Modal for Edit Profile -->
           <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">

@@ -11,22 +11,11 @@
     <link rel="stylesheet" href="{% static 'css/owl.css' %}">
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-    <style>
-    .btn-primary {
-      background-color: transparent;
-      border: 1px solid #ec6090;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 5px;
-  }
 
-  .btn-primary:hover {
-      background-color: #ec6090;
-  }
-</style>
 {% endblock meta %}
 
 {% block content %}
+
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -145,21 +134,24 @@
             break;
           }
 
-          let bookURL = "#most-popular-content"
+          let bookURL = "{% url 'add_review:show_review' 0 %}".replace("0", book.pk)
           let year = book.fields["year"]
           let publisher = book.fields["publisher"]
           let imageURL = book.fields["image_url_l"]
           let bookTitle = book.fields["title"]
           let bookAuthor = book.fields["author"]
-          let avgRating = book.fields["total_ratings"] / book.fields["total_reviews"]
           let totalReviews = book.fields["total_reviews"]
-          totalReviews = (totalReviews > 1000) ? (totalReviews / 1000).toFixed(1) + "K" : 
-            (totalReviews > 1000000) ? (totalReviews / 1000000).toFixed(1) + "M" : totalReviews
-
-          if (isNaN(avgRating)) {
-              avgRating = 0
+          let avgRating;
+          if (totalReviews === 0) {
+            avgRating = 0
+          } else {
+            avgRating = book.fields["total_ratings"] / book.fields["total_reviews"]
           }
 
+          console.log(avgRating)
+          
+          totalReviews = (totalReviews > 1000) ? (totalReviews / 1000).toFixed(1) + "K" : 
+            (totalReviews > 1000000) ? (totalReviews / 1000000).toFixed(1) + "M" : totalReviews
           avgRating = avgRating.toFixed(1)
           bookTitle = (bookTitle.length > 25) ? bookTitle.substring(0, 25) + "..." : bookTitle
           bookAuthor = (bookAuthor.length > 20) ? bookAuthor.substring(0, 20) + "..." : bookAuthor
@@ -178,7 +170,7 @@
                   </ul>
                   <div class="d-flex justify-content-center">
                     <div class="main-border-button" id="bookmark-link" style="margin: 15px 0 0 0;">
-                      <a href=""><i id="bookmark-logo" class="fa fa-bookmark" style="color: red;"></i> 
+                      <a href="#"><i id="bookmark-logo" class="fa fa-bookmark" style="color: red;"></i> 
                         Add to Bookmark
                       </a>
                     </div>

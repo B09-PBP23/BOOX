@@ -25,11 +25,13 @@ urlpatterns = [
     # path('register/', register, name='register'), #sesuaikan dengan nama fungsi yang dibuat
     # path('login/', login_user, name='login'), #sesuaikan dengan nama fungsi yang dibuat
     # path('logout/', logout_user, name='logout'),
-    path('<int:id>/', edit_review, name='edit_review'),
+    path('<int:id>/', editreview, name='editreview'),
     # path('delete/<int:id>', delete_product, name='delete_product'), # sesuaikan dengan nama fungsi yang dibuat
     # path('get-product/', get_product_json, name='get_product_json'),
     # path('create-product-ajax/', add_product_ajax, name='add_product_ajax')
     path('get-review/<int:review_id>', get_review, name="get_review"),
     path('reviews/', display_reviews, name='display_reviews'),
     path("", get_review, name="get_review"),
+
+
 ]

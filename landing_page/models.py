@@ -13,16 +13,7 @@ class Books(models.Model):
     image_url_l = models.URLField(null=True, blank=True)
     total_ratings = models.FloatField(default=0)
     total_reviews = models.PositiveIntegerField(default=0)
-    total_upvotes = models.PositiveIntegerField(default=0)
-
     
-
-class BookReview(models.Model):
-    book = models.ForeignKey(Books, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    review = models.TextField(null=True, blank=True)
-    rating = models.PositiveIntegerField(default=0)
-    created_at = models.DateTimeField(auto_now_add=True)
 class FAQ(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.TextField(null=True, blank=True)
