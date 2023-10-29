@@ -1,7 +1,7 @@
 
 from django.urls import path
 
-from editreview.views import editreview, get_books, get_review,display_reviews
+from editreview.views import edit_review_ajax, editreview, get_books, get_review,display_reviews
 # from .views import show_main
 # from main.views import show_main, create_product
 # from main.views import show_main, create_product, show_xml 
@@ -33,5 +33,6 @@ urlpatterns = [
     path('reviews/', display_reviews, name='display_reviews'),
     path("", get_review, name="get_review"),
 
+    path('edit-review-ajax/', edit_review_ajax, name='edit_review_ajax'),
 
 ]

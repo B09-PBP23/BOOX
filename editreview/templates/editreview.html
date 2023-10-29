@@ -57,55 +57,7 @@
 {% endblock meta %}
 
 {% block content %}
-  <!-- ***** Preloader Start ***** -->
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
-
-  <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
-                        <img src="assets/images/logo.png" alt="">
-                    </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Search End ***** -->
-                    <div class="search-input">
-                      <form id="search" action="#">
-                        <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
-                        <i class="fa fa-search"></i>
-                      </form>
-                    </div>
-                    <!-- ***** Search End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="browse.html">Browse</a></li>
-                        <li><a href="details.html">Details</a></li>
-                        <li><a href="streams.html">Streams</a></li>
-                        <li><a href="profile.html" class="active">Profile <img src="assets/images/profile-header.jpg" alt=""></a></li>
-                    </ul>   
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
-            </div>
-        </div>
-    </div>
-  </header>
+ 
   <!-- ***** Header Area End ***** -->
   <div class="container">
     <div class="row">
@@ -117,7 +69,7 @@
             <div class="col-lg-12">
               <div class="feature-banner header-text">
                 <div  class="row">
-                  <h2 style="text-align: center;">Add Your Review here!</h2>
+                  <h2 style="text-align: center;">Edit Review</h2>
                   </div>
                 </div>
               </div>
@@ -132,30 +84,39 @@
           <div  style="margin:auto;display:flex;justify-content:space-between;width:75%; background-color: #27292a; padding: 60px 0px;border-radius: 23px;" >
 
             
-            <div style="padding-left: 8%;width:30% " class="image-content"> 
-              <h4>Atomic Habits</h4>
-              <h6 style="padding-bottom: 30px;">2020</h6>
-              <img style="height:225px; width:150px; padding-bottom: 30px;" src="https://tse4.mm.bing.net/th?id=OIP.aateDs4f7o4e6zsvGMMb6gHaLL&pid=Api&P=0&h=180">
-              <p style="width:74%;color:white;"> It basically explains four laws of developing good habits in life and breaking the bad ones.</p>
+            
+            <div class="container mt-5">
+              <div class="row justify-content-center">
+                <div class="col-md-8">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">{{ book.title }}</h4>
+                      <h6>{{ book.year }}</h6>
+                      <img src="{{ book.image_url_s }}" class="img-fluid mb-3" alt="{{ book.title }}">
+                      <p class="text-muted">{{ book.author }}</p>
+                      <p>{{ book.publisher }}</p>
+
+                      <!-- Begin AJAX form -->
+                      <form id="reviewForm">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                          <label for="{{ form.review.id_for_label }}" class="form-label">Review:</label>
+                          {{ form.review|add_class:"form-control" }}
+                        </div>
+                        <div class="mb-3">
+                          <label for="{{ form.rating.id_for_label }}" class="form-label">Rating (1-10):</label>
+                          {{ form.rating|add_class:"form-control" }}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Review</button>
+                      </form>
+                      <!-- End AJAX form -->
+
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="input" style="width:70%;padding-right: 8%;">
-              <p>I've read...</p>
-              <form method="post">
-                  {% csrf_token %}
-          
-                  <!-- Bagian Content Review -->
-                  <label for="{{ form.review.id_for_label }}">Review:</label>
-                  {{ form.review|add_class:"style=background-color:gray;border-radius:20px;width:100%;" }}
-          
-                  <!-- Bagian Rating -->
-                  <label for="{{ form.rating.id_for_label }}">Rating (1-10):</label>
-                  {{ form.rating|add_class:"style=width:50px;background-color:gray;border-radius:5px;margin-bottom:20px;" }}
-          
-                  <button type="submit" style="background-color:gray;color:white;border-radius:8px;padding:10px 100px;">Save Review</button>
-                  <div class="container" style="margin-top:50px; background-color: #27292a; padding: 40px; border-radius: 23px;"></div>
-              </form>
-            </div>
           
           
           </div>
@@ -166,30 +127,68 @@
           <!-- ***** Details Start ***** -->
           
   
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <p>Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights reserved. 
-          
-          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>  Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a></p>
-        </div>
-      </div>
-    </div>
-  </footer>
+
 
 
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  {% load static %}
 
-  <script src="assets/js/isotope.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/tabs.js"></script>
-  <script src="assets/js/popup.js"></script>
-  <script src="assets/js/custom.js"></script>
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  
+
+  <script src="{% static 'assets/js/isotope.min.js' %}"></script>
+  <script src="{% static 'assets/js/owl-carousel.js' %}"></script>
+  <script src="{% static 'assets/js/tabs.js' %}"></script>
+  <script src="{% static 'assets/js/popup.js' %}"></script>
+  <script src="{% static 'assets/js/custom.js' %}"></script>
 
 
 
   {% endblock content %}
+  {% block extra_js %}
+  <script>
+
+  
+  $('#reviewForm').submit(function(e) {
+    e.preventDefault();
+    var serializedData = $(this).serializeArray();
+    var data = {'id': ((window.location.pathname).split("/"))[2]};
+
+    // Convert form data to JSON object
+    $.each(serializedData, function(index, field) {
+      data[field.name] = field.value;
+    });
+    // console.log('Data being sent:', data); // Check the data being sent
+    // console.log(headers); // Check the headers being sent
+
+    $.ajax({
+      type: 'POST',
+      url: '{% url "editreview:edit_review_ajax" %}',
+      data: JSON.stringify(data),
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'json',
+      headers: { 'X-CSRFToken': data["csrfmiddlewaretoken"]},
+      success: function(response) {
+        // If the review was updated successfully, display the success message
+        if(response.status === 'success') {
+          alert("Review berhasil diedit"); // You might want to replace this with a more elegant message display
+          // Optionally, clear the form or perform other actions
+        } else {
+          // If the server responded with a success status, but the action was not successful
+          alert("Review gagal diedit 1: " + response.message);
+        }
+      },
+      error: function(response) {
+        // Handle error - display error message from server if available, or a generic error message
+        var errorMessage = "Review gagal diedit";
+        if(response.responseJSON && response.responseJSON.message) {
+          errorMessage += ": " + response.responseJSON.message;
+        }
+        alert(errorMessage);
+      }
+    });
+  });
+  </script>
+  {% endblock extra_js %}
