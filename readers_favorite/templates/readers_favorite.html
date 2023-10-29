@@ -299,7 +299,7 @@
         // Generate HTML structure for each comment
         const commentHtml = `
           <div class="item">
-            <p style="color: white;">${username} said: ${userComment}</p>
+            <p style="color: white;">${username} said: "${userComment}"</p>
           </div>
         `;
 
@@ -354,7 +354,7 @@
       fetch(`add_upvote_ajax/${pk}/`, {
         method: "POST",
         headers: headers,
-      }).then(refreshFavoriteBooks).then(refreshCommentSection)
+      }).then(refreshFavoriteBooks).then(refreshCommentSection).then(refreshTopCommenters)
 
       return false;
     }
@@ -363,7 +363,7 @@
       fetch("{% url 'readers_favorite:add_comment' %}", {
         method: "POST",
         body: new FormData(document.querySelector('#form'))
-      }).then(refreshFavoriteBooks).then(refreshCommentSection)
+      }).then(refreshFavoriteBooks).then(refreshCommentSection).then(refreshTopCommenters)
 
       document.getElementById("form").reset()
       return false
