@@ -1,0 +1,18 @@
+{% extends 'base.html' %}  {# Gantilah 'base.html' dengan base template yang Anda gunakan #}
+
+
+
+{% block content %}
+<h2>Book Reviews</h2>
+
+<ul>
+    {% for review in reviews %}
+    <li>
+        <strong>Book:</strong> {{ review.book.title }}<br>
+        <strong>Review:</strong> {{ review.review }}<br>
+        <strong>Rating:</strong> {{ review.rating }}
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

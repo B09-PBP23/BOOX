@@ -3,1400 +3,1400 @@
     "pk": 1,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 195153448,
-      "Book-Title": "Classical Mythology",
-      "Book-Author": "Mark P. O. Morford",
-      "Year-Of-Publication": 2002,
-      "Publisher": "Oxford University Press",
-      "Image-URL-S": "http://images.amazon.com/images/P/0195153448.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0195153448.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0195153448.01.LZZZZZZZ.jpg"
+      "isbn": 195153448,
+      "title": "Classical Mythology",
+      "author": "Mark P. O. Morford",
+      "year": 2002,
+      "publisher": "Oxford University Press",
+      "image_url_s": "http://images.amazon.com/images/P/0195153448.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0195153448.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0195153448.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 2,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 2005018,
-      "Book-Title": "Clara Callan",
-      "Book-Author": "Richard Bruce Wright",
-      "Year-Of-Publication": 2001,
-      "Publisher": "HarperFlamingo Canada",
-      "Image-URL-S": "http://images.amazon.com/images/P/0002005018.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0002005018.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0002005018.01.LZZZZZZZ.jpg"
+      "isbn": 2005018,
+      "title": "Clara Callan",
+      "author": "Richard Bruce Wright",
+      "year": 2001,
+      "publisher": "HarperFlamingo Canada",
+      "image_url_s": "http://images.amazon.com/images/P/0002005018.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0002005018.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0002005018.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 3,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 374157065,
-      "Book-Title": "Flu: The Story of the Great Influenza Pandemic of 1918 and the Search for the Virus That Caused It",
-      "Book-Author": "Gina Bari Kolata",
-      "Year-Of-Publication": 1999,
-      "Publisher": "Farrar Straus Giroux",
-      "Image-URL-S": "http://images.amazon.com/images/P/0374157065.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0374157065.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0374157065.01.LZZZZZZZ.jpg"
+      "isbn": 374157065,
+      "title": "Flu: The Story of the Great Influenza Pandemic of 1918 and the Search for the Virus That Caused It",
+      "author": "Gina Bari Kolata",
+      "year": 1999,
+      "publisher": "Farrar Straus Giroux",
+      "image_url_s": "http://images.amazon.com/images/P/0374157065.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0374157065.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0374157065.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 4,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 393045218,
-      "Book-Title": "The Mummies of Urumchi",
-      "Book-Author": "E. J. W. Barber",
-      "Year-Of-Publication": 1999,
-      "Publisher": "W. W. Norton &amp; Company",
-      "Image-URL-S": "http://images.amazon.com/images/P/0393045218.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0393045218.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0393045218.01.LZZZZZZZ.jpg"
+      "isbn": 393045218,
+      "title": "The Mummies of Urumchi",
+      "author": "E. J. W. Barber",
+      "year": 1999,
+      "publisher": "W. W. Norton &amp; Company",
+      "image_url_s": "http://images.amazon.com/images/P/0393045218.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0393045218.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0393045218.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 5,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 425176428,
-      "Book-Title": "What If?: The World's Foremost Military Historians Imagine What Might Have Been",
-      "Book-Author": "Robert Cowley",
-      "Year-Of-Publication": 2000,
-      "Publisher": "Berkley Publishing Group",
-      "Image-URL-S": "http://images.amazon.com/images/P/0425176428.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0425176428.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0425176428.01.LZZZZZZZ.jpg"
+      "isbn": 425176428,
+      "title": "What If?: The World's Foremost Military Historians Imagine What Might Have Been",
+      "author": "Robert Cowley",
+      "year": 2000,
+      "publisher": "Berkley Publishing Group",
+      "image_url_s": "http://images.amazon.com/images/P/0425176428.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0425176428.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0425176428.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 6,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 671870432,
-      "Book-Title": "PLEADING GUILTY",
-      "Book-Author": "Scott Turow",
-      "Year-Of-Publication": 1993,
-      "Publisher": "Audioworks",
-      "Image-URL-S": "http://images.amazon.com/images/P/0671870432.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0671870432.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0671870432.01.LZZZZZZZ.jpg"
+      "isbn": 671870432,
+      "title": "PLEADING GUILTY",
+      "author": "Scott Turow",
+      "year": 1993,
+      "publisher": "Audioworks",
+      "image_url_s": "http://images.amazon.com/images/P/0671870432.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0671870432.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0671870432.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 7,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": "074322678X",
-      "Book-Title": "Where You'll Find Me: And Other Stories",
-      "Book-Author": "Ann Beattie",
-      "Year-Of-Publication": 2002,
-      "Publisher": "Scribner",
-      "Image-URL-S": "http://images.amazon.com/images/P/074322678X.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/074322678X.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/074322678X.01.LZZZZZZZ.jpg"
+      "isbn": "074322678X",
+      "title": "Where You'll Find Me: And Other Stories",
+      "author": "Ann Beattie",
+      "year": 2002,
+      "publisher": "Scribner",
+      "image_url_s": "http://images.amazon.com/images/P/074322678X.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/074322678X.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/074322678X.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 8,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 771074670,
-      "Book-Title": "Nights Below Station Street",
-      "Book-Author": "David Adams Richards",
-      "Year-Of-Publication": 1988,
-      "Publisher": "Emblem Editions",
-      "Image-URL-S": "http://images.amazon.com/images/P/0771074670.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0771074670.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0771074670.01.LZZZZZZZ.jpg"
+      "isbn": 771074670,
+      "title": "Nights Below Station Street",
+      "author": "David Adams Richards",
+      "year": 1988,
+      "publisher": "Emblem Editions",
+      "image_url_s": "http://images.amazon.com/images/P/0771074670.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0771074670.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0771074670.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 9,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": "080652121X",
-      "Book-Title": "Hitler's Secret Bankers: The Myth of Swiss Neutrality During the Holocaust",
-      "Book-Author": "Adam Lebor",
-      "Year-Of-Publication": 2000,
-      "Publisher": "Citadel Press",
-      "Image-URL-S": "http://images.amazon.com/images/P/080652121X.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/080652121X.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/080652121X.01.LZZZZZZZ.jpg"
+      "isbn": "080652121X",
+      "title": "Hitler's Secret Bankers: The Myth of Swiss Neutrality During the Holocaust",
+      "author": "Adam Lebor",
+      "year": 2000,
+      "publisher": "Citadel Press",
+      "image_url_s": "http://images.amazon.com/images/P/080652121X.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/080652121X.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/080652121X.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 10,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 887841740,
-      "Book-Title": "The Middle Stories",
-      "Book-Author": "Sheila Heti",
-      "Year-Of-Publication": 2004,
-      "Publisher": "House of Anansi Press",
-      "Image-URL-S": "http://images.amazon.com/images/P/0887841740.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0887841740.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0887841740.01.LZZZZZZZ.jpg"
+      "isbn": 887841740,
+      "title": "The Middle Stories",
+      "author": "Sheila Heti",
+      "year": 2004,
+      "publisher": "House of Anansi Press",
+      "image_url_s": "http://images.amazon.com/images/P/0887841740.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0887841740.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0887841740.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 11,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 1552041778,
-      "Book-Title": "Jane Doe",
-      "Book-Author": "R. J. Kaiser",
-      "Year-Of-Publication": 1999,
-      "Publisher": "Mira Books",
-      "Image-URL-S": "http://images.amazon.com/images/P/1552041778.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/1552041778.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/1552041778.01.LZZZZZZZ.jpg"
+      "isbn": 1552041778,
+      "title": "Jane Doe",
+      "author": "R. J. Kaiser",
+      "year": 1999,
+      "publisher": "Mira Books",
+      "image_url_s": "http://images.amazon.com/images/P/1552041778.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/1552041778.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/1552041778.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 12,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 1558746218,
-      "Book-Title": "A Second Chicken Soup for the Woman's Soul (Chicken Soup for the Soul Series)",
-      "Book-Author": "Jack Canfield",
-      "Year-Of-Publication": 1998,
-      "Publisher": "Health Communications",
-      "Image-URL-S": "http://images.amazon.com/images/P/1558746218.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/1558746218.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/1558746218.01.LZZZZZZZ.jpg"
+      "isbn": 1558746218,
+      "title": "A Second Chicken Soup for the Woman's Soul (Chicken Soup for the Soul Series)",
+      "author": "Jack Canfield",
+      "year": 1998,
+      "publisher": "Health Communications",
+      "image_url_s": "http://images.amazon.com/images/P/1558746218.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/1558746218.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/1558746218.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 13,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 1575663937,
-      "Book-Title": "More Cunning Than Man: A Social History of Rats and Man",
-      "Book-Author": "Robert Hendrickson",
-      "Year-Of-Publication": 1999,
-      "Publisher": "Kensington Publishing Corp.",
-      "Image-URL-S": "http://images.amazon.com/images/P/1575663937.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/1575663937.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/1575663937.01.LZZZZZZZ.jpg"
+      "isbn": 1575663937,
+      "title": "More Cunning Than Man: A Social History of Rats and Man",
+      "author": "Robert Hendrickson",
+      "year": 1999,
+      "publisher": "Kensington Publishing Corp.",
+      "image_url_s": "http://images.amazon.com/images/P/1575663937.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/1575663937.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/1575663937.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 14,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 440234743,
-      "Book-Title": "The Testament",
-      "Book-Author": "John Grisham",
-      "Year-Of-Publication": 1999,
-      "Publisher": "Dell",
-      "Image-URL-S": "http://images.amazon.com/images/P/0440234743.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0440234743.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0440234743.01.LZZZZZZZ.jpg"
+      "isbn": 440234743,
+      "title": "The Testament",
+      "author": "John Grisham",
+      "year": 1999,
+      "publisher": "Dell",
+      "image_url_s": "http://images.amazon.com/images/P/0440234743.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0440234743.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0440234743.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 15,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 452264464,
-      "Book-Title": "Beloved (Plume Contemporary Fiction)",
-      "Book-Author": "Toni Morrison",
-      "Year-Of-Publication": 1994,
-      "Publisher": "Plume",
-      "Image-URL-S": "http://images.amazon.com/images/P/0452264464.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0452264464.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0452264464.01.LZZZZZZZ.jpg"
+      "isbn": 452264464,
+      "title": "Beloved (Plume Contemporary Fiction)",
+      "author": "Toni Morrison",
+      "year": 1994,
+      "publisher": "Plume",
+      "image_url_s": "http://images.amazon.com/images/P/0452264464.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0452264464.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0452264464.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 16,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 609804618,
-      "Book-Title": "Our Dumb Century: The Onion Presents 100 Years of Headlines from America's Finest News Source",
-      "Book-Author": "The Onion",
-      "Year-Of-Publication": 1999,
-      "Publisher": "Three Rivers Press",
-      "Image-URL-S": "http://images.amazon.com/images/P/0609804618.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0609804618.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0609804618.01.LZZZZZZZ.jpg"
+      "isbn": 609804618,
+      "title": "Our Dumb Century: The Onion Presents 100 Years of Headlines from America's Finest News Source",
+      "author": "The Onion",
+      "year": 1999,
+      "publisher": "Three Rivers Press",
+      "image_url_s": "http://images.amazon.com/images/P/0609804618.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0609804618.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0609804618.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 17,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 1841721522,
-      "Book-Title": "New Vegetarian: Bold and Beautiful Recipes for Every Occasion",
-      "Book-Author": "Celia Brooks Brown",
-      "Year-Of-Publication": 2001,
-      "Publisher": "Ryland Peters &amp; Small Ltd",
-      "Image-URL-S": "http://images.amazon.com/images/P/1841721522.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/1841721522.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/1841721522.01.LZZZZZZZ.jpg"
+      "isbn": 1841721522,
+      "title": "New Vegetarian: Bold and Beautiful Recipes for Every Occasion",
+      "author": "Celia Brooks Brown",
+      "year": 2001,
+      "publisher": "Ryland Peters &amp; Small Ltd",
+      "image_url_s": "http://images.amazon.com/images/P/1841721522.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/1841721522.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/1841721522.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 18,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 1879384493,
-      "Book-Title": "If I'd Known Then What I Know Now: Why Not Learn from the Mistakes of Others? : You Can't Afford to Make Them All Yourself",
-      "Book-Author": "J. R. Parrish",
-      "Year-Of-Publication": 2003,
-      "Publisher": "Cypress House",
-      "Image-URL-S": "http://images.amazon.com/images/P/1879384493.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/1879384493.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/1879384493.01.LZZZZZZZ.jpg"
+      "isbn": 1879384493,
+      "title": "If I'd Known Then What I Know Now: Why Not Learn from the Mistakes of Others? : You Can't Afford to Make Them All Yourself",
+      "author": "J. R. Parrish",
+      "year": 2003,
+      "publisher": "Cypress House",
+      "image_url_s": "http://images.amazon.com/images/P/1879384493.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/1879384493.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/1879384493.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 19,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 61076031,
-      "Book-Title": "Mary-Kate &amp; Ashley Switching Goals (Mary-Kate and Ashley Starring in)",
-      "Book-Author": "Mary-Kate &amp; Ashley Olsen",
-      "Year-Of-Publication": 2000,
-      "Publisher": "HarperEntertainment",
-      "Image-URL-S": "http://images.amazon.com/images/P/0061076031.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0061076031.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0061076031.01.LZZZZZZZ.jpg"
+      "isbn": 61076031,
+      "title": "Mary-Kate &amp; Ashley Switching Goals (Mary-Kate and Ashley Starring in)",
+      "author": "Mary-Kate &amp; Ashley Olsen",
+      "year": 2000,
+      "publisher": "HarperEntertainment",
+      "image_url_s": "http://images.amazon.com/images/P/0061076031.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0061076031.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0061076031.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 20,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 439095026,
-      "Book-Title": "Tell Me This Isn't Happening",
-      "Book-Author": "Robynn Clairday",
-      "Year-Of-Publication": 1999,
-      "Publisher": "Scholastic",
-      "Image-URL-S": "http://images.amazon.com/images/P/0439095026.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0439095026.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0439095026.01.LZZZZZZZ.jpg"
+      "isbn": 439095026,
+      "title": "Tell Me This Isn't Happening",
+      "author": "Robynn Clairday",
+      "year": 1999,
+      "publisher": "Scholastic",
+      "image_url_s": "http://images.amazon.com/images/P/0439095026.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0439095026.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0439095026.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 21,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 689821166,
-      "Book-Title": "Flood : Mississippi 1927",
-      "Book-Author": "Kathleen Duey",
-      "Year-Of-Publication": 1998,
-      "Publisher": "Aladdin",
-      "Image-URL-S": "http://images.amazon.com/images/P/0689821166.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0689821166.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0689821166.01.LZZZZZZZ.jpg"
+      "isbn": 689821166,
+      "title": "Flood : Mississippi 1927",
+      "author": "Kathleen Duey",
+      "year": 1998,
+      "publisher": "Aladdin",
+      "image_url_s": "http://images.amazon.com/images/P/0689821166.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0689821166.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0689821166.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 22,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 971880107,
-      "Book-Title": "Wild Animus",
-      "Book-Author": "Rich Shapero",
-      "Year-Of-Publication": 2004,
-      "Publisher": "Too Far",
-      "Image-URL-S": "http://images.amazon.com/images/P/0971880107.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0971880107.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0971880107.01.LZZZZZZZ.jpg"
+      "isbn": 971880107,
+      "title": "Wild Animus",
+      "author": "Rich Shapero",
+      "year": 2004,
+      "publisher": "Too Far",
+      "image_url_s": "http://images.amazon.com/images/P/0971880107.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0971880107.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0971880107.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 23,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 345402871,
-      "Book-Title": "Airframe",
-      "Book-Author": "Michael Crichton",
-      "Year-Of-Publication": 1997,
-      "Publisher": "Ballantine Books",
-      "Image-URL-S": "http://images.amazon.com/images/P/0345402871.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0345402871.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0345402871.01.LZZZZZZZ.jpg"
+      "isbn": 345402871,
+      "title": "Airframe",
+      "author": "Michael Crichton",
+      "year": 1997,
+      "publisher": "Ballantine Books",
+      "image_url_s": "http://images.amazon.com/images/P/0345402871.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0345402871.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0345402871.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 24,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 345417623,
-      "Book-Title": "Timeline",
-      "Book-Author": "MICHAEL CRICHTON",
-      "Year-Of-Publication": 2000,
-      "Publisher": "Ballantine Books",
-      "Image-URL-S": "http://images.amazon.com/images/P/0345417623.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0345417623.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0345417623.01.LZZZZZZZ.jpg"
+      "isbn": 345417623,
+      "title": "Timeline",
+      "author": "MICHAEL CRICHTON",
+      "year": 2000,
+      "publisher": "Ballantine Books",
+      "image_url_s": "http://images.amazon.com/images/P/0345417623.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0345417623.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0345417623.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 25,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 684823802,
-      "Book-Title": "OUT OF THE SILENT PLANET",
-      "Book-Author": "C.S. Lewis",
-      "Year-Of-Publication": 1996,
-      "Publisher": "Scribner",
-      "Image-URL-S": "http://images.amazon.com/images/P/0684823802.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0684823802.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0684823802.01.LZZZZZZZ.jpg"
+      "isbn": 684823802,
+      "title": "OUT OF THE SILENT PLANET",
+      "author": "C.S. Lewis",
+      "year": 1996,
+      "publisher": "Scribner",
+      "image_url_s": "http://images.amazon.com/images/P/0684823802.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0684823802.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0684823802.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 26,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 375759778,
-      "Book-Title": "Prague : A Novel",
-      "Book-Author": "ARTHUR PHILLIPS",
-      "Year-Of-Publication": 2003,
-      "Publisher": "Random House Trade Paperbacks",
-      "Image-URL-S": "http://images.amazon.com/images/P/0375759778.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0375759778.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0375759778.01.LZZZZZZZ.jpg"
+      "isbn": 375759778,
+      "title": "Prague : A Novel",
+      "author": "ARTHUR PHILLIPS",
+      "year": 2003,
+      "publisher": "Random House Trade Paperbacks",
+      "image_url_s": "http://images.amazon.com/images/P/0375759778.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0375759778.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0375759778.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 27,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 425163091,
-      "Book-Title": "Chocolate Jesus",
-      "Book-Author": "Stephan Jaramillo",
-      "Year-Of-Publication": 1998,
-      "Publisher": "Berkley Publishing Group",
-      "Image-URL-S": "http://images.amazon.com/images/P/0425163091.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0425163091.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0425163091.01.LZZZZZZZ.jpg"
+      "isbn": 425163091,
+      "title": "Chocolate Jesus",
+      "author": "Stephan Jaramillo",
+      "year": 1998,
+      "publisher": "Berkley Publishing Group",
+      "image_url_s": "http://images.amazon.com/images/P/0425163091.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0425163091.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0425163091.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 28,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 3404921038,
-      "Book-Title": "Wie Barney es sieht.",
-      "Book-Author": "Mordecai Richler",
-      "Year-Of-Publication": 2002,
-      "Publisher": "LÃ?Â¼bbe",
-      "Image-URL-S": "http://images.amazon.com/images/P/3404921038.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/3404921038.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/3404921038.01.LZZZZZZZ.jpg"
+      "isbn": 3404921038,
+      "title": "Wie Barney es sieht.",
+      "author": "Mordecai Richler",
+      "year": 2002,
+      "publisher": "LÃ?Â¼bbe",
+      "image_url_s": "http://images.amazon.com/images/P/3404921038.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/3404921038.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/3404921038.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 29,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 3442410665,
-      "Book-Title": "Sturmzeit. Roman.",
-      "Book-Author": "Charlotte Link",
-      "Year-Of-Publication": 1991,
-      "Publisher": "Goldmann",
-      "Image-URL-S": "http://images.amazon.com/images/P/3442410665.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/3442410665.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/3442410665.01.LZZZZZZZ.jpg"
+      "isbn": 3442410665,
+      "title": "Sturmzeit. Roman.",
+      "author": "Charlotte Link",
+      "year": 1991,
+      "publisher": "Goldmann",
+      "image_url_s": "http://images.amazon.com/images/P/3442410665.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/3442410665.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/3442410665.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 30,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 3442446937,
-      "Book-Title": "Tage der Unschuld.",
-      "Book-Author": "Richard North Patterson",
-      "Year-Of-Publication": 2000,
-      "Publisher": "Goldmann",
-      "Image-URL-S": "http://images.amazon.com/images/P/3442446937.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/3442446937.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/3442446937.01.LZZZZZZZ.jpg"
+      "isbn": 3442446937,
+      "title": "Tage der Unschuld.",
+      "author": "Richard North Patterson",
+      "year": 2000,
+      "publisher": "Goldmann",
+      "image_url_s": "http://images.amazon.com/images/P/3442446937.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/3442446937.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/3442446937.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 31,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 375406328,
-      "Book-Title": "Lying Awake",
-      "Book-Author": "Mark Salzman",
-      "Year-Of-Publication": 2000,
-      "Publisher": "Alfred A. Knopf",
-      "Image-URL-S": "http://images.amazon.com/images/P/0375406328.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0375406328.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0375406328.01.LZZZZZZZ.jpg"
+      "isbn": 375406328,
+      "title": "Lying Awake",
+      "author": "Mark Salzman",
+      "year": 2000,
+      "publisher": "Alfred A. Knopf",
+      "image_url_s": "http://images.amazon.com/images/P/0375406328.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0375406328.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0375406328.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 32,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 446310786,
-      "Book-Title": "To Kill a Mockingbird",
-      "Book-Author": "Harper Lee",
-      "Year-Of-Publication": 1988,
-      "Publisher": "Little Brown &amp; Company",
-      "Image-URL-S": "http://images.amazon.com/images/P/0446310786.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0446310786.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0446310786.01.LZZZZZZZ.jpg"
+      "isbn": 446310786,
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "year": 1988,
+      "publisher": "Little Brown &amp; Company",
+      "image_url_s": "http://images.amazon.com/images/P/0446310786.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0446310786.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0446310786.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 33,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 449005615,
-      "Book-Title": "Seabiscuit: An American Legend",
-      "Book-Author": "LAURA HILLENBRAND",
-      "Year-Of-Publication": 2002,
-      "Publisher": "Ballantine Books",
-      "Image-URL-S": "http://images.amazon.com/images/P/0449005615.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0449005615.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0449005615.01.LZZZZZZZ.jpg"
+      "isbn": 449005615,
+      "title": "Seabiscuit: An American Legend",
+      "author": "LAURA HILLENBRAND",
+      "year": 2002,
+      "publisher": "Ballantine Books",
+      "image_url_s": "http://images.amazon.com/images/P/0449005615.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0449005615.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0449005615.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 34,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": "038078243X",
-      "Book-Title": "Miss Zukas and the Raven's Dance",
-      "Book-Author": "Jo Dereske",
-      "Year-Of-Publication": 1996,
-      "Publisher": "Avon",
-      "Image-URL-S": "http://images.amazon.com/images/P/038078243X.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/038078243X.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/038078243X.01.LZZZZZZZ.jpg"
+      "isbn": "038078243X",
+      "title": "Miss Zukas and the Raven's Dance",
+      "author": "Jo Dereske",
+      "year": 1996,
+      "publisher": "Avon",
+      "image_url_s": "http://images.amazon.com/images/P/038078243X.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/038078243X.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/038078243X.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 35,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": "067176537X",
-      "Book-Title": "The Therapeutic Touch: How to Use Your Hands to Help or to Heal",
-      "Book-Author": "Dolores Krieger",
-      "Year-Of-Publication": 1979,
-      "Publisher": "Fireside",
-      "Image-URL-S": "http://images.amazon.com/images/P/067176537X.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/067176537X.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/067176537X.01.LZZZZZZZ.jpg"
+      "isbn": "067176537X",
+      "title": "The Therapeutic Touch: How to Use Your Hands to Help or to Heal",
+      "author": "Dolores Krieger",
+      "year": 1979,
+      "publisher": "Fireside",
+      "image_url_s": "http://images.amazon.com/images/P/067176537X.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/067176537X.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/067176537X.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 36,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 61099686,
-      "Book-Title": "Downtown",
-      "Book-Author": "Anne Rivers Siddons",
-      "Year-Of-Publication": 1995,
-      "Publisher": "HarperTorch",
-      "Image-URL-S": "http://images.amazon.com/images/P/0061099686.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0061099686.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0061099686.01.LZZZZZZZ.jpg"
+      "isbn": 61099686,
+      "title": "Downtown",
+      "author": "Anne Rivers Siddons",
+      "year": 1995,
+      "publisher": "HarperTorch",
+      "image_url_s": "http://images.amazon.com/images/P/0061099686.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0061099686.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0061099686.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 37,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 553582909,
-      "Book-Title": "Icebound",
-      "Book-Author": "Dean R. Koontz",
-      "Year-Of-Publication": 2000,
-      "Publisher": "Bantam Books",
-      "Image-URL-S": "http://images.amazon.com/images/P/0553582909.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0553582909.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0553582909.01.LZZZZZZZ.jpg\\"
+      "isbn": 553582909,
+      "title": "Icebound",
+      "author": "Dean R. Koontz",
+      "year": 2000,
+      "publisher": "Bantam Books",
+      "image_url_s": "http://images.amazon.com/images/P/0553582909.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0553582909.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0553582909.01.LZZZZZZZ.jpg\\"
     }
   },
   {
     "pk": 38,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 671888587,
-      "Book-Title": "I'll Be Seeing You",
-      "Book-Author": "Mary Higgins Clark",
-      "Year-Of-Publication": 1994,
-      "Publisher": "Pocket",
-      "Image-URL-S": "http://images.amazon.com/images/P/0671888587.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0671888587.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0671888587.01.LZZZZZZZ.jpg"
+      "isbn": 671888587,
+      "title": "I'll Be Seeing You",
+      "author": "Mary Higgins Clark",
+      "year": 1994,
+      "publisher": "Pocket",
+      "image_url_s": "http://images.amazon.com/images/P/0671888587.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0671888587.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0671888587.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 39,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 553582747,
-      "Book-Title": "From the Corner of His Eye",
-      "Book-Author": "Dean Koontz",
-      "Year-Of-Publication": 2001,
-      "Publisher": "Bantam Books",
-      "Image-URL-S": "http://images.amazon.com/images/P/0553582747.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0553582747.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0553582747.01.LZZZZZZZ.jpg"
+      "isbn": 553582747,
+      "title": "From the Corner of His Eye",
+      "author": "Dean Koontz",
+      "year": 2001,
+      "publisher": "Bantam Books",
+      "image_url_s": "http://images.amazon.com/images/P/0553582747.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0553582747.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0553582747.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 40,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 425182908,
-      "Book-Title": "Isle of Dogs",
-      "Book-Author": "Patricia Cornwell",
-      "Year-Of-Publication": 2002,
-      "Publisher": "Berkley Publishing Group",
-      "Image-URL-S": "http://images.amazon.com/images/P/0425182908.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0425182908.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0425182908.01.LZZZZZZZ.jpg"
+      "isbn": 425182908,
+      "title": "Isle of Dogs",
+      "author": "Patricia Cornwell",
+      "year": 2002,
+      "publisher": "Berkley Publishing Group",
+      "image_url_s": "http://images.amazon.com/images/P/0425182908.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0425182908.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0425182908.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 41,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": "042518630X",
-      "Book-Title": "Purity in Death",
-      "Book-Author": "J.D. Robb",
-      "Year-Of-Publication": 2002,
-      "Publisher": "Berkley Publishing Group",
-      "Image-URL-S": "http://images.amazon.com/images/P/042518630X.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/042518630X.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/042518630X.01.LZZZZZZZ.jpg"
+      "isbn": "042518630X",
+      "title": "Purity in Death",
+      "author": "J.D. Robb",
+      "year": 2002,
+      "publisher": "Berkley Publishing Group",
+      "image_url_s": "http://images.amazon.com/images/P/042518630X.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/042518630X.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/042518630X.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 42,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 440223571,
-      "Book-Title": "This Year It Will Be Different: And Other Stories",
-      "Book-Author": "Maeve Binchy",
-      "Year-Of-Publication": 1997,
-      "Publisher": "Dell",
-      "Image-URL-S": "http://images.amazon.com/images/P/0440223571.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0440223571.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0440223571.01.LZZZZZZZ.jpg"
+      "isbn": 440223571,
+      "title": "This Year It Will Be Different: And Other Stories",
+      "author": "Maeve Binchy",
+      "year": 1997,
+      "publisher": "Dell",
+      "image_url_s": "http://images.amazon.com/images/P/0440223571.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0440223571.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0440223571.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 43,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 812523873,
-      "Book-Title": "Proxies",
-      "Book-Author": "Laura J. Mixon",
-      "Year-Of-Publication": 1999,
-      "Publisher": "Tor Books",
-      "Image-URL-S": "http://images.amazon.com/images/P/0812523873.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0812523873.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0812523873.01.LZZZZZZZ.jpg"
+      "isbn": 812523873,
+      "title": "Proxies",
+      "author": "Laura J. Mixon",
+      "year": 1999,
+      "publisher": "Tor Books",
+      "image_url_s": "http://images.amazon.com/images/P/0812523873.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0812523873.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0812523873.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 44,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 842342702,
-      "Book-Title": "Left Behind: A Novel of the Earth's Last Days (Left Behind #1)",
-      "Book-Author": "Tim Lahaye",
-      "Year-Of-Publication": 2000,
-      "Publisher": "Tyndale House Publishers",
-      "Image-URL-S": "http://images.amazon.com/images/P/0842342702.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0842342702.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0842342702.01.LZZZZZZZ.jpg"
+      "isbn": 842342702,
+      "title": "Left Behind: A Novel of the Earth's Last Days (Left Behind #1)",
+      "author": "Tim Lahaye",
+      "year": 2000,
+      "publisher": "Tyndale House Publishers",
+      "image_url_s": "http://images.amazon.com/images/P/0842342702.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0842342702.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0842342702.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 45,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 440225701,
-      "Book-Title": "The Street Lawyer",
-      "Book-Author": "JOHN GRISHAM",
-      "Year-Of-Publication": 1999,
-      "Publisher": "Dell",
-      "Image-URL-S": "http://images.amazon.com/images/P/0440225701.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0440225701.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0440225701.01.LZZZZZZZ.jpg"
+      "isbn": 440225701,
+      "title": "The Street Lawyer",
+      "author": "JOHN GRISHAM",
+      "year": 1999,
+      "publisher": "Dell",
+      "image_url_s": "http://images.amazon.com/images/P/0440225701.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0440225701.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0440225701.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 46,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 380715899,
-      "Book-Title": "A Soldier of the Great War",
-      "Book-Author": "Mark Helprin",
-      "Year-Of-Publication": 1992,
-      "Publisher": "Avon Books",
-      "Image-URL-S": "http://images.amazon.com/images/P/0380715899.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0380715899.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0380715899.01.LZZZZZZZ.jpg"
+      "isbn": 380715899,
+      "title": "A Soldier of the Great War",
+      "author": "Mark Helprin",
+      "year": 1992,
+      "publisher": "Avon Books",
+      "image_url_s": "http://images.amazon.com/images/P/0380715899.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0380715899.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0380715899.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 47,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 553280333,
-      "Book-Title": "Getting Well Again",
-      "Book-Author": "O. Carol Simonton Md",
-      "Year-Of-Publication": 1992,
-      "Publisher": "Bantam",
-      "Image-URL-S": "http://images.amazon.com/images/P/0553280333.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0553280333.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0553280333.01.LZZZZZZZ.jpg"
+      "isbn": 553280333,
+      "title": "Getting Well Again",
+      "author": "O. Carol Simonton Md",
+      "year": 1992,
+      "publisher": "Bantam",
+      "image_url_s": "http://images.amazon.com/images/P/0553280333.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0553280333.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0553280333.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 48,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 964778319,
-      "Book-Title": "An Atmosphere of Eternity: Stories of India",
-      "Book-Author": "David Iglehart",
-      "Year-Of-Publication": 2002,
-      "Publisher": "Sunflower Press",
-      "Image-URL-S": "http://images.amazon.com/images/P/0964778319.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0964778319.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0964778319.01.LZZZZZZZ.jpg"
+      "isbn": 964778319,
+      "title": "An Atmosphere of Eternity: Stories of India",
+      "author": "David Iglehart",
+      "year": 2002,
+      "publisher": "Sunflower Press",
+      "image_url_s": "http://images.amazon.com/images/P/0964778319.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0964778319.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0964778319.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 49,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 679810307,
-      "Book-Title": "Shabanu: Daughter of the Wind (Border Trilogy)",
-      "Book-Author": "SUZANNE FISHER STAPLES",
-      "Year-Of-Publication": 1991,
-      "Publisher": "Laurel Leaf",
-      "Image-URL-S": "http://images.amazon.com/images/P/0679810307.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0679810307.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0679810307.01.LZZZZZZZ.jpg"
+      "isbn": 679810307,
+      "title": "Shabanu: Daughter of the Wind (Border Trilogy)",
+      "author": "SUZANNE FISHER STAPLES",
+      "year": 1991,
+      "publisher": "Laurel Leaf",
+      "image_url_s": "http://images.amazon.com/images/P/0679810307.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0679810307.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0679810307.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 50,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 679865691,
-      "Book-Title": "Haveli (Laurel Leaf Books)",
-      "Book-Author": "SUZANNE FISHER STAPLES",
-      "Year-Of-Publication": 1995,
-      "Publisher": "Laurel Leaf",
-      "Image-URL-S": "http://images.amazon.com/images/P/0679865691.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0679865691.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0679865691.01.LZZZZZZZ.jpg"
+      "isbn": 679865691,
+      "title": "Haveli (Laurel Leaf Books)",
+      "author": "SUZANNE FISHER STAPLES",
+      "year": 1995,
+      "publisher": "Laurel Leaf",
+      "image_url_s": "http://images.amazon.com/images/P/0679865691.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0679865691.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0679865691.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 51,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 2070423204,
-      "Book-Title": "Lieux dits",
-      "Book-Author": "Michel Tournier",
-      "Year-Of-Publication": 2002,
-      "Publisher": "Gallimard",
-      "Image-URL-S": "http://images.amazon.com/images/P/2070423204.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/2070423204.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/2070423204.01.LZZZZZZZ.jpg"
+      "isbn": 2070423204,
+      "title": "Lieux dits",
+      "author": "Michel Tournier",
+      "year": 2002,
+      "publisher": "Gallimard",
+      "image_url_s": "http://images.amazon.com/images/P/2070423204.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/2070423204.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/2070423204.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 52,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": "042511774X",
-      "Book-Title": "Breathing Lessons",
-      "Book-Author": "Anne Tyler",
-      "Year-Of-Publication": 1994,
-      "Publisher": "Berkley Publishing Group",
-      "Image-URL-S": "http://images.amazon.com/images/P/042511774X.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/042511774X.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/042511774X.01.LZZZZZZZ.jpg"
+      "isbn": "042511774X",
+      "title": "Breathing Lessons",
+      "author": "Anne Tyler",
+      "year": 1994,
+      "publisher": "Berkley Publishing Group",
+      "image_url_s": "http://images.amazon.com/images/P/042511774X.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/042511774X.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/042511774X.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 53,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 804106304,
-      "Book-Title": "The Joy Luck Club",
-      "Book-Author": "Amy Tan",
-      "Year-Of-Publication": 1994,
-      "Publisher": "Prentice Hall (K-12)",
-      "Image-URL-S": "http://images.amazon.com/images/P/0804106304.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0804106304.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0804106304.01.LZZZZZZZ.jpg"
+      "isbn": 804106304,
+      "title": "The Joy Luck Club",
+      "author": "Amy Tan",
+      "year": 1994,
+      "publisher": "Prentice Hall (K-12)",
+      "image_url_s": "http://images.amazon.com/images/P/0804106304.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0804106304.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0804106304.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 54,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 1853262404,
-      "Book-Title": "Heart of Darkness (Wordsworth Collection)",
-      "Book-Author": "Joseph Conrad",
-      "Year-Of-Publication": 1998,
-      "Publisher": "NTC/Contemporary Publishing Company",
-      "Image-URL-S": "http://images.amazon.com/images/P/1853262404.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/1853262404.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/1853262404.01.LZZZZZZZ.jpg"
+      "isbn": 1853262404,
+      "title": "Heart of Darkness (Wordsworth Collection)",
+      "author": "Joseph Conrad",
+      "year": 1998,
+      "publisher": "NTC/Contemporary Publishing Company",
+      "image_url_s": "http://images.amazon.com/images/P/1853262404.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/1853262404.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/1853262404.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 55,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 312970242,
-      "Book-Title": "The Angel Is Near",
-      "Book-Author": "Deepak Chopra",
-      "Year-Of-Publication": 2000,
-      "Publisher": "St. Martin's Press",
-      "Image-URL-S": "http://images.amazon.com/images/P/0312970242.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0312970242.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0312970242.01.LZZZZZZZ.jpg"
+      "isbn": 312970242,
+      "title": "The Angel Is Near",
+      "author": "Deepak Chopra",
+      "year": 2000,
+      "publisher": "St. Martin's Press",
+      "image_url_s": "http://images.amazon.com/images/P/0312970242.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0312970242.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0312970242.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 56,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 1853260053,
-      "Book-Title": "Tess of the D'Urbervilles (Wordsworth Classics)",
-      "Book-Author": "Thomas Hardy",
-      "Year-Of-Publication": 1997,
-      "Publisher": "NTC/Contemporary Publishing Company",
-      "Image-URL-S": "http://images.amazon.com/images/P/1853260053.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/1853260053.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/1853260053.01.LZZZZZZZ.jpg"
+      "isbn": 1853260053,
+      "title": "Tess of the D'Urbervilles (Wordsworth Classics)",
+      "author": "Thomas Hardy",
+      "year": 1997,
+      "publisher": "NTC/Contemporary Publishing Company",
+      "image_url_s": "http://images.amazon.com/images/P/1853260053.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/1853260053.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/1853260053.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 57,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 1414035004,
-      "Book-Title": "The Adventures of Drew and Ellie: The Magical Dress",
-      "Book-Author": "Charles Noland",
-      "Year-Of-Publication": 2003,
-      "Publisher": "1stBooks Library",
-      "Image-URL-S": "http://images.amazon.com/images/P/1414035004.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/1414035004.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/1414035004.01.LZZZZZZZ.jpg"
+      "isbn": 1414035004,
+      "title": "The Adventures of Drew and Ellie: The Magical Dress",
+      "author": "Charles Noland",
+      "year": 2003,
+      "publisher": "1stBooks Library",
+      "image_url_s": "http://images.amazon.com/images/P/1414035004.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/1414035004.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/1414035004.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 58,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 60938412,
-      "Book-Title": "The Accidental Virgin",
-      "Book-Author": "Valerie Frankel",
-      "Year-Of-Publication": 2003,
-      "Publisher": "Avon Trade",
-      "Image-URL-S": "http://images.amazon.com/images/P/0060938412.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0060938412.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0060938412.01.LZZZZZZZ.jpg"
+      "isbn": 60938412,
+      "title": "The Accidental Virgin",
+      "author": "Valerie Frankel",
+      "year": 2003,
+      "publisher": "Avon Trade",
+      "image_url_s": "http://images.amazon.com/images/P/0060938412.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0060938412.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0060938412.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 59,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 140067477,
-      "Book-Title": "The Tao of Pooh",
-      "Book-Author": "Benjamin Hoff",
-      "Year-Of-Publication": 1983,
-      "Publisher": "Penguin Books",
-      "Image-URL-S": "http://images.amazon.com/images/P/0140067477.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0140067477.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0140067477.01.LZZZZZZZ.jpg"
+      "isbn": 140067477,
+      "title": "The Tao of Pooh",
+      "author": "Benjamin Hoff",
+      "year": 1983,
+      "publisher": "Penguin Books",
+      "image_url_s": "http://images.amazon.com/images/P/0140067477.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0140067477.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0140067477.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 60,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 345465083,
-      "Book-Title": "Seabiscuit",
-      "Book-Author": "LAURA HILLENBRAND",
-      "Year-Of-Publication": 2003,
-      "Publisher": "Ballantine Books",
-      "Image-URL-S": "http://images.amazon.com/images/P/0345465083.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0345465083.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0345465083.01.LZZZZZZZ.jpg"
+      "isbn": 345465083,
+      "title": "Seabiscuit",
+      "author": "LAURA HILLENBRAND",
+      "year": 2003,
+      "publisher": "Ballantine Books",
+      "image_url_s": "http://images.amazon.com/images/P/0345465083.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0345465083.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0345465083.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 61,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 1558531025,
-      "Book-Title": "Life's Little Instruction Book (Life's Little Instruction Books (Paperback))",
-      "Book-Author": "H. Jackson Brown",
-      "Year-Of-Publication": 1991,
-      "Publisher": "Thomas Nelson",
-      "Image-URL-S": "http://images.amazon.com/images/P/1558531025.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/1558531025.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/1558531025.01.LZZZZZZZ.jpg"
+      "isbn": 1558531025,
+      "title": "Life's Little Instruction Book (Life's Little Instruction Books (Paperback))",
+      "author": "H. Jackson Brown",
+      "year": 1991,
+      "publisher": "Thomas Nelson",
+      "image_url_s": "http://images.amazon.com/images/P/1558531025.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/1558531025.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/1558531025.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 62,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 441783589,
-      "Book-Title": "Starship Troopers",
-      "Book-Author": "Robert A. Heinlein",
-      "Year-Of-Publication": 1987,
-      "Publisher": "Ace Books",
-      "Image-URL-S": "http://images.amazon.com/images/P/0441783589.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0441783589.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0441783589.01.LZZZZZZZ.jpg"
+      "isbn": 441783589,
+      "title": "Starship Troopers",
+      "author": "Robert A. Heinlein",
+      "year": 1987,
+      "publisher": "Ace Books",
+      "image_url_s": "http://images.amazon.com/images/P/0441783589.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0441783589.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0441783589.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 63,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 394895894,
-      "Book-Title": "The Ruby in the Smoke (Sally Lockhart Trilogy, Book 1)",
-      "Book-Author": "PHILIP PULLMAN",
-      "Year-Of-Publication": 1988,
-      "Publisher": "Laurel Leaf",
-      "Image-URL-S": "http://images.amazon.com/images/P/0394895894.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0394895894.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0394895894.01.LZZZZZZZ.jpg"
+      "isbn": 394895894,
+      "title": "The Ruby in the Smoke (Sally Lockhart Trilogy, Book 1)",
+      "author": "PHILIP PULLMAN",
+      "year": 1988,
+      "publisher": "Laurel Leaf",
+      "image_url_s": "http://images.amazon.com/images/P/0394895894.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0394895894.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0394895894.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 64,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 375410538,
-      "Book-Title": "Anil's Ghost",
-      "Book-Author": "MICHAEL ONDAATJE",
-      "Year-Of-Publication": 2000,
-      "Publisher": "Knopf",
-      "Image-URL-S": "http://images.amazon.com/images/P/0375410538.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0375410538.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0375410538.01.LZZZZZZZ.jpg"
+      "isbn": 375410538,
+      "title": "Anil's Ghost",
+      "author": "MICHAEL ONDAATJE",
+      "year": 2000,
+      "publisher": "Knopf",
+      "image_url_s": "http://images.amazon.com/images/P/0375410538.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0375410538.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0375410538.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 65,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 966986105,
-      "Book-Title": "Prescription for Terror",
-      "Book-Author": "Sandra Levy Ceren",
-      "Year-Of-Publication": 1999,
-      "Publisher": "Andrew Scott Publishers",
-      "Image-URL-S": "http://images.amazon.com/images/P/0966986105.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0966986105.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0966986105.01.LZZZZZZZ.jpg"
+      "isbn": 966986105,
+      "title": "Prescription for Terror",
+      "author": "Sandra Levy Ceren",
+      "year": 1999,
+      "publisher": "Andrew Scott Publishers",
+      "image_url_s": "http://images.amazon.com/images/P/0966986105.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0966986105.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0966986105.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 66,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": "087113375X",
-      "Book-Title": "Modern Manners: An Etiquette Book for Rude People",
-      "Book-Author": "P.J. O'Rourke",
-      "Year-Of-Publication": 1990,
-      "Publisher": "Atlantic Monthly Press",
-      "Image-URL-S": "http://images.amazon.com/images/P/087113375X.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/087113375X.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/087113375X.01.LZZZZZZZ.jpg"
+      "isbn": "087113375X",
+      "title": "Modern Manners: An Etiquette Book for Rude People",
+      "author": "P.J. O'Rourke",
+      "year": 1990,
+      "publisher": "Atlantic Monthly Press",
+      "image_url_s": "http://images.amazon.com/images/P/087113375X.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/087113375X.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/087113375X.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 67,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 340767936,
-      "Book-Title": "Turning Thirty",
-      "Book-Author": "Mike Gayle",
-      "Year-Of-Publication": 2000,
-      "Publisher": "Hodder &amp; Stoughton General Division",
-      "Image-URL-S": "http://images.amazon.com/images/P/0340767936.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0340767936.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0340767936.01.LZZZZZZZ.jpg"
+      "isbn": 340767936,
+      "title": "Turning Thirty",
+      "author": "Mike Gayle",
+      "year": 2000,
+      "publisher": "Hodder &amp; Stoughton General Division",
+      "image_url_s": "http://images.amazon.com/images/P/0340767936.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0340767936.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0340767936.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 68,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 743403843,
-      "Book-Title": "Decipher",
-      "Book-Author": "Stel Pavlou",
-      "Year-Of-Publication": 2002,
-      "Publisher": "Simon &amp; Schuster (Trade Division)",
-      "Image-URL-S": "http://images.amazon.com/images/P/0743403843.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0743403843.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0743403843.01.LZZZZZZZ.jpg"
+      "isbn": 743403843,
+      "title": "Decipher",
+      "author": "Stel Pavlou",
+      "year": 2002,
+      "publisher": "Simon &amp; Schuster (Trade Division)",
+      "image_url_s": "http://images.amazon.com/images/P/0743403843.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0743403843.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0743403843.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 69,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 60930365,
-      "Book-Title": "My First Cousin Once Removed: Money, Madness, and the Family of Robert Lowell",
-      "Book-Author": "Sarah Payne Stuart",
-      "Year-Of-Publication": 1999,
-      "Publisher": "Perennial",
-      "Image-URL-S": "http://images.amazon.com/images/P/0060930365.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0060930365.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0060930365.01.LZZZZZZZ.jpg"
+      "isbn": 60930365,
+      "title": "My First Cousin Once Removed: Money, Madness, and the Family of Robert Lowell",
+      "author": "Sarah Payne Stuart",
+      "year": 1999,
+      "publisher": "Perennial",
+      "image_url_s": "http://images.amazon.com/images/P/0060930365.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0060930365.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0060930365.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 70,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 71416331,
-      "Book-Title": "Team Bush : Leadership Lessons from the Bush White House",
-      "Book-Author": "Donald F. Kettl",
-      "Year-Of-Publication": 2003,
-      "Publisher": "McGraw-Hill",
-      "Image-URL-S": "http://images.amazon.com/images/P/0071416331.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0071416331.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0071416331.01.LZZZZZZZ.jpg"
+      "isbn": 71416331,
+      "title": "Team Bush : Leadership Lessons from the Bush White House",
+      "author": "Donald F. Kettl",
+      "year": 2003,
+      "publisher": "McGraw-Hill",
+      "image_url_s": "http://images.amazon.com/images/P/0071416331.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0071416331.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0071416331.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 71,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 375509038,
-      "Book-Title": "The Right Man : The Surprise Presidency of George W. Bush",
-      "Book-Author": "DAVID FRUM",
-      "Year-Of-Publication": 2003,
-      "Publisher": "Random House",
-      "Image-URL-S": "http://images.amazon.com/images/P/0375509038.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0375509038.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0375509038.01.LZZZZZZZ.jpg"
+      "isbn": 375509038,
+      "title": "The Right Man : The Surprise Presidency of George W. Bush",
+      "author": "DAVID FRUM",
+      "year": 2003,
+      "publisher": "Random House",
+      "image_url_s": "http://images.amazon.com/images/P/0375509038.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0375509038.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0375509038.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 72,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 316769487,
-      "Book-Title": "The Catcher in the Rye",
-      "Book-Author": "J.D. Salinger",
-      "Year-Of-Publication": 1991,
-      "Publisher": "Little, Brown",
-      "Image-URL-S": "http://images.amazon.com/images/P/0316769487.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0316769487.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0316769487.01.LZZZZZZZ.jpg"
+      "isbn": 316769487,
+      "title": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "year": 1991,
+      "publisher": "Little, Brown",
+      "image_url_s": "http://images.amazon.com/images/P/0316769487.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0316769487.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0316769487.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 73,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 8445071769,
-      "Book-Title": "El Senor De Los Anillos: Las DOS Torres (Lord of the Rings (Paperback))",
-      "Book-Author": "J. R. R. Tolkien",
-      "Year-Of-Publication": 2001,
-      "Publisher": "Minotauro",
-      "Image-URL-S": "http://images.amazon.com/images/P/8445071769.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/8445071769.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/8445071769.01.LZZZZZZZ.jpg"
+      "isbn": 8445071769,
+      "title": "El Senor De Los Anillos: Las DOS Torres (Lord of the Rings (Paperback))",
+      "author": "J. R. R. Tolkien",
+      "year": 2001,
+      "publisher": "Minotauro",
+      "image_url_s": "http://images.amazon.com/images/P/8445071769.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/8445071769.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/8445071769.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 74,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 8445071777,
-      "Book-Title": "El Senor De Los Anillos: El Retorno Del Rey (Tolkien, J. R. R. Lord of the Rings. 3.)",
-      "Book-Author": "J. R. R. Tolkien",
-      "Year-Of-Publication": 2001,
-      "Publisher": "Distribooks",
-      "Image-URL-S": "http://images.amazon.com/images/P/8445071777.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/8445071777.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/8445071777.01.LZZZZZZZ.jpg"
+      "isbn": 8445071777,
+      "title": "El Senor De Los Anillos: El Retorno Del Rey (Tolkien, J. R. R. Lord of the Rings. 3.)",
+      "author": "J. R. R. Tolkien",
+      "year": 2001,
+      "publisher": "Distribooks",
+      "image_url_s": "http://images.amazon.com/images/P/8445071777.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/8445071777.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/8445071777.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 75,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 679429220,
-      "Book-Title": "Midnight in the Garden of Good and Evil: A Savannah Story",
-      "Book-Author": "John Berendt",
-      "Year-Of-Publication": 1994,
-      "Publisher": "Random House",
-      "Image-URL-S": "http://images.amazon.com/images/P/0679429220.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0679429220.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0679429220.01.LZZZZZZZ.jpg"
+      "isbn": 679429220,
+      "title": "Midnight in the Garden of Good and Evil: A Savannah Story",
+      "author": "John Berendt",
+      "year": 1994,
+      "publisher": "Random House",
+      "image_url_s": "http://images.amazon.com/images/P/0679429220.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0679429220.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0679429220.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 76,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 671867156,
-      "Book-Title": "Pretend You Don't See Her",
-      "Book-Author": "Mary Higgins Clark",
-      "Year-Of-Publication": 1998,
-      "Publisher": "Pocket",
-      "Image-URL-S": "http://images.amazon.com/images/P/0671867156.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0671867156.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0671867156.01.LZZZZZZZ.jpg"
+      "isbn": 671867156,
+      "title": "Pretend You Don't See Her",
+      "author": "Mary Higgins Clark",
+      "year": 1998,
+      "publisher": "Pocket",
+      "image_url_s": "http://images.amazon.com/images/P/0671867156.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0671867156.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0671867156.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 77,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 312252617,
-      "Book-Title": "Fast Women",
-      "Book-Author": "Jennifer Crusie",
-      "Year-Of-Publication": 2001,
-      "Publisher": "St. Martin's Press",
-      "Image-URL-S": "http://images.amazon.com/images/P/0312252617.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0312252617.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0312252617.01.LZZZZZZZ.jpg"
+      "isbn": 312252617,
+      "title": "Fast Women",
+      "author": "Jennifer Crusie",
+      "year": 2001,
+      "publisher": "St. Martin's Press",
+      "image_url_s": "http://images.amazon.com/images/P/0312252617.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0312252617.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0312252617.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 78,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 312261594,
-      "Book-Title": "Female Intelligence",
-      "Book-Author": "Jane Heller",
-      "Year-Of-Publication": 2001,
-      "Publisher": "St. Martin's Press",
-      "Image-URL-S": "http://images.amazon.com/images/P/0312261594.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0312261594.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0312261594.01.LZZZZZZZ.jpg"
+      "isbn": 312261594,
+      "title": "Female Intelligence",
+      "author": "Jane Heller",
+      "year": 2001,
+      "publisher": "St. Martin's Press",
+      "image_url_s": "http://images.amazon.com/images/P/0312261594.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0312261594.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0312261594.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 79,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 316748641,
-      "Book-Title": "Pasquale's Nose: Idle Days in an Italian Town",
-      "Book-Author": "Michael Rips",
-      "Year-Of-Publication": 2002,
-      "Publisher": "Back Bay Books",
-      "Image-URL-S": "http://images.amazon.com/images/P/0316748641.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0316748641.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0316748641.01.LZZZZZZZ.jpg"
+      "isbn": 316748641,
+      "title": "Pasquale's Nose: Idle Days in an Italian Town",
+      "author": "Michael Rips",
+      "year": 2002,
+      "publisher": "Back Bay Books",
+      "image_url_s": "http://images.amazon.com/images/P/0316748641.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0316748641.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0316748641.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 80,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 316973742,
-      "Book-Title": "The Gospel of Judas: A Novel",
-      "Book-Author": "Simon Mawer",
-      "Year-Of-Publication": 2002,
-      "Publisher": "Back Bay Books",
-      "Image-URL-S": "http://images.amazon.com/images/P/0316973742.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0316973742.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0316973742.01.LZZZZZZZ.jpg"
+      "isbn": 316973742,
+      "title": "The Gospel of Judas: A Novel",
+      "author": "Simon Mawer",
+      "year": 2002,
+      "publisher": "Back Bay Books",
+      "image_url_s": "http://images.amazon.com/images/P/0316973742.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0316973742.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0316973742.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 81,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 446677450,
-      "Book-Title": "Rich Dad, Poor Dad: What the Rich Teach Their Kids About Money--That the Poor and Middle Class Do Not!",
-      "Book-Author": "Robert T. Kiyosaki",
-      "Year-Of-Publication": 2000,
-      "Publisher": "Warner Books",
-      "Image-URL-S": "http://images.amazon.com/images/P/0446677450.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0446677450.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0446677450.01.LZZZZZZZ.jpg"
+      "isbn": 446677450,
+      "title": "Rich Dad, Poor Dad: What the Rich Teach Their Kids About Money--That the Poor and Middle Class Do Not!",
+      "author": "Robert T. Kiyosaki",
+      "year": 2000,
+      "publisher": "Warner Books",
+      "image_url_s": "http://images.amazon.com/images/P/0446677450.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0446677450.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0446677450.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 82,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 451166892,
-      "Book-Title": "The Pillars of the Earth",
-      "Book-Author": "Ken Follett",
-      "Year-Of-Publication": 1996,
-      "Publisher": "Signet Book",
-      "Image-URL-S": "http://images.amazon.com/images/P/0451166892.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0451166892.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0451166892.01.LZZZZZZZ.jpg"
+      "isbn": 451166892,
+      "title": "The Pillars of the Earth",
+      "author": "Ken Follett",
+      "year": 1996,
+      "publisher": "Signet Book",
+      "image_url_s": "http://images.amazon.com/images/P/0451166892.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0451166892.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0451166892.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 83,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 553347594,
-      "Book-Title": "McDonald's: Behind the Arches",
-      "Book-Author": "John F. Love",
-      "Year-Of-Publication": 1995,
-      "Publisher": "Bantam",
-      "Image-URL-S": "http://images.amazon.com/images/P/0553347594.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0553347594.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0553347594.01.LZZZZZZZ.jpg"
+      "isbn": 553347594,
+      "title": "McDonald's: Behind the Arches",
+      "author": "John F. Love",
+      "year": 1995,
+      "publisher": "Bantam",
+      "image_url_s": "http://images.amazon.com/images/P/0553347594.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0553347594.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0553347594.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 84,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 671621009,
-      "Book-Title": "Creating Wealth : Retire in Ten Years Using Allen's Seven Principles of Wealth!",
-      "Book-Author": "Robert G. Allen",
-      "Year-Of-Publication": 1986,
-      "Publisher": "Fireside",
-      "Image-URL-S": "http://images.amazon.com/images/P/0671621009.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0671621009.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0671621009.01.LZZZZZZZ.jpg"
+      "isbn": 671621009,
+      "title": "Creating Wealth : Retire in Ten Years Using Allen's Seven Principles of Wealth!",
+      "author": "Robert G. Allen",
+      "year": 1986,
+      "publisher": "Fireside",
+      "image_url_s": "http://images.amazon.com/images/P/0671621009.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0671621009.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0671621009.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 85,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": "067976397X",
-      "Book-Title": "Corelli's Mandolin : A Novel",
-      "Book-Author": "LOUIS DE BERNIERES",
-      "Year-Of-Publication": 1995,
-      "Publisher": "Vintage",
-      "Image-URL-S": "http://images.amazon.com/images/P/067976397X.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/067976397X.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/067976397X.01.LZZZZZZZ.jpg"
+      "isbn": "067976397X",
+      "title": "Corelli's Mandolin : A Novel",
+      "author": "LOUIS DE BERNIERES",
+      "year": 1995,
+      "publisher": "Vintage",
+      "image_url_s": "http://images.amazon.com/images/P/067976397X.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/067976397X.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/067976397X.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 86,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 684822733,
-      "Book-Title": "Love, Miracles, and Animal Healing : A heartwarming look at the spiritual bond between animals and humans",
-      "Book-Author": "Pam Proctor",
-      "Year-Of-Publication": 1996,
-      "Publisher": "Fireside",
-      "Image-URL-S": "http://images.amazon.com/images/P/0684822733.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0684822733.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0684822733.01.LZZZZZZZ.jpg"
+      "isbn": 684822733,
+      "title": "Love, Miracles, and Animal Healing : A heartwarming look at the spiritual bond between animals and humans",
+      "author": "Pam Proctor",
+      "year": 1996,
+      "publisher": "Fireside",
+      "image_url_s": "http://images.amazon.com/images/P/0684822733.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0684822733.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0684822733.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 87,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 786868716,
-      "Book-Title": "The Five People You Meet in Heaven",
-      "Book-Author": "Mitch Albom",
-      "Year-Of-Publication": 2003,
-      "Publisher": "Hyperion",
-      "Image-URL-S": "http://images.amazon.com/images/P/0786868716.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0786868716.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0786868716.01.LZZZZZZZ.jpg"
+      "isbn": 786868716,
+      "title": "The Five People You Meet in Heaven",
+      "author": "Mitch Albom",
+      "year": 2003,
+      "publisher": "Hyperion",
+      "image_url_s": "http://images.amazon.com/images/P/0786868716.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0786868716.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0786868716.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 88,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 8472238822,
-      "Book-Title": "Tu Nombre Escrito En El Agua (La Sonrisa Vertical)",
-      "Book-Author": "Irene Gonzalez Frei",
-      "Year-Of-Publication": 2002,
-      "Publisher": "Tusquets",
-      "Image-URL-S": "http://images.amazon.com/images/P/8472238822.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/8472238822.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/8472238822.01.LZZZZZZZ.jpg"
+      "isbn": 8472238822,
+      "title": "Tu Nombre Escrito En El Agua (La Sonrisa Vertical)",
+      "author": "Irene Gonzalez Frei",
+      "year": 2002,
+      "publisher": "Tusquets",
+      "image_url_s": "http://images.amazon.com/images/P/8472238822.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/8472238822.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/8472238822.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 89,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 671864769,
-      "Book-Title": "Relics (Star Trek: The Next Generation)",
-      "Book-Author": "Michael Jan Friedman",
-      "Year-Of-Publication": 1992,
-      "Publisher": "Star Trek",
-      "Image-URL-S": "http://images.amazon.com/images/P/0671864769.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0671864769.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0671864769.01.LZZZZZZZ.jpg"
+      "isbn": 671864769,
+      "title": "Relics (Star Trek: The Next Generation)",
+      "author": "Michael Jan Friedman",
+      "year": 1992,
+      "publisher": "Star Trek",
+      "image_url_s": "http://images.amazon.com/images/P/0671864769.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0671864769.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0671864769.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 90,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 671521519,
-      "Book-Title": "Bless The Beasts And Children : Bless The Beasts And Children",
-      "Book-Author": "Glendon Swarthout",
-      "Year-Of-Publication": 1995,
-      "Publisher": "Pocket",
-      "Image-URL-S": "http://images.amazon.com/images/P/0671521519.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0671521519.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0671521519.01.LZZZZZZZ.jpg"
+      "isbn": 671521519,
+      "title": "Bless The Beasts And Children : Bless The Beasts And Children",
+      "author": "Glendon Swarthout",
+      "year": 1995,
+      "publisher": "Pocket",
+      "image_url_s": "http://images.amazon.com/images/P/0671521519.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0671521519.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0671521519.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 91,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 440222303,
-      "Book-Title": "The Touch of Your Shadow, the Whisper of Your Name (Babylon 5, Book 5)",
-      "Book-Author": "Neal Barrett Jr.",
-      "Year-Of-Publication": 1996,
-      "Publisher": "Dell",
-      "Image-URL-S": "http://images.amazon.com/images/P/0440222303.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0440222303.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0440222303.01.LZZZZZZZ.jpg"
+      "isbn": 440222303,
+      "title": "The Touch of Your Shadow, the Whisper of Your Name (Babylon 5, Book 5)",
+      "author": "Neal Barrett Jr.",
+      "year": 1996,
+      "publisher": "Dell",
+      "image_url_s": "http://images.amazon.com/images/P/0440222303.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0440222303.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0440222303.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 92,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 312953453,
-      "Book-Title": "Blood Oath",
-      "Book-Author": "David Morrell",
-      "Year-Of-Publication": 1994,
-      "Publisher": "St. Martin's Press",
-      "Image-URL-S": "http://images.amazon.com/images/P/0312953453.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0312953453.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0312953453.01.LZZZZZZZ.jpg"
+      "isbn": 312953453,
+      "title": "Blood Oath",
+      "author": "David Morrell",
+      "year": 1994,
+      "publisher": "St. Martin's Press",
+      "image_url_s": "http://images.amazon.com/images/P/0312953453.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0312953453.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0312953453.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 93,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 446608653,
-      "Book-Title": "The Alibi",
-      "Book-Author": "Sandra Brown",
-      "Year-Of-Publication": 2000,
-      "Publisher": "Warner Books",
-      "Image-URL-S": "http://images.amazon.com/images/P/0446608653.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0446608653.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0446608653.01.LZZZZZZZ.jpg"
+      "isbn": 446608653,
+      "title": "The Alibi",
+      "author": "Sandra Brown",
+      "year": 2000,
+      "publisher": "Warner Books",
+      "image_url_s": "http://images.amazon.com/images/P/0446608653.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0446608653.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0446608653.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 94,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 446612545,
-      "Book-Title": "The Beach House",
-      "Book-Author": "James Patterson",
-      "Year-Of-Publication": 2003,
-      "Publisher": "Warner Books",
-      "Image-URL-S": "http://images.amazon.com/images/P/0446612545.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0446612545.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0446612545.01.LZZZZZZZ.jpg"
+      "isbn": 446612545,
+      "title": "The Beach House",
+      "author": "James Patterson",
+      "year": 2003,
+      "publisher": "Warner Books",
+      "image_url_s": "http://images.amazon.com/images/P/0446612545.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0446612545.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0446612545.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 95,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 446612618,
-      "Book-Title": "A Kiss Remembered",
-      "Book-Author": "Sandra Brown",
-      "Year-Of-Publication": 2003,
-      "Publisher": "Warner Books",
-      "Image-URL-S": "http://images.amazon.com/images/P/0446612618.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0446612618.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0446612618.01.LZZZZZZZ.jpg"
+      "isbn": 446612618,
+      "title": "A Kiss Remembered",
+      "author": "Sandra Brown",
+      "year": 2003,
+      "publisher": "Warner Books",
+      "image_url_s": "http://images.amazon.com/images/P/0446612618.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0446612618.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0446612618.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 96,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 451208080,
-      "Book-Title": "The Short Forever",
-      "Book-Author": "Stuart Woods",
-      "Year-Of-Publication": 2003,
-      "Publisher": "Signet Book",
-      "Image-URL-S": "http://images.amazon.com/images/P/0451208080.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0451208080.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0451208080.01.LZZZZZZZ.jpg"
+      "isbn": 451208080,
+      "title": "The Short Forever",
+      "author": "Stuart Woods",
+      "year": 2003,
+      "publisher": "Signet Book",
+      "image_url_s": "http://images.amazon.com/images/P/0451208080.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0451208080.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0451208080.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 97,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 553584383,
-      "Book-Title": "Dead Aim",
-      "Book-Author": "IRIS JOHANSEN",
-      "Year-Of-Publication": 2004,
-      "Publisher": "Bantam Books",
-      "Image-URL-S": "http://images.amazon.com/images/P/0553584383.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0553584383.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0553584383.01.LZZZZZZZ.jpg"
+      "isbn": 553584383,
+      "title": "Dead Aim",
+      "author": "IRIS JOHANSEN",
+      "year": 2004,
+      "publisher": "Bantam Books",
+      "image_url_s": "http://images.amazon.com/images/P/0553584383.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0553584383.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0553584383.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 98,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 671027360,
-      "Book-Title": "Angels &amp; Demons",
-      "Book-Author": "Dan Brown",
-      "Year-Of-Publication": 2001,
-      "Publisher": "Pocket Star",
-      "Image-URL-S": "http://images.amazon.com/images/P/0671027360.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0671027360.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0671027360.01.LZZZZZZZ.jpg"
+      "isbn": 671027360,
+      "title": "Angels &amp; Demons",
+      "author": "Dan Brown",
+      "year": 2001,
+      "publisher": "Pocket Star",
+      "image_url_s": "http://images.amazon.com/images/P/0671027360.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0671027360.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0671027360.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 99,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 812575954,
-      "Book-Title": "The Deal",
-      "Book-Author": "Joe Hutsko",
-      "Year-Of-Publication": 2000,
-      "Publisher": "Tor Books (Mm)",
-      "Image-URL-S": "http://images.amazon.com/images/P/0812575954.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0812575954.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0812575954.01.LZZZZZZZ.jpg"
+      "isbn": 812575954,
+      "title": "The Deal",
+      "author": "Joe Hutsko",
+      "year": 2000,
+      "publisher": "Tor Books (Mm)",
+      "image_url_s": "http://images.amazon.com/images/P/0812575954.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0812575954.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0812575954.01.LZZZZZZZ.jpg"
     }
   },
   {
     "pk": 100,
     "model": "landing_page.Books",
     "fields": {
-      "ISBN": 316735736,
-      "Book-Title": "All He Ever Wanted: A Novel",
-      "Book-Author": "Anita Shreve",
-      "Year-Of-Publication": 2004,
-      "Publisher": "Back Bay Books",
-      "Image-URL-S": "http://images.amazon.com/images/P/0316735736.01.THUMBZZZ.jpg",
-      "Image-URL-M": "http://images.amazon.com/images/P/0316735736.01.MZZZZZZZ.jpg",
-      "Image-URL-L": "http://images.amazon.com/images/P/0316735736.01.LZZZZZZZ.jpg"
+      "isbn": 316735736,
+      "title": "All He Ever Wanted: A Novel",
+      "author": "Anita Shreve",
+      "year": 2004,
+      "publisher": "Back Bay Books",
+      "image_url_s": "http://images.amazon.com/images/P/0316735736.01.THUMBZZZ.jpg",
+      "image_url_m": "http://images.amazon.com/images/P/0316735736.01.MZZZZZZZ.jpg",
+      "image_url_l": "http://images.amazon.com/images/P/0316735736.01.LZZZZZZZ.jpg"
     }
   }
 ]

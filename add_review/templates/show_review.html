@@ -1,0 +1,218 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Book Review Page</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <style>
+            body {
+                background-color: #f7f7f7;
+            }
+
+            .book-details {
+                background-color: #fff;
+                padding: 20px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+            }
+
+            .book-image {
+                max-width: 200px;
+                height: auto;
+            }
+
+            .user-review {
+                background-color: #fff;
+                margin-top: 20px;
+                padding: 15px;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+        </style>
+{% endblock meta %}
+
+{% block content %}
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: black;">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#" style="color: white;" id="home-nav">Home</a>
+                </li>
+            </div>
+            <a class="nav-link" href="{% url 'authentication:logout' %}">
+                <button>
+                    Logout
+                </button>
+            </a>
+        </div>
+    </nav>
+
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="book-details">
+                    <div style="text-align: center;">
+                        <img src="{{ book.image_url_l }}" alt="Book Cover" class="book-image">
+                    </div>
+                    <h2 class="mt-3"> {{ book.title }}</h2>
+                    <p><strong>Author:</strong> {{ book.author }}</p>
+                    <p><strong>Release Year:</strong> {{ book.year }}</p>
+                    <p><strong>Publisher:</strong> {{ book.publisher }}</p>
+                    <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+                    <p><strong>Total Reviews:</strong> {{ book.total_reviews }}</p>
+
+                </div>
+                <div class="user-review">
+                </div>
+
+                <!-- Add Review Button -->
+                <button class="btn btn-primary add-review" id="open-modal-link" data-toggle="modal" data-target="#review-modal">Add Review</button>
+                <!-- Edit My Review Button -->
+                <a id="edit-review"><button type="submit" class="btn btn-secondary edit-review">Edit My Review</button></a>
+                </div>
+
+            <div class="col-md-8">
+                <h2>User Reviews</h2>
+                
+                <!-- Loop through all reviews -->
+                <div class="user-review" id="user-reviews">
+                </div>
+                <!-- End Loop -->
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Review Modal -->
+    {% include 'add_review.html' %}
+    <!-- End Add Review Modal -->
+    
+    <script>
+        
+        async function loadCurrentUserReviewData(){
+            let url = "{% url 'add_review:get_review_by_user' 0 %}".replace("0", "{{ book.pk }}");
+            return fetch(url).then(response => response.json());
+        }
+        
+        
+        async function loadUserReviewsData(book_pk){
+            let url = "{% url 'add_review:get_reviews' 0 %}".replace("0", book_pk)
+            return fetch(url).then(response => response.json())
+        }
+        
+        async function getUsername(book_id){
+            let url = "{% url 'add_review:get_username' 0 %}".replace("0", book_id)
+            return fetch(url).then(response => response.json())
+        }
+
+        async function refreshUserReviews(){
+            const userReviews = await loadUserReviewsData("{{ book.pk }}")
+            const userReviewsDiv = document.getElementById('user-reviews')
+            let usernames_json = await getUsername("{{ book.pk }}")
+            const usernames = usernames_json.fields
+            userReviewsDiv.innerHTML = ''
+            let i=0;
+            if (userReviews.length > 0) {
+                userReviews.forEach(userReview => {
+                    const userReviewDiv = document.createElement('div')
+                    let username = usernames[i++]
+                    userReviewDiv.classList.add('user-review')
+                    let stars = ""
+                    for (let i=0; i < userReview.fields.rating; i++) {
+                        stars += "★"
+                    }
+
+                    while (stars.length < 5) {
+                        stars += "☆"
+                    }
+                    userReviewDiv.innerHTML = `
+                        <h4>${username}</h4>
+                        <h6>${userReview.fields.created_at}</h6>
+                        <div class="review-stars">
+                            ${stars}
+                        </div>
+                        <p>${userReview.fields.review}</p>
+                    `
+                    userReviewsDiv.appendChild(userReviewDiv)
+                    
+                })
+            } else {
+                const noReviewDiv = document.createElement('div')
+                noReviewDiv.innerHTML = `
+                    <h4>There are no reviews for this book yet.</h4>
+                `
+                userReviewsDiv.appendChild(noReviewDiv)
+            }
+        }
+
+        async function refreshMyReview(){
+            const userReviews = await loadCurrentUserReviewData()
+            const myReviewDiv = document.querySelector('.user-review')
+            myReviewDiv.innerHTML = '<h2>User Review</h2>'
+
+            if (userReviews.length !== 0) {
+                const userReview = userReviews[0]
+                let stars = ""
+                for (let i=0; i < userReview.fields.rating; i++) {
+                    stars += "★"
+                }
+
+                while (stars.length < 5) {
+                    stars += "☆"
+                }
+
+                HtmlString = `
+                    <h2>Your Review</h2>
+                    <h4>{{ user.username }}</h4>
+                    <h6>${userReview.fields.created_at}</h6>
+                    <div class="review-stars">
+                        ${stars}
+                    </div>
+                    <p>${userReview.fields.review}</p>
+                `
+
+                document.querySelector('.add-review').style.display = 'none'
+                document.querySelector('.edit-review').style.display = 'block'
+
+                // EDIT REVIEW //
+                document.querySelector('#edit-review').setAttribute('href', "{% url 'editreview:get_review' 0 %}".replace("0", userReview.pk))                // EDIT REVIEW //
+
+            } else {
+                HtmlString = `
+                    <h4>You have not reviewed this book yet.</h4>
+                `
+                document.querySelector('.add-review').style.display = 'block'
+                document.querySelector('.edit-review').style.display = 'none'
+            }
+
+            myReviewDiv.innerHTML = HtmlString
+        }
+
+        async function refreshPage(){
+            await refreshUserReviews()
+            await refreshMyReview()
+        }
+
+        async function addReview(){
+            let formData = new FormData(document.querySelector('#review-form'))
+            formData.append('book', "{{ book.pk }}")
+            fetch("{% url 'add_review:add_review_ajax' %}", {
+                method: "POST",
+                body: formData
+            }).then(refreshPage)
+            document.querySelector('#cancel-modal').click()
+        }
+
+        refreshPage()
+        document.querySelector('.submit-review').addEventListener('click', addReview)
+        document.getElementById("home-nav").setAttribute("href","{% url 'landing_page:show_landing_page' %}")
+    </script>
+{% endblock content %}
