@@ -11,5 +11,7 @@ urlpatterns = [
     path("get_faq_data/", get_faq_data, name="get_faq_data"),
     path("faq/data/", show_faq_data_json, name="show_faq_data_json"),
     path("faq/data/user/", get_faq_data_per_user, name="get_faq_data_per_user"),
-    path("faq/question/", add_faq_question, name="add_faq_question")
+    path("faq/question/", add_faq_question, name="add_faq_question"),
+    path("faq/edit/<int:pk>/", edit_question, name="edit_faq_question"),
+    path("faq/delete/<int:pk>/", delete_question, name="delete_faq_question"),
 ]

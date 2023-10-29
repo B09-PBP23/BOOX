@@ -124,16 +124,17 @@
           </div>
           <!-- ***** Most Popular End ***** -->
 
-          <!-- ***** Review Library Start ***** -->
+          <!-- ***** FAQ Start ***** -->
           <div class="gaming-library" id="user-faq">
           </div>
-          <!-- ***** Review Library End ***** -->
+          <!-- ***** FAQ End ***** -->
         </div>
       </div>
     </div>
   </div>
 
   {% include 'add_question_modal.html' %}
+  {% include 'edit_question_modal.html' %}
   
   <footer>
     <div class="container">
@@ -158,6 +159,10 @@
 
     async function loadFAQ() {
       return fetch("{% url 'landing_page:get_faq_data' %}").then((response) => response.json());
+    }
+
+    async function loadUserFAQ() {
+      return fetch("{% url 'landing_page:get_faq_data_per_user' %}").then((response) => response.json());
     }
 
     async function refreshMostPopular() {
@@ -260,8 +265,8 @@
       document.getElementById("discover-more").setAttribute("href", (isLoggedIn) ? "#most-popular-content" : "{% url 'authentication:login' %}");
     } 
 
-    async function showAllFAQs(){
-      const FAQ = await loadFAQ();
+    async function showMyFAQs(){
+      const FAQ = await loadUserFAQ();
       let HtmlString = `
         <div class="col-lg-12" style="text-align: center;">
           <div class="heading-section">
@@ -269,8 +274,8 @@
           </div>
         </div>
       `
-
-      for (let faq of FAQ) {
+      
+      for (let faq of FAQ) {      
           let question = faq.fields["question"];
           let answer = faq.fields["answer"];
           answer = (answer === null) ? "No answer yet" : (answer.length > 50) ? answer.substring(0, 50) + "..." : answer;
@@ -281,29 +286,154 @@
                   <li><h4>Category</h4><span style="color: white;">${faq.fields["category"]}</span></li>
                   <li><h4>Question</h4><span style="color: white;">${question}</span></li>
                   <li><h4>Answer</h4><span style="color: white;">${answer}</span></li>
-                    <li><div class="main-border-button"><a href="#">Edit Question</a></div></li>
+                  <li><div class="main-border-button"><a class="open-modal-link edit-qna" data-toggle="modal" data-target="#edit-qnamodal" href="#user-faq" pk="${faq.pk}">Edit Question</a></div></li>
                 </ul>
               </div>
           `
         }
-
+        
       HtmlString += `
-        <div class="col-lg-12">
-          <div class="main-button">
-            <a href="#user-faq" id="send-a-question" class="open-modal-link" data-toggle="modal" data-target="#qnamodal">Send a Question</a>
-            <a href="#user-faq" id="see-all-question">Hide All Questions</a>
-          </div>
+      <div class="col-lg-12">
+        <div class="main-button">
+          <a href="#user-faq" id="send-a-question" class="open-modal-link" data-toggle="modal" data-target="#qnamodal">Send a Question</a>
+          <a href="#user-faq" id="see-all-question">Hide All Questions</a>
+          <a href="#user-faq" id="see-public-question">See Public Questions</a>
         </div>
+      </div>
       `
-
+            
       document.getElementById("user-faq").innerHTML =  HtmlString;
       document.getElementById("see-all-question").addEventListener("click", (event) => {
         event.preventDefault();
         refreshFAQ();
         doShowAllFAQs = false;
       });
+
+      document.querySelectorAll(".edit-qna").forEach((element) => {
+        element.addEventListener("click", (event) => {
+          console.log("masukk")
+          event.preventDefault();
+          let pk = element.getAttribute("pk");
+
+          for (let faq of FAQ) {
+            if (faq.pk == pk) {
+              fields = faq.fields;
+              break;
+            }
+          }
+
+          let category = fields["category"];
+          let question = fields["question"];
+          let is_public = fields["is_public"];
+          document.getElementById("edit_category").value = category;
+          document.getElementById("edit_question").value = question;
+          document.getElementById("edit_is_public").checked = (is_public === true);
+          document.getElementById("edit-modal").onclick = () => editQuestion(pk);
+          document.getElementById("delete-modal").onclick = () => deleteQuestion(pk);
+        });
+      });
+
+      document.querySelector("#see-public-question").addEventListener("click", (event) => {
+        event.preventDefault();
+        showAllFAQs();
+        doShowAllFAQs = true;
+      });
     }
 
+    async function showAllFAQs(){
+      const FAQ = await loadFAQ();
+      let HtmlString = `
+        <div class="col-lg-12" style="text-align: center;">
+          <div class="heading-section">
+            <h4><em>Need Some Help?</em> Ask Us Now!</h4>
+          </div>
+        </div>
+      `
+      
+      for (let faq of FAQ) {
+        if (faq.fields["is_public"]) {
+          let question = faq.fields["question"];
+          let answer = faq.fields["answer"];
+          answer = (answer === null) ? "No answer yet" : (answer.length > 50) ? answer.substring(0, 50) + "..." : answer;
+          question = (question.length > 50) ? question.substring(0, 50) + "..." : question;
+          HtmlString += `
+              <div class="item" style="text-align: center;">
+                <ul>
+                  <li><h4>Category</h4><span style="color: white;">${faq.fields["category"]}</span></li>
+                  <li><h4>Question</h4><span style="color: white;">${question}</span></li>
+                  <li><h4>Answer</h4><span style="color: white;">${answer}</span></li>
+                </ul>
+              </div>
+          `
+        }
+      }
+        
+      HtmlString += `
+      <div class="col-lg-12">
+        <div class="main-button">
+          <a href="#user-faq" id="send-a-question" class="open-modal-link" data-toggle="modal" data-target="#qnamodal">Send a Question</a>
+          <a href="#user-faq" id="see-all-question">Hide All Questions</a>
+          <a href="#user-faq" id="see-all-my-question">See Only My Questions</a>
+        </div>
+      </div>
+      `
+            
+      document.getElementById("user-faq").innerHTML =  HtmlString;
+      document.getElementById("see-all-question").addEventListener("click", (event) => {
+        event.preventDefault();
+        refreshFAQ();
+        doShowAllFAQs = false;
+      });
+
+      document.querySelectorAll(".edit-qna").forEach((element) => {
+        element.addEventListener("click", (event) => {
+          console.log("masukk")
+          event.preventDefault();
+          let pk = element.getAttribute("pk");
+
+          for (let faq of FAQ) {
+            if (faq.pk == pk) {
+              fields = faq.fields;
+              break;
+            }
+          }
+
+          let category = fields["category"];
+          let question = fields["question"];
+          let is_public = fields["is_public"];
+          document.getElementById("edit_category").value = category;
+          document.getElementById("edit_question").value = question;
+          document.getElementById("edit_is_public").checked = (is_public === true);
+          document.getElementById("edit-modal").onclick = () => editQuestion(pk);
+          document.getElementById("delete-modal").onclick = () => deleteQuestion(pk);
+        });
+      });
+
+      document.getElementById("see-all-my-question").addEventListener("click", (event) => {
+        event.preventDefault();
+        showMyFAQs();
+        doShowAllFAQs = false;
+      });
+    }
+
+    function deleteQuestion(pk){
+      let url = "{% url 'landing_page:delete_faq_question' 0 %}".replace("0", pk);
+      fetch(url, {
+          method: "DELETE"
+      }).then((doShowAllFAQs)? showAllFAQs: refreshFAQ)
+      document.getElementById("cancel-edit-modal").click()
+    }
+
+    function editQuestion(pk) {
+      let url = "{% url 'landing_page:edit_faq_question' 0 %}".replace("0", pk);
+      fetch(url, {
+          method: "POST",
+          body: new FormData(document.querySelector(`#qna-edit-form`))
+      }).then((doShowAllFAQs)? showAllFAQs: refreshFAQ)
+      document.getElementById("qna-edit-form").reset()
+      document.getElementById("cancel-edit-modal").click()
+    }
+  
     async function refreshFAQ() {
       const FAQ = await loadFAQ();
       const isLoggedIn = await isUserLoggedIn() === "true";
@@ -391,7 +521,6 @@
     }
 
     function addQuestion(){
-      console.log(new FormData(document.querySelector('#qna-form')))
       fetch("{% url 'landing_page:add_faq_question' %}", {
           method: "POST",
           body: new FormData(document.querySelector('#qna-form'))
@@ -401,6 +530,7 @@
       document.getElementById("cancel-modal").click()
     }
 
+  
     refreshMostPopular();
     refreshFAQ();
     document.getElementById('search').addEventListener('submit', function (event) {
@@ -416,7 +546,9 @@
     document.getElementById("submit-modal").onclick = addQuestion;
 
     let doShowAllFAQs = false; 
-
+    document.getElementById("cancel-modal").onclick = () => document.getElementById("qna-form").reset();
+    document.getElementById("cancel-edit-modal").onclick = () => document.getElementById("qna-edit-form").reset();
+    
   </script>
 
 {% endblock content %}
