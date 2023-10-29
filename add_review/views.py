@@ -41,7 +41,7 @@ def add_review(request,book_id):
                'book':book[0]}
     return render (request, "add_review.html", context)
 
-def get_books(request):
+def get_books(request): 
     data = Books.objects.all()
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
