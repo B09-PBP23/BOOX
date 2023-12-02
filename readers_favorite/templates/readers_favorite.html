@@ -59,9 +59,15 @@
               <div class="col-lg-12">
                 <div class="content">
                   <div class="row">
-                    <div class="col-lg-12">
-                      <p>Here you can view this month's top 10 most reviewed books by our readers! Contribute by upvoting your favorite books!</p>
-                    </div>
+                    {% if user_is_authenticated %}
+                      <div class="col-lg-12">
+                        <p>Here you can view this month's top 10 most reviewed books by our readers! Contribute by upvoting your favorite books!</p>
+                      </div>
+                    {% else %}
+                      <div class="col-lg-12">
+                        <p>Here you can view this month's top 10 most reviewed books by our readers!</p>
+                      </div>
+                    {% endif %}
                   </div>
                 </div>
               </div>
@@ -75,59 +81,69 @@
           <br>
           <!-- Most upvotes End -->
 
-          <!-- ***** Details Start ***** -->
-          <div class="game-details">
-            <div class="row">
-              <div class="col-lg-12">
-                <h2>Our Readers Comment Section!</h2>
+          {% if not user_is_authenticated %}
+            <div class="col-lg-12" style="text-align: center;">
+              <div class="heading-section">
+                <h4><em>Login Now</em> to Join Our Comment Section!</h4>
               </div>
-              <div class="col-lg-12">
-                <div class="content">
-                  <div class="row">
-                    <div class="col-lg-12" style="text-align: center;">
-                      <p>Engage with your fellow readers in this open comment section!</p>
-                    </div>
-                    <div class="col-lg-12">
-                      <div class="main-border-button">
-                        <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add New Comment!</a>
+            </div>
+
+            <div class="main-button" style="text-align: center;">
+              <a href="{% url 'authentication:login' %}">Login</a>
+            </div>
+          {% else %}
+            <!-- ***** Details Start ***** -->
+            <div class="game-details">
+              <div class="row">
+                <div class="col-lg-12">
+                  <h2>Our Readers Comment Section!</h2>
+                </div>
+                <div class="col-lg-12">
+                  <div class="content">
+                    <div class="row">
+                      <div class="col-lg-12" style="text-align: center;">
+                        <p>Engage with your fellow readers in this open comment section!</p>
+                      </div>
+                      <div class="col-lg-12">
+                        <div class="main-border-button">
+                          <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add New Comment!</a>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <br>
-          <br>
-          <!-- ***** Details End ***** -->
-  
+            <br>
+            <br>
+            <!-- ***** Details End ***** -->
 
-          <!-- ***** Readers Comment Section ***** -->
-          <div class="row">
-            <div class="col-lg-8">
-              <div class="featured-games header-text">
-                <div class="heading-section">
-                  <h4><em>Readers</em> Comments</h4>
+            <!-- ***** Readers Comment Section ***** -->
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="featured-games header-text">
+                  <div class="heading-section">
+                    <h4><em>Readers</em> Comments</h4>
+                  </div>
+                  <div id="comments-container" class="comments-container">
+                    <div id="all-comments"></div>
+                  </div>
                 </div>
-                <div id="comments-container" class="comments-container">
-                  <div id="all-comments"></div>
+              </div>
+              <div class="col-lg-4">
+                <div class="top-downloaded">
+                  <div class="heading-section">
+                    <h4><em>Top</em> Commenters</h4>
+                  </div>
+                  <ul>
+                    <div id="top-commenters"></div>
+                  </ul>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4">
-              <div class="top-downloaded">
-                <div class="heading-section">
-                  <h4><em>Top</em> Commenters</h4>
-                </div>
-                <ul>
-                  <div id="top-commenters"></div>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <!-- ***** Readers Comment Section ***** -->
-
+            <!-- ***** Readers Comment Section ***** -->
+          {% endif %}
 
         </div>
       </div>
@@ -180,8 +196,38 @@
     </div>
   </div>
 
+    <!-- Add this HTML code at the end of your document, just before the closing </body> tag -->
+  <div class="modal fade" id="upvoteAlertModal" tabindex="-1" aria-labelledby="upvoteAlertModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="upvoteAlertModalLabel">Upvote Alert</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p id="upvoteAlertMessage"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
   <script>
+
+    async function checkUpvoteStatus(pk) {
+      // Fetch the user's upvote status for the given book
+      const response = await fetch(`check_upvote_status/${pk}/`);
+      const data = await response.json();
+      return data.has_upvoted;
+    }
+
+    async function getBookInfo() {
+      return fetch("{% url 'readers_favorite:get_data_json' %}").then((response) => response.json());
+    }
 
     async function getBookInfo() {
       return fetch("{% url 'readers_favorite:get_data_json' %}").then((response) => response.json());
@@ -230,7 +276,9 @@
                   <li><h4>Author</h4><span>${bookAuthor}<span></li>
                   <li><h4>Reviews Count</h4><span>${book.fields.total_reviews}<span></li>
                   <li><h4>Upvotes Count</h4><span>${book.fields.total_upvotes}<span></li>
-                  <li><button class="btn btn-success" onclick="addUpvote(${book.pk})">Upvote</button></li>
+                  {% if user_is_authenticated %}
+                    <li><button class="btn btn-success" onclick="addUpvote(${book.pk})">Upvote</button></li>
+                  {% endif %}
                 </ul>
               </div>
             </div>
@@ -310,16 +358,32 @@
       allCommentsElement.innerHTML = htmlString;
     }
 
-    async function addUpvote(pk) {
+  async function addUpvote(pk) {
+    // Check if the user has already upvoted this book
+    const hasUpvoted = await checkUpvoteStatus(pk);
+
+    if (!hasUpvoted) {
       const headers = new Headers();
       headers.append('Content-Type', 'application/json');
+
       fetch(`add_upvote_ajax/${pk}/`, {
         method: "POST",
         headers: headers,
-      }).then(refreshFavoriteBooks).then(refreshCommentSection).then(refreshTopCommenters)
-
-      return false;
+      }).then(() => {
+        // Open the modal with a success message
+        document.getElementById('upvoteAlertMessage').innerText = 'Upvote added successfully!';
+        $('#upvoteAlertModal').modal('show');
+      }).then(refreshFavoriteBooks).then(refreshCommentSection).then(refreshTopCommenters);
+    } else {
+      // Open the modal with an error message
+      document.getElementById('upvoteAlertMessage').innerText = 'You have already upvoted this book.';
+      $('#upvoteAlertModal').modal('show');
     }
+
+    return false;
+  }
+
+
 
     async function addComment() {
       fetch("{% url 'readers_favorite:add_comment' %}", {
@@ -330,7 +394,6 @@
       document.getElementById("form").reset()
       return false
     }
-
     document.getElementById("button_add_comment").onclick = addComment;
     refreshFavoriteBooks();
     refreshCommentSection();
