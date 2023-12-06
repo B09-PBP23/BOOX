@@ -29,6 +29,7 @@ def show_profile(request):
     except Profile.DoesNotExist:
         return redirect('profilepage:create_profile')
 
+@csrf_exempt
 def create_profile(request):
     books = Books.objects.all()
     if request.method == 'POST':
