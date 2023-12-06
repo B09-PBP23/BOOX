@@ -30,7 +30,7 @@ PRODUCTION = env.bool('PRODUCTION', False)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['boox-b09-tk.pbp.cs.ui.ac.id/']
+ALLOWED_HOSTS = [*]
 
 
 # Application definition
@@ -62,6 +62,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CSRF_TRUSTED_ORIGINS = ["https://boox-b09-tk.pbp.cs.ui.ac.id/"]
 
 ROOT_URLCONF = 'BOOX.urls'
 
