@@ -48,10 +48,30 @@ INSTALLED_APPS = [
     'readers_favorite',
     'bookmarks',
     'add_review',
-    'editreview'
+    'editreview',
+    'corsheaders'
 ]
 
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+    'access-control-allow-origin',
+]
 
+CSRF_TRUSTED_ORIGINS = ['https://boox-b09-tk.pbp.cs.ui.ac.id', 'http://127.0.0.1:8000']
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -61,6 +81,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
 CSRF_TRUSTED_ORIGINS = ["https://boox-b09-tk.pbp.cs.ui.ac.id/"]
