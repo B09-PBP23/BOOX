@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('landing_page', '0003_books_total_upvotes'),
+        ('landing_page', '0002_auto_20231027_2316'),
     ]
 
     operations = [
