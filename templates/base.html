@@ -42,8 +42,8 @@
 
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li><a href="#" class="active">Home</a></li>
-                            <li><a href="#user-faq">Help</a></li>
+                            <li><a href="{% url 'landing_page:show_landing_page' %}" class="active">Home</a></li>
+                            <li><a href="{% url 'landing_page:show_landing_page' %}#user-faq">Help</a></li>
                             <li><a href="{% url 'authentication:logout' %}" id="login-logout">Logout</a></li>
                             <li><a href="{% url 'readers_favorite:show_readers_favorite' %}">Readers Favorite</a></li>
                             <li><a href="{% url 'profilepage:show_profile' %}">Profile <img src="{%static 'images/profile-header.jpg'%}" alt=""></a></li>
