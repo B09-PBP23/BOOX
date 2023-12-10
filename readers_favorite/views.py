@@ -3,7 +3,7 @@ from django.db.models import F
 from django.http import HttpResponse, HttpResponseNotFound, JsonResponse
 from django.shortcuts import get_object_or_404, render
 from landing_page.models import Books
-from readers_favorite.models import ReadersFavorite, Comments
+from readers_favorite.models import ReadersFavorite, Comments, Upvote
 from django.core import serializers
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
@@ -23,6 +23,7 @@ def show_readers_favorite(request):
 
         response = {
             'books': books,
+            'user_is_authenticated' : request.user.is_authenticated,
             'all_comments': all_comments,
         }
         return render(request, "readers_favorite.html", response)
@@ -30,8 +31,14 @@ def show_readers_favorite(request):
         response = {
             'books': books,
         }
-        return render(request, "readers_favorite_base.html", response)
+        return render(request, "readers_favorite.html", response)
 
+def check_upvote_status(request, item_id):
+    user = request.user
+    book = get_object_or_404(Books, pk=item_id)
+    has_upvoted = Upvote.objects.filter(user=user, book=book).exists()
+
+    return JsonResponse({'has_upvoted': has_upvoted})
 
 def get_all_comments(request):
     data = Comments.objects.all()
@@ -54,12 +61,19 @@ def get_commenters(request):
 @csrf_exempt
 def add_upvote_ajax(request, item_id):
     if request.method == 'POST':
+        user = request.user
         book_selected = get_object_or_404(Books, id=item_id)
-        book_selected.total_upvotes += 1
-        book_selected.save()
-        # Return a JSON response to update the client-side data
-        response_data = {'success': True}
-        return HttpResponse(json.dumps(response_data), content_type="application/json")
+        has_upvoted = Upvote.objects.filter(user=user, book=book_selected).exists()
+
+        if not has_upvoted:
+            Upvote.objects.create(user=user, book=book_selected);
+            book_selected.total_upvotes += 1
+            book_selected.save()
+            # Return a JSON response to update the client-side data
+            response_data = {'success': True}
+            return HttpResponse(json.dumps(response_data), content_type="application/json")
+        else:
+            return JsonResponse({'success': False, 'message': 'You have already upvoted this book.'})
     return HttpResponseNotFound()
 
 @csrf_exempt
@@ -76,6 +90,3 @@ def add_comment(request):
         return HttpResponse(b"CREATED", status=201)
     
     return HttpResponseNotFound()
-
-
-
