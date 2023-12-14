@@ -84,8 +84,6 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware'
 ]
 
-CSRF_TRUSTED_ORIGINS = ["https://boox-b09-tk.pbp.cs.ui.ac.id/"]
-
 ROOT_URLCONF = 'BOOX.urls'
 
 TEMPLATES = [
