@@ -79,19 +79,16 @@ def edit_profile_ajax(request):
 @csrf_exempt
 def edit_profile_flutter(request):
     if request.method == 'POST':
-        
         data = json.loads(request.body)
-
         new_profile = Profile.objects.get_or_create(
             user = request.user,
             name = data["name"],
-            price = int(data["price"]),
+            date_joined = data["date_joined"],
             description = data["description"],
-            amount = int(data["amount"]),
+            favorite_books = data["favorite_books"],
+            favorite_author = data["favorite_author"],
         )
-
         new_profile.save()
-
         return JsonResponse({"status": "success"}, status=200)
     else:
         return JsonResponse({"status": "error"}, status=401)
