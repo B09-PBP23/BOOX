@@ -160,7 +160,7 @@
   <script src="assets/js/popup.js"></script>
   <script src="assets/js/custom.js"></script>
 
-  <script>
+  {% comment %} <script>
     async function loadBooks() {
       return fetch("{% url 'landing_page:get_data_json' %}").then((response) => response.json());
     }
@@ -207,7 +207,7 @@
     `
   }
 
-  getUserReviews();
+  getUserReviews(); {% endcomment %}
 
   {% comment %} async function getProfile() {
     return fetch("{% url 'profilepage:get_profile_json' %}").then((res) => res.json());
@@ -269,7 +269,7 @@ async function refreshProfile() {
 document.getElementById("button_save").onclick = editProfile;
 
 refreshProfile(); {% endcomment %}
-</script>
+{% comment %} </script> {% endcomment %}
   
 
   

@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render, redirect
 from profilepage.models import Profile
 from .forms import UserProfileForm
@@ -73,4 +74,24 @@ def edit_profile_ajax(request):
         return JsonResponse({'status': 'SUCCESS', 'message': 'Profile updated successfully'})
     
     return JsonResponse({'status': 'ERROR', 'message': 'Invalid request method'}, status=400)
+
+@csrf_exempt
+def edit_profile_flutter(request):
+    if request.method == 'POST':
+        
+        data = json.loads(request.body)
+
+        new_profile = Profile.objects.get_or_create(
+            user = request.user,
+            name = data["name"],
+            price = int(data["price"]),
+            description = data["description"],
+            amount = int(data["amount"]),
+        )
+
+        new_profile.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
 
