@@ -1,5 +1,7 @@
 import datetime
 import json
+from django.http import JsonResponse
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
 from profilepage.models import Profile
 from .forms import UserProfileForm
@@ -81,14 +83,17 @@ def edit_profile_ajax(request):
 def edit_profile_flutter(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        new_profile = Profile.objects.get_or_create(
-            name = data["name"],
-            description = data["description"],
-            favorite_books = data["favoriteBooks"],
-            favorite_author = data["favoriteAuthor"],
-        )
-        new_profile.save()
-        return JsonResponse({"status": "success"}, status=200)
+        try:
+            profile = Profile.objects.get(user=request.user)
+            # Update the existing profile with new data
+            profile.name = data.get("name", profile.name)
+            profile.description = data.get("description", profile.description)
+            profile.favorite_books = data.get("favoriteBooks", profile.favorite_books)
+            profile.favorite_author = data.get("favoriteAuthor", profile.favorite_author)
+            profile.save()
+            return JsonResponse({"status": "success"}, status=200)
+        except ObjectDoesNotExist:
+            return JsonResponse({"status": "error", "message": "Profile not found"}, status=404)
     else:
-        return JsonResponse({"status": "error"}, status=401)
+        return JsonResponse({"status": "error", "message": "Method not allowed"}, status=405)
 
