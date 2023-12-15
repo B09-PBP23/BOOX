@@ -1,3 +1,4 @@
+import datetime
 import json
 from django.shortcuts import render, redirect
 from profilepage.models import Profile
@@ -83,7 +84,7 @@ def edit_profile_flutter(request):
         new_profile = Profile.objects.get_or_create(
             user = request.user,
             name = data["name"],
-            date_joined = data["date_joined"],
+            date_joined = datetime(data["date_joined"]),
             description = data["description"],
             favorite_books = data["favorite_books"],
             favorite_author = data["favorite_author"],
