@@ -85,8 +85,8 @@ def edit_profile_flutter(request):
             user = request.user,
             name = data["name"],
             description = data["description"],
-            favorite_books = data["favorite_books"],
-            favorite_author = data["favorite_author"],
+            favorite_books = data["favoriteBooks"],
+            favorite_author = data["favoriteAuthor"],
         )
         new_profile.save()
         return JsonResponse({"status": "success"}, status=200)
