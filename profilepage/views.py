@@ -97,3 +97,17 @@ def edit_profile_flutter(request):
     else:
         return JsonResponse({"status": "error", "message": "Method not allowed"}, status=405)
 
+def create_profile_flutter(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        new_profile = Profile.objects.create(
+            user = request.user,
+            name = data["name"],
+            description = data["description"],
+            favorite_books = data["favoriteBooks"],
+            favorite_author = data["favoriteAuthor"],
+        )
+        new_profile.save()
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
