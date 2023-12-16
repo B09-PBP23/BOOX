@@ -2,7 +2,7 @@ import datetime
 import json
 from django.http import JsonResponse
 from django.core.exceptions import ObjectDoesNotExist
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from profilepage.models import Profile
 from .forms import UserProfileForm
 from django.shortcuts import render, redirect
@@ -53,9 +53,11 @@ def get_profile_json(request):
     profiles = Profile.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize('json', profiles))
 
+@login_required
 def show_json(request):
-    data = Profile.objects.filter(user=request.user)
-    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+    profile = get_object_or_404(Profile, user=request.user)
+    serialized_data = serializers.serialize("json", [profile])
+    return JsonResponse(serialized_data, safe=False)
 
 @csrf_exempt
 def edit_profile_ajax(request):
