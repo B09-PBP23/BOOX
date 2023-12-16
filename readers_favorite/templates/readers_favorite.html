@@ -218,13 +218,6 @@
 
   <script>
 
-    async function checkUpvoteStatus(pk) {
-      // Fetch the user's upvote status for the given book
-      const response = await fetch(`check_upvote_status/${pk}/`);
-      const data = await response.json();
-      return data.has_upvoted;
-    }
-
     async function getBookInfo() {
       return fetch("{% url 'readers_favorite:get_data_json' %}").then((response) => response.json());
     }
@@ -326,7 +319,7 @@
       allCommenters.sort((a, b) => b.fields.user_contribution - a.fields.user_contribution);
 
       // Display only the most recent 6 comments
-      const topCommenters = allCommenters.slice(0, 6);
+      const topCommenters = allCommenters.slice(0, 4);
 
       let htmlString = '';
 
@@ -359,26 +352,17 @@
     }
 
   async function addUpvote(pk) {
-    // Check if the user has already upvoted this book
-    const hasUpvoted = await checkUpvoteStatus(pk);
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
 
-    if (!hasUpvoted) {
-      const headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-
-      fetch(`add_upvote_ajax/${pk}/`, {
-        method: "POST",
-        headers: headers,
-      }).then(() => {
-        // Open the modal with a success message
-        document.getElementById('upvoteAlertMessage').innerText = 'Upvote added successfully!';
-        $('#upvoteAlertModal').modal('show');
-      }).then(refreshFavoriteBooks).then(refreshCommentSection).then(refreshTopCommenters);
-    } else {
-      // Open the modal with an error message
-      document.getElementById('upvoteAlertMessage').innerText = 'You have already upvoted this book.';
+    fetch(`add_upvote_ajax/${pk}/`, {
+      method: "POST",
+      headers: headers,
+    }).then(() => {
+      // Open the modal with a success message
+      document.getElementById('upvoteAlertMessage').innerText = 'Upvote added successfully!';
       $('#upvoteAlertModal').modal('show');
-    }
+    }).then(refreshFavoriteBooks).then(refreshCommentSection).then(refreshTopCommenters);
 
     return false;
   }
