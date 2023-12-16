@@ -53,7 +53,6 @@ def get_profile_json(request):
     profiles = Profile.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize('json', profiles))
 
-@login_required
 def show_json(request):
     profile = get_object_or_404(Profile, user=request.user)
     serialized_data = serializers.serialize("json", [profile])
