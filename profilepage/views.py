@@ -103,7 +103,7 @@ def create_profile_flutter(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         new_profile = Profile.objects.create(
-            user = request.user.id,
+            user = request.user,
             name = data["name"],
             description = data["description"],
             favorite_books = data["favoriteBooks"],
