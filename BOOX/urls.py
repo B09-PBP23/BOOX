@@ -26,8 +26,11 @@ urlpatterns = [
     path('profile/', include('profilepage.urls')),
     path('readers-favorite/', include('readers_favorite.urls')),
 <<<<<<< HEAD
+<<<<<<< HEAD
     path('add_review/', include ('add_review.urls')),
     path('editreview/', include ('editreview.urls')),
+=======
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 =======
 >>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
     path('bookmarks/', include('bookmarks.urls')),

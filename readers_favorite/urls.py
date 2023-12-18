@@ -12,9 +12,15 @@ urlpatterns = [
     path('get_username_by_id/<int:user_id>/', get_username_by_id, name='get_username_by_id'),
     path('get_all_comments/', get_all_comments, name='get_all_comments'),
 <<<<<<< HEAD
+<<<<<<< HEAD
     path('get_commenters/', get_commenters, name='get_commenters'),
     path('add_comment/', add_comment, name='add_comment'),
 ]
+=======
+    path('get_commeSnters/', get_commenters, name='get_commenters'),
+    path('add_comment/', add_comment, name='add_comment'),
+]
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 =======
     path('get_commeSnters/', get_commenters, name='get_commenters'),
     path('add_comment/', add_comment, name='add_comment'),

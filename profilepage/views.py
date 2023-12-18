@@ -80,6 +80,7 @@ def edit_profile_ajax(request):
     return JsonResponse({'status': 'ERROR', 'message': 'Invalid request method'}, status=400)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 @csrf_exempt
 def edit_profile_flutter(request):
     if request.method == 'POST':
@@ -113,5 +114,7 @@ def create_profile_flutter(request):
         return JsonResponse({"status": "success"}, status=200)
     else:
         return JsonResponse({"status": "error"}, status=401)
+=======
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 =======
 >>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394

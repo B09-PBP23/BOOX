@@ -47,11 +47,14 @@ INSTALLED_APPS = [
     'authentication',
     'readers_favorite',
 <<<<<<< HEAD
+<<<<<<< HEAD
     'bookmarks',
     'add_review',
     'editreview',
     'corsheaders'
 =======
+=======
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
     'bookmarks'
 >>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 ]

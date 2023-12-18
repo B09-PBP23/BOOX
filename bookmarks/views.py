@@ -13,6 +13,11 @@ def landing_page(request):
 def get_books(request):
     data = Bookmarked.objects.all()
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 @login_required
 def show_bookmarks(request):
     user = request.user

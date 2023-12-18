@@ -4,7 +4,10 @@
 
 {% block content %}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 =======
 >>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
   <div class="container">
@@ -85,7 +88,10 @@
   {% include 'add_question_modal.html' %}
   {% include 'edit_question_modal.html' %}
 <<<<<<< HEAD
+<<<<<<< HEAD
   {% include 'show_question_modal.html' %}
+=======
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 =======
 >>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
   
@@ -129,7 +135,11 @@
           }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
           let bookURL = "{% url 'add_review:show_review' 0 %}".replace("0", book.pk)
+=======
+          let bookURL = "#most-popular-content"
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 =======
           let bookURL = "#most-popular-content"
 >>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
@@ -247,7 +257,10 @@
                   <li><h4>Question</h4><span style="color: white;">${question}</span></li>
                   <li><h4>Answer</h4><span style="color: white;">${answer}</span></li>
 <<<<<<< HEAD
+<<<<<<< HEAD
                   <li><div class="main-border-button"><a class="open-modal-link show-qna" data-toggle="modal" data-target="#show-qnamodal" href="#user-faq" pk="${faq.pk}">Details</a></div></li>
+=======
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 =======
 >>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
                   <li><div class="main-border-button"><a class="open-modal-link edit-qna" data-toggle="modal" data-target="#edit-qnamodal" href="#user-faq" pk="${faq.pk}">Edit Question</a></div></li>
@@ -303,6 +316,7 @@
         doShowAllFAQs = true;
       });
 <<<<<<< HEAD
+<<<<<<< HEAD
 
       document.querySelectorAll(".show-qna").forEach((element) => {
         element.addEventListener("click", (event) => {
@@ -334,6 +348,8 @@
       });
 =======
 >>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
+=======
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
     }
 
     async function showAllFAQs(){
@@ -347,6 +363,7 @@
       `
       
       for (let faq of FAQ) {
+<<<<<<< HEAD
 <<<<<<< HEAD
         let question = faq.fields["question"];
         let answer = faq.fields["answer"];
@@ -364,6 +381,8 @@
         `
       
 =======
+=======
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
         if (faq.fields["is_public"]) {
           let question = faq.fields["question"];
           let answer = faq.fields["answer"];
@@ -379,6 +398,9 @@
               </div>
           `
         }
+<<<<<<< HEAD
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
+=======
 >>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
       }
         
@@ -400,6 +422,7 @@
       });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       document.getElementById("see-all-my-question").addEventListener("click", (event) => {
         event.preventDefault();
         showMyFAQs();
@@ -409,6 +432,11 @@
 
       document.querySelectorAll(".show-qna").forEach((element) => {
         element.addEventListener("click", (event) => {
+=======
+      document.querySelectorAll(".edit-qna").forEach((element) => {
+        element.addEventListener("click", (event) => {
+          console.log("masukk")
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 =======
       document.querySelectorAll(".edit-qna").forEach((element) => {
         element.addEventListener("click", (event) => {
@@ -427,6 +455,7 @@
           let category = fields["category"];
           let question = fields["question"];
 <<<<<<< HEAD
+<<<<<<< HEAD
           let answer = fields["answer"];
           answer = (answer === null) ? "No answer yet" : answer;
           document.getElementById("show-category").value = category;
@@ -440,6 +469,8 @@
         });
       });
 =======
+=======
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
           let is_public = fields["is_public"];
           document.getElementById("edit_category").value = category;
           document.getElementById("edit_question").value = question;
@@ -454,6 +485,9 @@
         showMyFAQs();
         doShowAllFAQs = false;
       });
+<<<<<<< HEAD
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
+=======
 >>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
     }
 

@@ -30,7 +30,11 @@ def get_data_json(request):
 
 def get_faq_data(request):
 <<<<<<< HEAD
+<<<<<<< HEAD
     faq = FAQ.objects.filter(is_public=True)
+=======
+    faq = FAQ.objects.all()
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 =======
     faq = FAQ.objects.all()
 >>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
@@ -53,11 +57,16 @@ def add_faq_question(request):
         if category and question:
             faq = FAQ.objects.create(user=user, category=category, question=question, is_public=is_public)
 <<<<<<< HEAD
+<<<<<<< HEAD
             if faq.is_valid():
                 faq.save()
                 return HttpResponse(b'CREATED', status=201)
             else:
                 return HttpResponseBadRequest('Invalid input. Please check your input again.')
+=======
+            faq.save()
+            return HttpResponse(b'CREATED', status=201)
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 =======
             faq.save()
             return HttpResponse(b'CREATED', status=201)

@@ -39,7 +39,11 @@ def register(request):
     return render(request, 'register.html', context)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 @csrf_exempt
+=======
+
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 =======
 
 >>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394

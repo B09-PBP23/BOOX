@@ -3,6 +3,7 @@
 {% load static %}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 {% block meta %}
     <title>BooX - Awesome Book Website</title>
 
@@ -27,6 +28,8 @@
   }
 </style>
 {% endblock meta %}
+=======
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 =======
 >>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 {% block content %}
@@ -63,6 +66,7 @@
                 <div class="content">
                   <div class="row">
 <<<<<<< HEAD
+<<<<<<< HEAD
                     {% if user_is_authenticated %}
                       <div class="col-lg-12">
                         <p>Here you can view this month's top 10 most reviewed books by our readers! Contribute by upvoting your favorite books!</p>
@@ -72,6 +76,11 @@
                         <p>Here you can view this month's top 10 most reviewed books by our readers!</p>
                       </div>
                     {% endif %}
+=======
+                    <div class="col-lg-12">
+                      <p>Here you can view this month's top 10 most reviewed books by our readers! Contribute by upvoting your favorite books!</p>
+                    </div>
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 =======
                     <div class="col-lg-12">
                       <p>Here you can view this month's top 10 most reviewed books by our readers! Contribute by upvoting your favorite books!</p>
@@ -90,6 +99,7 @@
           <br>
           <!-- Most upvotes End -->
 
+<<<<<<< HEAD
 <<<<<<< HEAD
           {% if not user_is_authenticated %}
             <div class="col-lg-12" style="text-align: center;">
@@ -119,6 +129,8 @@
                           <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add New Comment!</a>
                         </div>
 =======
+=======
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
           <!-- ***** Details Start ***** -->
           <div class="game-details">
             <div class="row">
@@ -134,6 +146,9 @@
                     <div class="col-lg-12">
                       <div class="main-border-button">
                         <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add New Comment!</a>
+<<<<<<< HEAD
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
+=======
 >>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
                       </div>
                     </div>
@@ -141,6 +156,7 @@
                 </div>
               </div>
             </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
 
             <br>
@@ -173,6 +189,8 @@
             <!-- ***** Readers Comment Section ***** -->
           {% endif %}
 =======
+=======
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
           </div>
 
           <br>
@@ -205,6 +223,9 @@
           </div>
           <!-- ***** Readers Comment Section ***** -->
 
+<<<<<<< HEAD
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
+=======
 >>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 
         </div>
@@ -252,7 +273,11 @@
             </div>
             <div class="modal-footer">
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+=======
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 =======
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 >>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
@@ -262,6 +287,7 @@
     </div>
   </div>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     <!-- Add this HTML code at the end of your document, just before the closing </body> tag -->
   <div class="modal fade" id="upvoteAlertModal" tabindex="-1" aria-labelledby="upvoteAlertModalLabel" aria-hidden="true">
@@ -284,6 +310,8 @@
 
 =======
 >>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
+=======
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 
   <script>
 
@@ -292,10 +320,13 @@
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     async function getBookInfo() {
       return fetch("{% url 'readers_favorite:get_data_json' %}").then((response) => response.json());
     }
 
+=======
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 =======
 >>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
     async function getAllComments() {
@@ -342,9 +373,13 @@
                   <li><h4>Reviews Count</h4><span>${book.fields.total_reviews}<span></li>
                   <li><h4>Upvotes Count</h4><span>${book.fields.total_upvotes}<span></li>
 <<<<<<< HEAD
+<<<<<<< HEAD
                   {% if user_is_authenticated %}
                     <li><button class="btn btn-success" onclick="addUpvote(${book.pk})">Upvote</button></li>
                   {% endif %}
+=======
+                  <li><button class="btn btn-success" onclick="addUpvote(${book.pk})">Upvote</button></li>
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 =======
                   <li><button class="btn btn-success" onclick="addUpvote(${book.pk})">Upvote</button></li>
 >>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
@@ -396,7 +431,11 @@
 
       // Display only the most recent 6 comments
 <<<<<<< HEAD
+<<<<<<< HEAD
       const topCommenters = allCommenters.slice(0, 4);
+=======
+      const topCommenters = allCommenters.slice(0, 6);
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 =======
       const topCommenters = allCommenters.slice(0, 6);
 >>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
@@ -432,6 +471,7 @@
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   async function addUpvote(pk) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -450,6 +490,8 @@
 
 
 =======
+=======
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
     async function addUpvote(pk) {
       const headers = new Headers();
       headers.append('Content-Type', 'application/json');
@@ -460,6 +502,9 @@
 
       return false;
     }
+<<<<<<< HEAD
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
+=======
 >>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 
     async function addComment() {
@@ -472,6 +517,10 @@
       return false
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 =======
 
 >>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
@@ -480,13 +529,19 @@
     refreshCommentSection();
     refreshTopCommenters();
 <<<<<<< HEAD
+<<<<<<< HEAD
   </script>
   
 =======
+=======
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 
 </script>
   
 
 
+<<<<<<< HEAD
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
+=======
 >>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 {% endblock content %}
