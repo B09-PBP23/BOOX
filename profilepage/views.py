@@ -20,9 +20,9 @@ from landing_page.models import Books
 @login_required(login_url='authentication:login')
 def show_profile(request):
     try:
-        profile = Profile.objects.get(user=request.user.id)
+        profile = Profile.objects.get(user=request.user)
         books = Books.objects.all()
-        profiles = Profile.objects.filter(user=request.user.id)
+        profiles = Profile.objects.filter(user=request.user)
         form = UserProfileForm(instance=profile)
         context = {
             'user_name': request.user.username,
@@ -42,21 +42,20 @@ def create_profile(request):
             form.save()
             return redirect('profilepage:show_profile')
     else:
-        profile, created = Profile.objects.get_or_create(user=request.user.id)
+        profile, created = Profile.objects.get_or_create(user=request.user)
         form = UserProfileForm(instance=profile)
 
     context = {'form': form,'books':books}
     return render(request, 'createprofile.html', context)
 
+
 def get_profile_json(request):
     profiles = Profile.objects.filter(user=request.user.id)
-    data = serializers.serialize('json', profiles)
-    return JsonResponse(data, safe=False)
+    return HttpResponse(serializers.serialize('json', profiles))
 
 def show_json(request):
     data = Profile.objects.filter(user=request.user.id)
-    serialized_data = serializers.serialize("json", data)
-    return JsonResponse(serialized_data, safe=False)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 @csrf_exempt
 def edit_profile_ajax(request):
@@ -67,7 +66,7 @@ def edit_profile_ajax(request):
         user = request.user
 
         try:
-            profile = Profile.objects.get(user=user.id)
+            profile = Profile.objects.get(user=user)
         except Profile.DoesNotExist:
             profile = Profile(user=user)
 
