@@ -48,14 +48,15 @@ def create_profile(request):
     context = {'form': form,'books':books}
     return render(request, 'createprofile.html', context)
 
-
 def get_profile_json(request):
-    profiles = Profile.objects.get(user=request.user.id)
-    return HttpResponse(serializers.serialize('json', profiles))
+    profiles = Profile.objects.filter(user=request.user.id)
+    data = serializers.serialize('json', profiles)
+    return JsonResponse(data, safe=False)
 
 def show_json(request):
-    data = Profile.objects.get(user=request.user.id)
-    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+    data = Profile.objects.filter(user=request.user.id)
+    serialized_data = serializers.serialize("json", data)
+    return JsonResponse(serialized_data, safe=False)
 
 @csrf_exempt
 def edit_profile_ajax(request):
