@@ -54,7 +54,7 @@ def get_profile_json(request):
     return HttpResponse(serializers.serialize('json', profiles))
 
 def show_json(request):
-    data = Profile.objects.filter(user=request.user.id)
+    data = Profile.objects.all()
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 @csrf_exempt
