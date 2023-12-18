@@ -98,6 +98,7 @@ def edit_profile_flutter(request):
     else:
         return JsonResponse({"status": "error", "message": "Method not allowed"}, status=405)
 
+@csrf_exempt
 def create_profile_flutter(request):
     if request.method == 'POST':
         data = json.loads(request.body)
