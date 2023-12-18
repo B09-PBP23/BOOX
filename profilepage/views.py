@@ -20,9 +20,9 @@ from landing_page.models import Books
 @login_required(login_url='authentication:login')
 def show_profile(request):
     try:
-        profile = Profile.objects.get((user=request.user.id))
+        profile = Profile.objects.get(user=request.user.id)
         books = Books.objects.all()
-        profiles = Profile.objects.filter((user=request.user.id))
+        profiles = Profile.objects.filter(user=request.user.id)
         form = UserProfileForm(instance=profile)
         context = {
             'user_name': request.user.username,
@@ -42,7 +42,7 @@ def create_profile(request):
             form.save()
             return redirect('profilepage:show_profile')
     else:
-        profile, created = Profile.objects.get_or_create(.user)
+        profile, created = Profile.objects.get_or_create(user=request.user.id)
         form = UserProfileForm(instance=profile)
 
     context = {'form': form,'books':books}
@@ -50,11 +50,11 @@ def create_profile(request):
 
 
 def get_profile_json(request):
-    profiles = Profile.objects.filter((user=request.user.id))
+    profiles = Profile.objects.filter(user=request.user.id)
     return HttpResponse(serializers.serialize('json', profiles))
 
 def show_json(request):
-    data = Profile.objects.filter((user=request.user.id))
+    data = Profile.objects.filter(user=request.user.id)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 @csrf_exempt
@@ -66,7 +66,7 @@ def edit_profile_ajax(request):
         user = request.user
 
         try:
-            profile = Profile.objects.get(user=user)
+            profile = Profile.objects.get(user=user.id)
         except Profile.DoesNotExist:
             profile = Profile(user=user)
 
@@ -84,7 +84,7 @@ def edit_profile_flutter(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         try:
-            profile = Profile.objects.get((user=request.user.id))
+            profile = Profile.objects.get(user=request.user.id)
             # Update the existing profile with new data
             profile.name = data.get("name", profile.name)
             profile.description = data.get("description", profile.description)
@@ -97,12 +97,11 @@ def edit_profile_flutter(request):
     else:
         return JsonResponse({"status": "error", "message": "Method not allowed"}, status=405)
 
-@csrf_exempt
 def create_profile_flutter(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         new_profile = Profile.objects.create(
-            user = request.user,
+            user = request.user.id,
             name = data["name"],
             description = data["description"],
             favorite_books = data["favoriteBooks"],
