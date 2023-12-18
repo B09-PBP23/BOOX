@@ -20,9 +20,9 @@ from landing_page.models import Books
 @login_required(login_url='authentication:login')
 def show_profile(request):
     try:
-        profile = Profile.objects.get(user=request.user)
+        profile = Profile.objects.get((user=request.user.id))
         books = Books.objects.all()
-        profiles = Profile.objects.filter(user=request.user)
+        profiles = Profile.objects.filter((user=request.user.id))
         form = UserProfileForm(instance=profile)
         context = {
             'user_name': request.user.username,
@@ -42,7 +42,7 @@ def create_profile(request):
             form.save()
             return redirect('profilepage:show_profile')
     else:
-        profile, created = Profile.objects.get_or_create(user=request.user)
+        profile, created = Profile.objects.get_or_create(.user)
         form = UserProfileForm(instance=profile)
 
     context = {'form': form,'books':books}
@@ -50,11 +50,11 @@ def create_profile(request):
 
 
 def get_profile_json(request):
-    profiles = Profile.objects.filter(user=request.user)
+    profiles = Profile.objects.filter((user=request.user.id))
     return HttpResponse(serializers.serialize('json', profiles))
 
 def show_json(request):
-    data = Profile.objects.filter(user=request.user)
+    data = Profile.objects.filter((user=request.user.id))
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 @csrf_exempt
@@ -84,7 +84,7 @@ def edit_profile_flutter(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         try:
-            profile = Profile.objects.get(user=request.user)
+            profile = Profile.objects.get((user=request.user.id))
             # Update the existing profile with new data
             profile.name = data.get("name", profile.name)
             profile.description = data.get("description", profile.description)
