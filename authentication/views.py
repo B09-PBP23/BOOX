@@ -1,6 +1,6 @@
-import datetime
-from django.shortcuts import render
-from django.shortcuts import redirect
+import datetime  
+
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
@@ -38,7 +38,11 @@ def register(request):
     context = {'form': form}
     return render(request, 'register.html', context)
 
+<<<<<<< HEAD
 @csrf_exempt
+=======
+
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 def login_user(request):
     if request.method == 'POST':
         username = request.POST.get('username')

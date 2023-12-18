@@ -46,10 +46,14 @@ INSTALLED_APPS = [
     'profilepage',
     'authentication',
     'readers_favorite',
+<<<<<<< HEAD
     'bookmarks',
     'add_review',
     'editreview',
     'corsheaders'
+=======
+    'bookmarks'
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 ]
 
 CORS_ALLOW_HEADERS = [
@@ -65,7 +69,7 @@ CORS_ALLOW_HEADERS = [
     'access-control-allow-origin',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://boox-b09-tk.pbp.cs.ui.ac.id', 'http://127.0.0.1:8000', 'https://boox-b09-tk.pbp.cs.ui.ac.id/profile/json', 'http://127.0.0.1:8000/profile/json', 'https://boox-b09-tk.pbp.cs.ui.ac.id/profile/edit-flutter', 'https://boox-b09-tk.pbp.cs.ui.ac.id/profile/create-flutter']
+CSRF_TRUSTED_ORIGINS = ['https://boox-b09-tk.pbp.cs.ui.ac.id', 'http://127.0.0.1:8000', 'https://boox-b09-tk.pbp.cs.ui.ac.id/profile/json/', 'http://127.0.0.1:8000/profile/json/', 'https://boox-b09-tk.pbp.cs.ui.ac.id/profile/edit-flutter/', 'https://boox-b09-tk.pbp.cs.ui.ac.id/profile/create-flutter/']
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CSRF_COOKIE_SECURE = True

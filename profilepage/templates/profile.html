@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <style>
+<<<<<<< HEAD
       .btn-primary {
         background-color: transparent;
         border: 1px solid #ec6090;
@@ -43,10 +44,68 @@
       border-radius: 5px;
       outline: none;
     }
+=======
+    .btn-primary {
+      background-color: transparent;
+      border: 1px solid #ec6090;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+  }
+
+  .btn-primary:hover {
+      background-color: #ec6090;
+  }
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 </style>
 {% endblock meta %}
 
 {% block content %}
+<<<<<<< HEAD
+=======
+ <!-- ***** Preloader Start ***** -->
+ <div id="js-preloader" class="js-preloader">
+  <div class="preloader-inner">
+    <span class="dot"></span>
+    <div class="dots">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</div>
+<!-- ***** Preloader End ***** -->
+
+ <!-- ***** Header Area Start ***** -->
+ <header class="header-area header-sticky">
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <nav class="main-nav">
+                  <!-- ***** Logo Start ***** -->
+                  <a href="{% url 'landing_page:show_landing_page' %}" class="logo">
+                      <img src="{% static 'images/logo.png' %}" alt="BooX">
+                  </a>
+                  <!-- ***** Logo End ***** -->
+
+                  <!-- ***** Menu Start ***** -->
+                  <ul class="nav">
+                      <li><a href="#" class="active">Home</a></li>
+                      <li><a href="#user-faq">Help</a></li>
+                      <li><a href="{% url 'authentication:logout' %}" id="login-logout">Logout</a></li>
+                      <li><a href="{% url 'profilepage:show_profile' %}">Profile</a></li>
+                  </ul>   
+                  <a class='menu-trigger'>
+                      <span>Menu</span>
+                  </a>
+                  <!-- ***** Menu End ***** -->
+              </nav>
+          </div>
+      </div>
+  </div>
+</header>
+<!-- ***** Header Area End ***** -->
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 
   <div class="container">
     <div class="row">
@@ -74,10 +133,17 @@
                   <div class="col-lg-12 align-self-center">
                     <ul>
                       <li>Username <span>{{ user_name }}</span></li>
+<<<<<<< HEAD
                       <li>Favorite Books <span>{{profiles.0.favorite_books}}</span></li>
                       <li>Favorite Author <span>{{profiles.0.favorite_author}}</span></li>
                       <li>Joined Since <span>{{profiles.0.date_joined}}</span></li>
                       <li>Bookmarked Books<span><a href="{% url 'bookmarks:show_bookmarks' %}">Show Bookmarks</a></span></li>
+=======
+                      <li>Books Reviewed <span>0</span></li>
+                      <li>Favorite Books <span>{{profiles.0.favorite_books}}</span></li>
+                      <li>Favorite Author <span>{{profiles.0.favorite_author}}</span></li>
+                      <li>Joined Since <span>{{profiles.0.date_joined}}</span></li>
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
                     </ul>
                   </div>
                 </div>
@@ -88,6 +154,7 @@
            <div class="gaming-library" id="user-reviews">
           </div>
           <!-- ***** Review Library End ***** -->
+<<<<<<< HEAD
           
 
           <!-- Modal for Edit Profile -->
@@ -130,6 +197,41 @@
                 </div>
             </div>
           </div>
+=======
+
+          <!-- Modal for Edit Profile -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content" style="background-color: #363636; color: #fff;">
+          <div class="modal-header">
+              <h1 class="modal-title fs-5" id="editProfileModalLabel">Edit Profile</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: #fff;"></button>
+          </div>
+          <div class="modal-body">
+              <form id="editProfileForm" onsubmit="return false;">
+                  {% csrf_token %}
+                  <div class="mb-3">
+                      <label for="{{ form.name.id_for_label }}" class="col-form-label">Name:</label>
+                      <input type="text" class="form-control" id="edit_name" name="name" style="background-color: #2F3030; color: #fff;">
+                  </div>
+                  <div class="mb-3">
+                      <label for="{{ form.description.id_for_label }}" class="col-form-label">Description:</label>
+                      <textarea class="form-control" id="edit_description" name="description" style="background-color: #2F3030; color: #fff;"></textarea>
+                  </div>
+                  <div class="mb-3">
+                    <label for="{{ form.profile_picture.id_for_label }}" class="col-form-label">Profile Picture:</label>
+                    <textarea class="form-control" id="edit_profile_picture" name="profile_picture" style="background-color: #2F3030; color: #fff;"></textarea>
+                </div>
+              </form>
+          </div>
+          <div class="modal-footer" style="background-color: #282828;">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="button_save" data-bs-dismiss="modal">Save Changes</button>
+          </div>
+      </div>
+  </div>
+</div>
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 
         </div>
       </div>
@@ -160,7 +262,11 @@
   <script src="assets/js/popup.js"></script>
   <script src="assets/js/custom.js"></script>
 
+<<<<<<< HEAD
   {% comment %} <script>
+=======
+  <script>
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
     async function loadBooks() {
       return fetch("{% url 'landing_page:get_data_json' %}").then((response) => response.json());
     }
@@ -176,6 +282,12 @@
 
     let i = 0;
     for (let book of Books) {
+<<<<<<< HEAD
+=======
+      if (i++ == 5){
+        break;
+      }
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 
       let imageURL = book.fields["image_url_l"]
       let bookTitle = book.fields["title"]
@@ -207,6 +319,7 @@
     `
   }
 
+<<<<<<< HEAD
   getUserReviews(); {% endcomment %}
 
   {% comment %} async function getProfile() {
@@ -270,6 +383,10 @@ document.getElementById("button_save").onclick = editProfile;
 
 refreshProfile(); {% endcomment %}
 {% comment %} </script> {% endcomment %}
+=======
+  getUserReviews();
+</script>
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
   
 
   

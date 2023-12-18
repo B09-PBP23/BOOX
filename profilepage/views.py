@@ -50,12 +50,11 @@ def create_profile(request):
 
 
 def get_profile_json(request):
-    profiles = Profile.objects.filter(user=request.user.id)
+    profiles = Profile.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize('json', profiles))
-    
-@csrf_exempt
+
 def show_json(request):
-    data = Profile.objects.filter(user=request.user.id)
+    data = Profile.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 @csrf_exempt
@@ -80,12 +79,13 @@ def edit_profile_ajax(request):
     
     return JsonResponse({'status': 'ERROR', 'message': 'Invalid request method'}, status=400)
 
+<<<<<<< HEAD
 @csrf_exempt
 def edit_profile_flutter(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         try:
-            profile = Profile.objects.get(user=request.user.id)
+            profile = Profile.objects.get(user=request.user)
             # Update the existing profile with new data
             profile.name = data.get("name", profile.name)
             profile.description = data.get("description", profile.description)
@@ -113,3 +113,5 @@ def create_profile_flutter(request):
         return JsonResponse({"status": "success"}, status=200)
     else:
         return JsonResponse({"status": "error"}, status=401)
+=======
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394

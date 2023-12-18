@@ -23,7 +23,10 @@ def show_readers_favorite(request):
 
         response = {
             'books': books,
+<<<<<<< HEAD
             'user_is_authenticated' : request.user.is_authenticated,
+=======
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
             'all_comments': all_comments,
         }
         return render(request, "readers_favorite.html", response)
@@ -31,7 +34,12 @@ def show_readers_favorite(request):
         response = {
             'books': books,
         }
+<<<<<<< HEAD
         return render(request, "readers_favorite.html", response)
+=======
+        return render(request, "readers_favorite_base.html", response)
+
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 
 def get_all_comments(request):
     data = Comments.objects.all()
@@ -76,3 +84,9 @@ def add_comment(request):
         return HttpResponse(b"CREATED", status=201)
     
     return HttpResponseNotFound()
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
