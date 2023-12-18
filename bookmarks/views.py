@@ -13,8 +13,11 @@ def landing_page(request):
 def get_books(request):
     data = Bookmarked.objects.all()
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 439082c7645e65b3e365cf5c45e76b847d95f394
 @login_required
 def show_bookmarks(request):
     user = request.user
@@ -35,6 +38,19 @@ def show_bookmarks(request):
     }
     return render(request, "bookmarks.html", response)
 
+def make_bookmarks(request):
+    books = Book.object.all()
+
+    if request.user.is_authenticated:
+        user = request.user
+        user_selected, created = bookmarks.objects.get_or_create(user=user)
+
+        response = {
+            'books': books,
+        }
+        return JsonResponse(response) # jika user terautentikasi
+    else: 
+        return JsonResponse({'message: User not authenticated'})
 
 @login_required
 def add_to_bookmark(request, book_id):
@@ -67,3 +83,17 @@ def remove_from_bookmark(request, book_id):
         except Books.DoesNotExist:
             return JsonResponse({'message': 'Book not found'}, status=400)
     return JsonResponse({'message': 'Invalid request'}, status=400)
+
+@login_required
+def get_bookmark_per_user(request):
+    user = request.user
+    bookmark = Bookmarked.objects.filter(user = user).all()
+    user_bookmarks = []
+    for book in bookmark:
+        user_bookmarks.append({
+            'user_id' : book.user.pk,
+            'book_id' : book.book.pk,
+            'isbn' : book.book.isbn,
+            'title' : book.book.title,
+        })
+    return JsonResponse({'data' : user_bookmarks} , content_type="application/json")
