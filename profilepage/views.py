@@ -52,7 +52,8 @@ def create_profile(request):
 def get_profile_json(request):
     profiles = Profile.objects.filter(user=request.user.id)
     return HttpResponse(serializers.serialize('json', profiles))
-
+    
+@csrf_exempt
 def show_json(request):
     data = Profile.objects.filter(user=request.user.id)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
