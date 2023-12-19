@@ -50,23 +50,13 @@ def create_profile(request):
 
 
 def get_profile_json(request):
-    profiles = Profile.objects.filter(user=request.user.id)
-    return HttpResponse(serializers.serialize('json', profiles))
+    profiles = Profile.objects.get(user=request.user.id)
+    return HttpResponse(serializers.serialize('json', [profiles]))
     
 @csrf_exempt
 def show_json(request):
-    data = Profile.objects.filter(user=request.user.id)
-    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
-
-def get_profile_json_flutter(request):
-    try:
-        profiles = Profile.objects.get(user=request.user.id)
-        serialized_profiles = serializers.serialize("json", [profiles])  
-        return HttpResponse(serialized_profiles, content_type="application/json")
-    except Profile.DoesNotExist:
-        return HttpResponse("User not found", status=404)
-    except Exception as e:
-        return HttpResponse("An error occurred", status=500)
+    data = Profile.objects.get(user=request.user.id)
+    return HttpResponse(serializers.serialize("json", [data]), content_type="application/json")
 
 @csrf_exempt
 def edit_profile_ajax(request):
