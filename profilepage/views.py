@@ -50,13 +50,19 @@ def create_profile(request):
 
 
 def get_profile_json(request):
-    profiles = Profile.objects.get(user=request.user.id)
-    return HttpResponse(serializers.serialize('json', [profiles]))
+    profiles = Profile.objects.all()
+    return HttpResponse(serializers.serialize('json', profiles))
     
-@csrf_exempt
+@login_required(login_url='authentication:login')
 def show_json(request):
-    data = Profile.objects.get(user=request.user.id)
-    return HttpResponse(serializers.serialize("json", [data]), content_type="application/json")
+    user_id = request.user.id 
+
+    if user_id:
+        data = Profile.objects.filter(user_id=user_id)
+        serialized_data = serializers.serialize("json", data)
+        return JsonResponse(serialized_data, safe=False)
+    else:
+        return JsonResponse({'error': 'User ID not found'}, status=400)
 
 @csrf_exempt
 def edit_profile_ajax(request):
