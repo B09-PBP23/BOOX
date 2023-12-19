@@ -50,29 +50,16 @@ def create_profile(request):
 
 
 def get_profile_json(request):
-    profiles = Profile.objects.all()
+    profiles = Profile.objects.filter(user=request.user.id)
     return HttpResponse(serializers.serialize('json', profiles))
-    
-@login_required(login_url='authentication:login')
-def show_json(request):
-    user_id = request.user.id 
 
-    if user_id:
-        data = Profile.objects.filter(user_id=user_id)
-        serialized_data = serializers.serialize("json", data)
-        return JsonResponse(serialized_data, safe=False)
-    else:
-        return JsonResponse({'error': 'User ID not found'}, status=400)
-    
-@login_required(login_url='authentication:flutter_login')
-def show_json_fluttter(request):
-    user_id = request.user.id 
-    if user_id:
-        data = Profile.objects.filter(user_id=user_id)
-        serialized_data = serializers.serialize("json", data)
-        return JsonResponse(serialized_data, safe=False)
-    else:
-        return JsonResponse({'error': 'User ID not found'}, status=400)
+def show_json(request):
+    data = Profile.objects.all()
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+def show_json_by_id(request, id):
+    data = Profile.objects.get(user=id)
+    return HttpResponse(serializers.serialize("json", [data]), content_type="application/json")
 
 @csrf_exempt
 def edit_profile_ajax(request):
@@ -114,12 +101,11 @@ def edit_profile_flutter(request):
     else:
         return JsonResponse({"status": "error", "message": "Method not allowed"}, status=405)
 
-@csrf_exempt
 def create_profile_flutter(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         new_profile = Profile.objects.create(
-            user = request.user,
+            user = request.user.id,
             name = data["name"],
             description = data["description"],
             favorite_books = data["favoriteBooks"],
