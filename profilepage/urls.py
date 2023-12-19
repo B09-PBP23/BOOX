@@ -11,5 +11,4 @@ urlpatterns = [
     path('get-profile/', get_profile_json, name='get_profile_json'),
     path('edit-flutter/', edit_profile_flutter, name= 'edit_profile_flutter'),
     path('create-flutter/', create_profile_flutter, name= 'create_profile_flutter'),
-    path('get-profile-flutter', get_profile_json_flutter, name= ' get_profile_json_flutter'),
 ]
