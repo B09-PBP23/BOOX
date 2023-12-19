@@ -2,10 +2,11 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.core import serializers
-
+import json
+from django.http import HttpResponse, HttpResponseNotFound, JsonResponse, HttpResponseBadRequest
 from django.shortcuts import get_object_or_404, render, redirect
 from landing_page.models import Books
-from editreview.models import Review
+from editreview.models import Reply, Review
 from .forms import ReviewForm  # Diasumsikan Anda memiliki form untuk Review.
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
@@ -56,3 +57,85 @@ def display_reviews(request):
 def get_books(request):
     data = Books.objects.all()
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+
+@csrf_exempt
+def editreviewflutter(request):
+    if request.method == "POST":
+        review_id = request.POST.get('id')
+        review_text = request.POST.get('review')
+        rating = request.POST.get('rating')
+        
+        get_review = get_object_or_404(Review, pk=review_id, user=request.user)
+        
+        book = get_review.book
+        book.total_ratings -= int(get_review.rating)
+        book.total_ratings += int(rating)
+        
+        get_review.review = review_text
+        get_review.rating = rating
+        
+        get_review.save()
+        book.save()
+        return JsonResponse({'status': 'success', 'id': get_review.pk, 'review': get_review.review, 'rating': get_review.rating})
+    else:
+        return HttpResponseBadRequest("Invalid request method.")
+    
+@csrf_exempt
+def add_reply(request):
+    if request.method == "POST":
+        review_id = request.POST.get('id')
+        reply = request.POST.get('reply')
+
+        get_review = Review.objects.get(pk=review_id)
+
+        new_reply = Reply.objects.create(user=request.user, review=get_review, reply=reply)
+
+        new_reply.save()
+        return JsonResponse({'status': 'success', 'id': get_review.pk, "reply": reply})
+    else:
+        return HttpResponseBadRequest("Invalid request method.")
+    
+@csrf_exempt
+def delete_reply_flutter(request, idReply):
+    if request.method == 'DELETE':
+        try:
+            reply = Reply.objects.get(pk=idReply, user=request.user)
+            reply.delete()
+            
+            return JsonResponse({"status": "success"}, status=200)
+        except reply.DoesNotExist:
+            return JsonResponse({"status": "error", "message": "Review not found"}, status=404)
+
+    return JsonResponse({"status": "error", "message": "Invalid request"}, status=400)
+
+def get_reply(request, idReview):
+    data = Reply.objects.filter(review=idReview)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+@login_required
+def edit_review_ajax(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            review_id = data.get('id')
+
+            try:
+                review = Review.objects.get(pk=review_id, user=request.user)
+            except Review.DoesNotExist:
+                return JsonResponse({'status': 'error', 'message': 'Review not found'}, status=404)
+
+            form = ReviewForm(data, instance=review)
+
+            if form.is_valid():
+                form.save()
+                return JsonResponse({'status': 'success', 'message': 'Review updated successfully.'})
+            else:
+                print(form.errors)  # Log form errors
+                return JsonResponse({'status': 'error', 'errors': form.errors}, status=400)
+
+        except Exception as e:
+            print(e)  # Log general errors
+            return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
+
+    return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=400)

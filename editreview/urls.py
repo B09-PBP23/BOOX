@@ -26,12 +26,16 @@ urlpatterns = [
     # path('login/', login_user, name='login'), #sesuaikan dengan nama fungsi yang dibuat
     # path('logout/', logout_user, name='logout'),
     path('<int:id>/', editreview, name='editreview'),
+    path('edit-review-flutter/', editreviewflutter, name='editreviewflutter'),
+    path('add-reply/', add_reply, name='add_reply'),
+    path('get-reply/<idReview>/', get_reply, name='get_reply'),
+    path('delete-reply/<idReply>/', delete_reply_flutter, name='delete_reply_flutter'),
     # path('delete/<int:id>', delete_product, name='delete_product'), # sesuaikan dengan nama fungsi yang dibuat
     # path('get-product/', get_product_json, name='get_product_json'),
     # path('create-product-ajax/', add_product_ajax, name='add_product_ajax')
     path('get-review/<int:review_id>', get_review, name="get_review"),
     path('reviews/', display_reviews, name='display_reviews'),
     path("", get_review, name="get_review"),
-
+    path('edit-review-ajax/', edit_review_ajax, name='edit_review_ajax'),
 
 ]
