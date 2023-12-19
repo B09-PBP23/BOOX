@@ -63,6 +63,16 @@ def show_json(request):
         return JsonResponse(serialized_data, safe=False)
     else:
         return JsonResponse({'error': 'User ID not found'}, status=400)
+    
+@login_required(login_url='authentication:flutter_login')
+def show_json_fluttter(request):
+    user_id = request.user.id 
+    if user_id:
+        data = Profile.objects.filter(user_id=user_id)
+        serialized_data = serializers.serialize("json", data)
+        return JsonResponse(serialized_data, safe=False)
+    else:
+        return JsonResponse({'error': 'User ID not found'}, status=400)
 
 @csrf_exempt
 def edit_profile_ajax(request):
