@@ -78,3 +78,17 @@ def add_review_ajax(request):
         return HttpResponse(b"CREATED", status=201)
 
     return HttpResponseNotFound()
+
+@csrf_exempt
+def delete_review_flutter(request, idReview):
+    if request.method == 'DELETE':
+        try:
+            review = Review.objects.get(pk=idReview, user=request.user)
+            book = review.book
+            book.total_ratings -= review.rating
+            review.delete()
+            return JsonResponse({"status": "success"}, status=200)
+        except review.DoesNotExist:
+            return JsonResponse({"status": "error", "message": "Review not found"}, status=404)
+
+    return JsonResponse({"status": "error", "message": "Invalid request"}, status=400)
