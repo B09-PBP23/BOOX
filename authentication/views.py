@@ -15,6 +15,7 @@ from django.contrib.auth import logout as auth_logout
 from django.views.decorators.csrf import csrf_exempt
 from django.db.utils import IntegrityError
 import json
+from profilepage.models import Profile
 
 # Create your views here.
 @csrf_exempt
@@ -73,6 +74,7 @@ def flutter_login(request):
             return JsonResponse({
                 "username": user.username,
                 "status": True,
+                "id" : request.user.id,
                 "message": "Login success!"
                 # Tambahkan data lainnya jika ingin mengirim data ke Flutter.
             }, status=200)
