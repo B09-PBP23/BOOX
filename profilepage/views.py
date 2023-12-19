@@ -52,7 +52,8 @@ def create_profile(request):
 def get_profile_json(request):
     profiles = Profile.objects.filter(user=request.user.id)
     return HttpResponse(serializers.serialize('json', profiles))
-
+    
+@csrf_exempt
 def show_json(request):
     data = Profile.objects.filter(user=request.user.id)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
@@ -107,11 +108,12 @@ def edit_profile_flutter(request):
     else:
         return JsonResponse({"status": "error", "message": "Method not allowed"}, status=405)
 
+@csrf_exempt
 def create_profile_flutter(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         new_profile = Profile.objects.create(
-            user = request.user.id,
+            user = request.user,
             name = data["name"],
             description = data["description"],
             favorite_books = data["favoriteBooks"],
