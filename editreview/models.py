@@ -10,3 +10,7 @@ class Review(models.Model):
     rating = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     
+class Reply(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    review = models.ForeignKey(Review, on_delete=models.CASCADE)
+    reply = models.TextField(null=True, blank=True)
