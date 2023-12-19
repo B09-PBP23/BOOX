@@ -55,7 +55,6 @@ def get_profile_json(request):
     
 @login_required(login_url='authentication:login')
 def show_json(request):
-<<<<<<< HEAD
     user_id = request.user.id 
 
     if user_id:
@@ -64,10 +63,6 @@ def show_json(request):
         return JsonResponse(serialized_data, safe=False)
     else:
         return JsonResponse({'error': 'User ID not found'}, status=400)
-=======
-    data = Profile.objects.get(user=request.user)
-    return HttpResponse(serializers.serialize("json", [data]), content_type="application/json")
->>>>>>> 09203e5d24195973db241e0c9be44d45df4b8305
 
 @csrf_exempt
 def edit_profile_ajax(request):
