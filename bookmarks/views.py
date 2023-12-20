@@ -5,6 +5,7 @@ from .models import *
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from landing_page.models import Books
+from bookmarks.models import Bookmarked
 
 def landing_page(request):
     books = Books.objects.all()
@@ -35,11 +36,11 @@ def show_bookmarks(request):
     return render(request, "bookmarks.html", response)
 
 def make_bookmarks(request):
-    books = Book.object.all()
+    books = Books.object.all()
 
     if request.user.is_authenticated:
         user = request.user
-        user_selected, created = bookmarks.objects.get_or_create(user=user)
+        user_selected, created = Bookmarked.objects.get_or_create(user=user)
 
         response = {
             'books': books,
