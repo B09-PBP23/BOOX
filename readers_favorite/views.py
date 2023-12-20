@@ -79,3 +79,21 @@ def add_comment(request):
         return HttpResponse("CREATED", status=201)
 
     return HttpResponseNotFound()
+
+@csrf_exempt
+def add_comment_flutter(request, user_name):
+    if request.method == 'POST':
+        user_comment = request.POST.get("user_comment")
+
+        # Ensure a valid User instance
+        user, created = User.objects.get_or_create(username=user_name)
+
+        new_comment = Comments(user=user, user_comment=user_comment)
+        new_comment.save()
+
+        # Increment user_contribution by 1 for the current user
+        ReadersFavorite.objects.filter(user=user).update(user_contribution=F('user_contribution') + 1)
+
+        return HttpResponse("CREATED", status=201)
+
+    return HttpResponseNotFound()

@@ -16,6 +16,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from landing_page.models import Books
+from django.contrib.auth.models import User
 
 @login_required(login_url='authentication:login')
 def show_profile(request):
@@ -89,7 +90,6 @@ def edit_profile_flutter(request):
         data = json.loads(request.body)
         try:
             profile = Profile.objects.get(user=request.user.id)
-            # Update the existing profile with new data
             profile.name = data.get("name", profile.name)
             profile.description = data.get("description", profile.description)
             profile.favorite_books = data.get("favoriteBooks", profile.favorite_books)
@@ -101,11 +101,12 @@ def edit_profile_flutter(request):
     else:
         return JsonResponse({"status": "error", "message": "Method not allowed"}, status=405)
 
-def create_profile_flutter(request):
+@csrf_exempt
+def create_profile_flutter(request, user_name):
     if request.method == 'POST':
         data = json.loads(request.body)
         new_profile = Profile.objects.create(
-            user = request.user.id,
+            user = User.objects.get(username = user_name),
             name = data["name"],
             description = data["description"],
             favorite_books = data["favoriteBooks"],
