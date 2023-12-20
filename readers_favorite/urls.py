@@ -13,5 +13,5 @@ urlpatterns = [
     path('get_all_comments/', get_all_comments, name='get_all_comments'),
     path('get_commenters/', get_commenters, name='get_commenters'),
     path('add_comment/', add_comment, name='add_comment'),
-    path('add_comment/<str:user_name>/', add_comment_flutter, name='add_comment_flutter'),
+    path('add_comment_flutter/<str:user_name>/', add_comment_flutter, name='add_comment_flutter'),
 ]
