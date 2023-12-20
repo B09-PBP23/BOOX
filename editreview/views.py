@@ -109,17 +109,12 @@ def add_reply(request, user_name):
 def delete_reply_flutter(request, idReply):
     if request.method == 'DELETE':
         try:
-            user_name = request.POST.get('username')
-            user = User.objects.get(username=user_name)
-
-            reply = Reply.objects.get(pk=idReply, user=user)
+            reply = Reply.objects.get(pk=idReply, user=request.user)
             reply.delete()
-
+            
             return JsonResponse({"status": "success"}, status=200)
-        except User.DoesNotExist:
-            return JsonResponse({"status": "error", "message": "User not found"}, status=404)
-        except Reply.DoesNotExist:
-            return JsonResponse({"status": "error", "message": "Reply not found"}, status=404)
+        except reply.DoesNotExist:
+            return JsonResponse({"status": "error", "message": "Review not found"}, status=404)
 
     return JsonResponse({"status": "error", "message": "Invalid request"}, status=400)
 
