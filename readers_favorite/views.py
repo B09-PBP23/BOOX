@@ -64,15 +64,18 @@ def add_upvote_ajax(request, item_id):
 
 @csrf_exempt
 def add_comment(request):
-    if request.method == 'POST':
+    if request.method == 'POST' and request.user.is_authenticated:
         user_comment = request.POST.get("user_comment")
-        user = request.user
+
+        # Ensure a valid User instance
+        user, created = User.objects.get_or_create(username=request.user.username)
+
         new_comment = Comments(user=user, user_comment=user_comment)
         new_comment.save()
 
         # Increment user_contribution by 1 for the current user
         ReadersFavorite.objects.filter(user=user).update(user_contribution=F('user_contribution') + 1)
 
-        return HttpResponse(b"CREATED", status=201)
-    
+        return HttpResponse("CREATED", status=201)
+
     return HttpResponseNotFound()
