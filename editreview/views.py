@@ -14,6 +14,8 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 
+
+
 @csrf_exempt
 def editreview(request, id):
     # Get product berdasarkan ID
@@ -81,7 +83,6 @@ def editreviewflutter(request):
     else:
         return HttpResponseBadRequest("Invalid request method.")
     
-    
 @csrf_exempt
 def add_reply(request, user_name):
     if request.method == "POST":
@@ -89,8 +90,11 @@ def add_reply(request, user_name):
         reply = request.POST.get('reply')
 
         # Ensure a valid User instance
+        user, created = User.objects.get_or_create(username=user_name)
 
-        new_reply = Reply.objects.create(user = Reply.objects.get(user=id), review=get_review, reply=reply)
+        get_review = Review.objects.get(pk=review_id)
+
+        new_reply = Reply.objects.create(user=user, review=get_review, reply=reply)
         new_reply.save()
 
         # Optional: Update some user statistics here, similar to your friend's code
@@ -106,7 +110,7 @@ def delete_reply_flutter(request, idReply):
     if request.method == 'DELETE':
         try:
             user_name = request.POST.get('username')
-            user = User.objects.get(username=user_name)
+            user = User.objects.get_or_create(username=user_name)
 
             reply = Reply.objects.get(pk=idReply, user=user)
             reply.delete()
