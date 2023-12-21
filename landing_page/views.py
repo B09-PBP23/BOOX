@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseBadRequest, HttpResponseRedirect
 from django.core import serializers
@@ -10,7 +11,22 @@ from django.urls import reverse
 # Create your views here.
 def get_books(request):
     data = Books.objects.all()
-    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+    # Iterate through each book and update the URLs
+    for book in data:
+        book.image_url_s = book.image_url_s.replace(
+            'http://images.amazon.com', 'https://m.media-amazon.com'
+        )
+        book.image_url_m = book.image_url_m.replace(
+            'http://images.amazon.com', 'https://m.media-amazon.com'
+        )
+        book.image_url_l = book.image_url_l.replace(
+            'http://images.amazon.com', 'https://m.media-amazon.com'
+        )
+
+    # Serialize the updated data and return as JSON response
+    serialized_data = serializers.serialize("json", data)
+    return HttpResponse(serialized_data, content_type="application/json")
 
 def show_faq_data_json(request):
     data = FAQ.objects.all()

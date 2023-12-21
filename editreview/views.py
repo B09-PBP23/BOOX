@@ -12,7 +12,7 @@ from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
-
+from django.contrib.auth.models import User
 
 @csrf_exempt
 def editreview(request, id):
@@ -81,31 +81,41 @@ def editreviewflutter(request):
     else:
         return HttpResponseBadRequest("Invalid request method.")
     
+    
 @csrf_exempt
-def add_reply(request):
+def add_reply(request, user_name):
     if request.method == "POST":
         review_id = request.POST.get('id')
         reply = request.POST.get('reply')
 
-        get_review = Review.objects.get(pk=review_id)
+        # Ensure a valid User instance
 
-        new_reply = Reply.objects.create(user=request.user, review=get_review, reply=reply)
-
+        new_reply = Reply.objects.create(user = Reply.objects.get(user=id), review=get_review, reply=reply)
         new_reply.save()
+
+        # Optional: Update some user statistics here, similar to your friend's code
+
         return JsonResponse({'status': 'success', 'id': get_review.pk, "reply": reply})
     else:
         return HttpResponseBadRequest("Invalid request method.")
+
     
+
 @csrf_exempt
 def delete_reply_flutter(request, idReply):
     if request.method == 'DELETE':
         try:
-            reply = Reply.objects.get(pk=idReply, user=request.user)
+            user_name = request.POST.get('username')
+            user = User.objects.get(username=user_name)
+
+            reply = Reply.objects.get(pk=idReply, user=user)
             reply.delete()
-            
+
             return JsonResponse({"status": "success"}, status=200)
-        except reply.DoesNotExist:
-            return JsonResponse({"status": "error", "message": "Review not found"}, status=404)
+        except User.DoesNotExist:
+            return JsonResponse({"status": "error", "message": "User not found"}, status=404)
+        except Reply.DoesNotExist:
+            return JsonResponse({"status": "error", "message": "Reply not found"}, status=404)
 
     return JsonResponse({"status": "error", "message": "Invalid request"}, status=400)
 
