@@ -9,6 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 
 # Create your views here.
+@csrf_exempt
 def get_books(request):
     data = Books.objects.all()
 
