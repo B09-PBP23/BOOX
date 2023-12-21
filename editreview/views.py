@@ -97,6 +97,8 @@ def add_reply(request, user_name):
         new_reply = Reply.objects.create(user=user, review=get_review, reply=reply)
         new_reply.save()
 
+        # Optional: Update some user statistics here, similar to your friend's code
+
         return JsonResponse({'status': 'success', 'id': get_review.pk, "reply": reply})
     else:
         return HttpResponseBadRequest("Invalid request method.")
@@ -107,12 +109,17 @@ def add_reply(request, user_name):
 def delete_reply_flutter(request, idReply):
     if request.method == 'DELETE':
         try:
-            reply = Reply.objects.get(pk=idReply, user=request.user)
+            user_name = request.POST.get('username')
+            user = User.objects.get_or_create(username=user_name)
+
+            reply = Reply.objects.get(pk=idReply, user=user)
             reply.delete()
-            
+
             return JsonResponse({"status": "success"}, status=200)
-        except reply.DoesNotExist:
-            return JsonResponse({"status": "error", "message": "Review not found"}, status=404)
+        except User.DoesNotExist:
+            return JsonResponse({"status": "error", "message": "User not found"}, status=404)
+        except Reply.DoesNotExist:
+            return JsonResponse({"status": "error", "message": "Reply not found"}, status=404)
 
     return JsonResponse({"status": "error", "message": "Invalid request"}, status=400)
 
